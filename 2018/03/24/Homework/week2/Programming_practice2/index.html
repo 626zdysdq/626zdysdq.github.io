@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Hexo</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Hexo">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Hexo</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-03-24T07:15:22.258Z" itemprop="datePublished">
+          2018-03-24
+      </time>
+    
+</span>
+    <h1 class="post-title"></h1>
+    <section class="post-content">
+      <p>#编程实践——Priests and Devils</p>
+<hr>
+<ul>
+<li>阅读以下游戏脚本</li>
+</ul>
+<blockquote>
+<p>Priests and Devils is a puzzle game in which you will help the Priests and Devils to cross the river within the time limit. There are 3 priests and 3 devils at one side of the river. They all want to get to the other side of this river, but there is only one boat and this boat can only carry two persons each time. And there must be one person steering the boat from one side to the other side. In the flash game, you can click on them to move them and click the go button to move the boat to the other direction. If the priests are out numbered by the devils on either side of the river, they get killed and the game is over. You can try it in many &gt; ways. Keep all priests alive! Good luck!</p>
+</blockquote>
+<ul>
+<li><p>回答问题<br><ul><br>  <li>列出游戏中提及的事物（Objects）</li></ul></p>
+<blockquote>
+<p>Priests, devils, boat, coast, river</p>
+</blockquote>
+<p>  <li>用表格列出玩家动作表（规则表），注意，动作越少越好</li></p>
+<p>   | 对象      | 条件  |  结果  |<br>   | ——–  | —–:  | :—-:  |<br>   | 船        | 船不为空 |   移动到对岸    |<br>   | 人物（在岸上）  | 船未满且在人物所在河岸   |   上船   |<br>   | 人物（在船上）  |  无    |  上岸  |</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li>编程要求</li>
+</ul>
+<blockquote>
+<ul>
+<li>请将游戏中对象做成预制</li>
+<li>在 GenGameObjects 中创建 长方形、正方形、球 及其色彩代表游戏中的对象。</li>
+<li>使用 C# 集合类型 有效组织对象</li>
+<li>整个游戏仅主摄像机和一个Empty对象，其他对象必须代码动态生成！！！。整个游戏不许出现Find游戏对象SendMessage这类突破程序结构的 通讯耦合语句。违背本条准则,不给分</li>
+<li>请使用课件架构图编程，不接受非 MVC 结构程序</li>
+<li>注意细节，例如：船未靠岸，牧师与魔鬼上下船运动中，均不能接受用户事件！</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>1.建立MVC架构</p>
+<ul>
+<li><p>初始时我建立的MVC模型为</p>
+<blockquote>
+<ul>
+<li>Model: Priests, Devils, Boat, Coast.</li>
+<li>View: UserGUI.</li>
+<li>Controller: BoatController, CoastController, PriestController, DevilController, FirstController, Director.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>但参考了老师所给的优秀博客后发现：</p>
+<blockquote>
+<ul>
+<li>Priest和Devil虽然表示方式不同，但是所能发生的动作完全相同.</li>
+<li>可以将UserGUI进行进一步的分离为对UI的动作的回应和对结果的反馈两个部分</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>所以对自己的MVC模型进行优化，如下图：</p>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/1.png?raw=true" alt="MVC"><br><br></p>
+<p>2.构建model模型</p>
+<ul>
+<li>对于一个Character来说，我们需要区分到底是牧师还是魔鬼，确定它所处的位置，这样我们才能确定它能够进行什么动作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class MyCharacter &#123;</span><br><span class="line">		readonly GameObject character;</span><br><span class="line">		readonly Moveable move;         //行动事件</span><br><span class="line">		readonly int characterType;	    //确定类型</span><br><span class="line">		public string Name              //确定名称</span><br><span class="line">		bool _isOnBoat;                 //确定位置</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于一个Boat来说，我们则需要知道它所在的位置，它载Character的位置，和载Character的属性。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Boat &#123;</span><br><span class="line">		readonly GameObject boat;</span><br><span class="line">		readonly Moveable move;              //确定行动事件</span><br><span class="line">		readonly Vector3 fromPosition        //出发点</span><br><span class="line">		readonly Vector3 toPosition          //到达点</span><br><span class="line">		readonly Vector3[] from_positions;   //出发时两个对象的位置</span><br><span class="line">		readonly Vector3[] to_positions;     //到达时两个对象的位置</span><br><span class="line">		MyCharacterController[] passenger = new MyCharacterController[2];  //保存在船上的对象</span><br><span class="line">		int  place;                          //记录船所在的位置</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于一个Coast来说我们需要确定它是哪一边的河岸，需要确定它的上面有多少个Character，以及它们的位置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Coast&#123;</span><br><span class="line">        readonly GameObject coast;             </span><br><span class="line">        readonly Vector3[] positions;            //保存它加载Character的位置</span><br><span class="line">        MyCharacterController[] person_number;   //保存它上面的Character</span><br><span class="line">        int to_or_from;                          //确定是哪一条河岸</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.建立各Model的Controller</p>
+<ul>
+<li>我在建立Model的Controller时遇到了一个问题，就是不知道应该把它对点击事件所做的回应放在Model中还是Controller。于是就又去找了网上的和老师给的代码去参考，发现大部分的代码都并没有将Model的Controller拆分出来，而是类似于C++中将对象的属性和操作方法都放在一个类中。所以我对自己实现的Model又进行了优化。</li>
+</ul>
+<blockquote>
+<ul>
+<li>最初遇到的一个巨大的问题是，我点击对象时，它并不做任何反应（明明已经添加了点击的事件）。最终只能像大佬求助，才发现我没有更新对象的状态……（简直智障）。</li>
+<li>刚开始时我并没有考虑物体的运动轨迹，而是直接设定了物体的起始点和终止点，导致对象出现了直接从coast中穿过去的现象。在同学的提示下我将上船和上岸的运动分为两段，终于解决了这个鬼畜的问题。</li>
+<li>我的第一个版本中对运动进行了起点上船，起点上岸，终点上船和终点上岸四种情况，在后期改进中发现，只需要两种情况的判断就可以解决移动的问题。<br><br></li>
+</ul>
+</blockquote>
+<p>4.实现Director</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Director : System.Object &#123;</span><br><span class="line">		private static Director _instance;</span><br><span class="line">		public static Director getInstance() &#123;</span><br><span class="line">			if (_instance == null) &#123;</span><br><span class="line">				_instance = new Director ();</span><br><span class="line">			&#125;</span><br><span class="line">			return _instance;</span><br><span class="line">		&#125;</span><br><span class="line">		public SceneController currentSceneController &#123; get; set; &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>5.进行实现最高层的View</p>
+<blockquote>
+<ul>
+<li>实现结果判定</li>
+<li>实现点击事件的分类</li>
+</ul>
+</blockquote>
+<h3 id="最终效果如图"><a href="#最终效果如图" class="headerlink" title="最终效果如图"></a>最终效果如图</h3><p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true" alt="result"></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>John Doe</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2018/03/24/Homework/week2/Programming_practice2/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/24/Homework/week2/Programming_practice2/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/24/Homework/week2/Programming_practice2/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2018/03/24/Homework/week2/Homework2/">
+        ← 
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/03/24/Homework/week3/Homework3/">
+         →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Hexo</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Hexo">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Hexo</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-03-24T07:15:22.258Z" itemprop="datePublished">
+          2018-03-24
+      </time>
+    
+</span>
+    <h1 class="post-title"></h1>
+    <section class="post-content">
+      <h1 id="Homework-and-Exercise-two"><a href="#Homework-and-Exercise-two" class="headerlink" title="Homework and Exercise two"></a>Homework and Exercise two</h1><hr>
+<h3 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h3><p>1.游戏对象运动的本质是什么？</p>
+<blockquote>
+<ul>
+<li>游戏对象在场景中坐标的变换</li>
+</ul>
+</blockquote>
+<p>2.请用三种方法以上方法，实现物体的抛物线运动。</p>
+<blockquote>
+<ul>
+<li>利用transform实现</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class test : MonoBehaviour &#123;</span><br><span class="line">	public float speed1 = 5; //水平方向的初速度</span><br><span class="line">	public float g=9.8f;</span><br><span class="line">	// Use this for initialization</span><br><span class="line"></span><br><span class="line">	public float speed = 0;</span><br><span class="line">		</span><br><span class="line">	void Start()&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Update is called once per frame</span><br><span class="line"></span><br><span class="line">	void Update()    &#123;</span><br><span class="line">		this.transform.position += Vector3.up * Time.deltaTime * (speed);  </span><br><span class="line">		this.transform.position += Vector3.right * Time.deltaTime * speed1;  </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>利用translate实现</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void Update()    &#123;</span><br><span class="line">		Vector3 change = new Vector3(Time.deltaTime * speed1, Time.deltaTime * (speed), 0);  </span><br><span class="line"></span><br><span class="line">		transform.Translate(change);  </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>利用Vector实现</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void Update()    &#123;</span><br><span class="line">		Vector3 change = new Vector3(Time.deltaTime * speed1, Time.deltaTime * (speed), 0);  </span><br><span class="line">		this.transform.position += change; </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>3.写一个程序，实现一个完整的太阳系， 其他星球围绕太阳的转速必须不一样，且不在一个法平面上。</p>
+<ul>
+<li>首先建立一个太阳系的模型，将八大行星作为太阳的子对象，然后确定好球体的大小和位置</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/5.png?raw=true" alt="first"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.transform.RotateAround(origin.position, axis , speed * Time.deltaTime);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用上面的transform.RatateAround函数，我们只需要设置origin的位置为太阳所在的位置，axis为Vector3.up，并且自己定义速度。再把它挂载在每一个行星上面，就可以实现行星绕太阳的公转。</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/3.png?raw=true" alt="second"></p>
+<ul>
+<li>但是这是我们发现所有行星的公转平面都在同一个法平面上，根据作业要求，我们需要改变行星绕太阳的轨道平面。这时就需要将Vector3.up改变为其他不同方向的轴。</li>
+</ul>
+<blockquote>
+<ul>
+<li>其中最简单的方法为：为每一个行星创建一个cs文件，然后将其中的axis设置为不同的值即可。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>但是这样太过于繁琐，会有很多重复性的工作，参考老师所给的案例我们可以设置两个随机变量y和z，之后生成一个(0,y,z)的向量作为轴变量axis的值。这样我们就可以对于所有的行星使用同一个cs文件</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public Transform origin;  </span><br><span class="line">	public float speed ;  </span><br><span class="line">	float ry, rz;  </span><br><span class="line">	// Use this for initialization  </span><br><span class="line">	void Start () &#123;  </span><br><span class="line">		ry = Random.Range(5, 50);  </span><br><span class="line">		rz = Random.Range(5, 50); </span><br><span class="line">		origin.position = new Vector3 (-7, 0, 0);</span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	// Update is called once per frame  </span><br><span class="line">	void Update () &#123;  </span><br><span class="line">		Vector3 axis = new Vector3(0, ry, rz);  </span><br><span class="line">		this.transform.RotateAround(origin.position, axis , speed * Time.deltaTime);  </span><br><span class="line">		this.transform.Rotate (Vector3.up * 50 * Time.deltaTime);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用上面的代码，我们就实现了行星在不同法平面围绕太阳公转，效果如图</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/2.png?raw=true" alt="third"></p>
+<ul>
+<li>下一步我们可以用同样的方法为为地球添加一个子对象月球，设置它绕着地球公转。最后我们利用Rotate函数为太阳添加自转效果就实现了一个简易的太阳系</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/1.png?raw=true" alt="last"></p>
+<blockquote>
+<ul>
+<li>为了实现星空的效果，我在场景中添加了一个平台，之后利用摄像机找到合适的角度，就可以很low的模拟一下太阳系在星空中的感觉啦！</li>
+</ul>
+</blockquote>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>John Doe</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2018/03/24/Homework/week2/Homework2/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/24/Homework/week2/Homework2/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/24/Homework/week2/Homework2/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2018/03/24/Homework/Patrol/">
+        ← 
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/03/24/Homework/week2/Programming_practice2/">
+         →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
