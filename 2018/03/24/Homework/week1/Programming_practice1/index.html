@@ -1,23 +1,139 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html>
 
-block content
-  article#post.article-entry
-    != page.content
-  // lincense
-  if(theme.copyright.enable === true && page.copyright !== false)
-    .license-wrapper
-      p 
-        span Author:  
-        a(href=config.url)= config.author
-      p 
-        span Link:  
-        a(href=page.permalink)= page.permalink
-      p 
-        span Copyright:  
-        span!= theme.copyright.license
-  include includes/partial/post-nav.pug
-  #comment
-    include includes/comment/livere.pug
-    include includes/comment/disqus.pug
-    include includes/comment/changyan.pug
-    include includes/comment/gitment.pug
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Hexo</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Hexo">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Hexo</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-03-24T07:22:41.557Z" itemprop="datePublished">
+          2018-03-24
+      </time>
+    
+</span>
+    <h1 class="post-title"></h1>
+    <section class="post-content">
+      <h1 id="编程实践——井子棋1-0"><a href="#编程实践——井子棋1-0" class="headerlink" title="编程实践——井子棋1.0"></a>编程实践——井子棋1.0</h1><ul><br>    <li> 游戏内容： 井字棋<br>    </li><li> 技术限制： 仅允许使用 IMGUI 构建 UI<br>    </li><li> 作业目的：<br>         <ul><br>             <li> 提升 debug 能力<br>             </li><li> 提升阅读 API 文档能力<br>         </li></ul><br></li></ul>
+
+<hr>
+<p>###1.初始化</p>
+<ul>
+<li>井字棋实现的基础是一个3*3的二维数组，通过点击事件，对数组中的相应位置赋值来代表示玩家的选择.首先要在游戏开始时对我们所定义的变量进行初始化</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	private int player = 1;   //记录玩家</span><br><span class="line">	private int[,] state = new int[3, 3];</span><br><span class="line">	private string reminder =  &quot;&quot;;</span><br><span class="line">	private string[] label = &#123; &quot;&quot;, &quot;O&quot;, &quot;X&quot; &#125;;  </span><br><span class="line">	private int count=0;   //确定是否被全部点击</span><br><span class="line"></span><br><span class="line">	// Use this for initialization</span><br><span class="line"></span><br><span class="line">	void reset() &#123;</span><br><span class="line">		player = 1;</span><br><span class="line">		count = 0;</span><br><span class="line">		for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">			for (int j = 0; j &lt; 3; j++) &#123;</span><br><span class="line">				state [i, j] = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">###2.界面渲染</span><br><span class="line"></span><br><span class="line">* 因为只能使用IMGUI构建UI，所以查阅了相关的资料。发现GUI会在每一次操作后自动更新页面。所以我们只需要做到可以保存好每一次点击之后，二维数组的状态，就可以实现有些界面的自动更新。因为GUI.Button自己会在点击之后改变返回值的真假，所以不需要像之前的js一样将click事件与函数返回进行绑定。而且我们只需要对每次点击后二维数组的状态进行判定，就可以得当前游戏的胜负情况。所以OnGUI部分的代码如下：</span><br><span class="line"></span><br><span class="line">``` C#</span><br><span class="line"></span><br><span class="line">	void OnGUI()&#123;</span><br><span class="line">		GUIStyle fontStyle = new GUIStyle ();</span><br><span class="line">		GUIStyle fontStyle1 = new GUIStyle ();</span><br><span class="line">		fontStyle.fontSize = 30;</span><br><span class="line">		fontStyle1.fontSize = 20;</span><br><span class="line">		GUI.Label (new Rect (300, 50, 100, 100), &quot;Welcome to Game&quot;, fontStyle);</span><br><span class="line">		if(GUI.Button(new Rect(300, 380, 100, 50),&quot;start&quot;))  &#123;  </span><br><span class="line">			reset();  </span><br><span class="line">		&#125; </span><br><span class="line"></span><br><span class="line">		//show result</span><br><span class="line">		int result = winCheck();</span><br><span class="line">		if (count == 0 &amp;&amp; result == 0) &#123;</span><br><span class="line">			reminder = &quot;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else if (result != 0 &amp;&amp; result != 3) &#123;</span><br><span class="line">			reminder = &quot;player &quot; + result + &quot; win!&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(result == 3)&#123;</span><br><span class="line">			reminder = &quot;Dogfall!&quot; ;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			reminder = &quot;Continuing!&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		GUI.Label (new Rect (350, 80, 100, 50), reminder , fontStyle);</span><br><span class="line"></span><br><span class="line">		//The part of button</span><br><span class="line">		for(int i = 0; i&lt; 3; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(int j = 0; j &lt; 3; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				if (state[i, j] == 1)  </span><br><span class="line">				&#123;  </span><br><span class="line">					GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), label[1]);  </span><br><span class="line">				&#125;  </span><br><span class="line">				if (state[i, j] == 2)  </span><br><span class="line">				&#123;  </span><br><span class="line">					GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), label[2]);  </span><br><span class="line">				&#125;  </span><br><span class="line">				if(GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), &quot;&quot;)) &#123;  </span><br><span class="line">					if (result == 0)  </span><br><span class="line">					&#123;  </span><br><span class="line">						if (player == 1) state[i, j] = 1;  </span><br><span class="line">						else state[i, j] = 2;  </span><br><span class="line">						count++;  </span><br><span class="line">					    player = 3-player; </span><br><span class="line">					&#125;  </span><br><span class="line">				&#125;  </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>###3.胜负判断</p>
+<ul>
+<li><p>因为井字棋胜负判定的情况很简单，即</p>
+<blockquote>
+<ul>
+<li>有一行出现三个数相同，该数所代表的玩家胜</li>
+<li>有一列出现三个数相同，该数所代表的玩家胜</li>
+<li>有一斜线出现三个数相同，该数所代表的玩家胜</li>
+<li>空格全部点完，仍未出现上述情况则为平局</li>
+</ul>
+</blockquote>
+<p>所以胜负判断的函数代码如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private int winCheck()  &#123;  </span><br><span class="line">	for(int i = 0; i &lt; 3; ++i)  &#123;  </span><br><span class="line">		if (state[i, 0] != 0 &amp;&amp; state[i,0]==state[i, 1] &amp;&amp; state[i, 1] == state[i, 2])  &#123;  </span><br><span class="line">			return state[i, 0];  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line">	for (int i = 0; i &lt; 3; ++i)  &#123;  </span><br><span class="line">		if (state[0, i] != 0 &amp;&amp; state[0, i] == state[1, i] &amp;&amp; state[1, i] == state[2, i])  &#123;  </span><br><span class="line">			return state[0, i];  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line">	if((state[1,1]!=0 &amp;&amp; state[0,0]==state[1,1] &amp;&amp; state[1,1]==state[2,2])||  </span><br><span class="line">	   (state[1,1]!=0 &amp;&amp; state[0,2]==state[1,1]&amp;&amp; state[1,1]==state[2,0]) )  &#123;  </span><br><span class="line">			return state[1, 1];  </span><br><span class="line">		&#125;  </span><br><span class="line">	if (count == 9) return 3;  </span><br><span class="line">	return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行效果如图</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/1.png?raw=true" alt="game_picture"></p>
+<hr>
+<p>####<a href="https://github.com/626zdysdq/Unity3D/tree/master/Homework1" target="_blank" rel="noopener">如果需要完整的游戏代码和演示视屏，请点击这里!</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>John Doe</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2018/03/24/Homework/week1/Programming_practice1/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/24/Homework/week1/Programming_practice1/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/24/Homework/week1/Programming_practice1/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/03/24/Homework/week1/Homework1/">
+         →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

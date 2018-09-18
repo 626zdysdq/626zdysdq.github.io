@@ -1,23 +1,149 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html>
 
-block content
-  article#post.article-entry
-    != page.content
-  // lincense
-  if(theme.copyright.enable === true && page.copyright !== false)
-    .license-wrapper
-      p 
-        span Author:  
-        a(href=config.url)= config.author
-      p 
-        span Link:  
-        a(href=page.permalink)= page.permalink
-      p 
-        span Copyright:  
-        span!= theme.copyright.license
-  include includes/partial/post-nav.pug
-  #comment
-    include includes/comment/livere.pug
-    include includes/comment/disqus.pug
-    include includes/comment/changyan.pug
-    include includes/comment/gitment.pug
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Hexo</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Hexo">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Hexo</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-03-24T07:15:22.258Z" itemprop="datePublished">
+          2018-03-24
+      </time>
+    
+</span>
+    <h1 class="post-title"></h1>
+    <section class="post-content">
+      <h1 id="Homework-and-Exercise-three"><a href="#Homework-and-Exercise-three" class="headerlink" title="Homework and Exercise three"></a>Homework and Exercise three</h1><hr>
+<h2 id="Fantasy-Skybox——关于构建一块地形的简单总结"><a href="#Fantasy-Skybox——关于构建一块地形的简单总结" class="headerlink" title="Fantasy Skybox——关于构建一块地形的简单总结"></a>Fantasy Skybox——关于构建一块地形的简单总结</h2><h3 id="1-首先我从Asset-Store中下载了SkySerieFree的资源，之后导入到项目中。（建议可以先挑选部分资源导入，否则的话会超级慢）"><a href="#1-首先我从Asset-Store中下载了SkySerieFree的资源，之后导入到项目中。（建议可以先挑选部分资源导入，否则的话会超级慢）" class="headerlink" title="1.首先我从Asset Store中下载了SkySerieFree的资源，之后导入到项目中。（建议可以先挑选部分资源导入，否则的话会超级慢）"></a>1.首先我从Asset Store中下载了SkySerieFree的资源，之后导入到项目中。（建议可以先挑选部分资源导入，否则的话会超级慢）</h3><blockquote>
+<ul>
+<li>导入之后就会发现在Assets文件里面出现了很多的素材以及两个文件夹（如下图）</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/3.png?raw=true" alt="Assets"></p>
+<p><br></p>
+<blockquote>
+<ul>
+<li>之后在Camera中添加一个Skybox的Component，将我们的素材添加到里面就会出现天空的效果了</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/4.png?raw=true" alt="Sky"></p>
+<p><br></p>
+<h3 id="2-接着我们创建一个Terrain的对象开始建造地形-下图为Terrain对象的inspector"><a href="#2-接着我们创建一个Terrain的对象开始建造地形-下图为Terrain对象的inspector" class="headerlink" title="2.接着我们创建一个Terrain的对象开始建造地形(下图为Terrain对象的inspector)"></a>2.接着我们创建一个Terrain的对象开始建造地形(下图为Terrain对象的inspector)</h3><p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/5.png?raw=true" alt="menu"></p>
+<p><br></p>
+<blockquote>
+<ul>
+<li>在inspector中我们可一找到三个山形的图标，利用这三个图标就可以造出我们想要的山脉和丘陵等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>接着我们可以导入Enviroment的包，这个包中会有我们需要的树和草的模型</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>导入包之后，我们只需要在inspector中找到树或者花的图标，添加进去模型，就可以在我们的地形上种树和种草了(值得注意的是种草时，在窗口中只会显示一定距离以内的草，远处的草即使已经添加也不会显示，所以如果看不到自己添加的草，只需要将镜头拉近就可以了)</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/7.png?raw=true" alt="grass"></p>
+<p><br></p>
+<h3 id="3-这时我们会发现因为远处的草不能显示，白色的地形会显示的很丑，这时我们就可以利用那个画笔图标来刷地，这样我们就可以构建好一个还不错的地形啦"><a href="#3-这时我们会发现因为远处的草不能显示，白色的地形会显示的很丑，这时我们就可以利用那个画笔图标来刷地，这样我们就可以构建好一个还不错的地形啦" class="headerlink" title="3.这时我们会发现因为远处的草不能显示，白色的地形会显示的很丑，这时我们就可以利用那个画笔图标来刷地，这样我们就可以构建好一个还不错的地形啦"></a>3.这时我们会发现因为远处的草不能显示，白色的地形会显示的很丑，这时我们就可以利用那个画笔图标来刷地，这样我们就可以构建好一个还不错的地形啦</h3><p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/6.png?raw=true" alt="paint"></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>John Doe</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2018/03/24/Homework/week3/Homework3/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/24/Homework/week3/Homework3/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/24/Homework/week3/Homework3/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2018/03/24/Homework/week2/Homework2/">
+        ← 
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/03/24/Homework/week2/Programming_practice2/">
+         →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
