@@ -1,52 +1,93 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="牧师与魔鬼优化——动作分离版
+1. 改进的要求
+在上一版本的的基础上实现游戏对象的移动和游戏对象分离
+
+
+
+首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。
+对应传入对象，实现传入对象" />
+  
+
+  
+  
+  
+  
+  
+  
   <title>Hexo</title>
-  <meta name="description" content="" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
-
-  <meta name="generator" content="Hexo">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="牧师与魔鬼优化——动作分离版 1. 改进的要求 在上一版本的的基础上实现游戏对象的移动和游戏对象分离    首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。 对应传入对象，实现传入对象相应的action 找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的actio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/03/24/Homework/week3/Programming_practice3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="牧师与魔鬼优化——动作分离版 1. 改进的要求 在上一版本的的基础上实现游戏对象的移动和游戏对象分离    首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。 对应传入对象，实现传入对象相应的action 找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的actio">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true">
+<meta property="og:updated_time" content="2018-04-18T09:01:28.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="牧师与魔鬼优化——动作分离版 1. 改进的要求 在上一版本的的基础上实现游戏对象的移动和游戏对象分离    首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。 对应传入对象，实现传入对象相应的action 找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的actio">
+<meta name="twitter:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true">
   
   
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
   
 
   
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
 </head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Hexo" rel="home">Hexo</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
 
-
-<body class="post-template">
-
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
-    <div class="vertical">
-        <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
-            <h1 class="blog-title">Hexo</h1>
-            <h2 class="blog-description"></h2>
-        </div>
-    </div>
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
 </header>
-  
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Homework/week3/Programming_practice3" class="post-Homework/week3/Programming_practice3 post type-post status-publish format-standard hentry">
+    <!---->
 
-<main class="content" role="main">
-  <article class="post">
-    <span class="post-meta">
-      <time datetime="2018-03-24T07:15:22.258Z" itemprop="datePublished">
-          2018-03-24
-      </time>
-    
-</span>
-    <h1 class="post-title"></h1>
-    <section class="post-content">
-      <h2 id="牧师与魔鬼优化——动作分离版"><a href="#牧师与魔鬼优化——动作分离版" class="headerlink" title="牧师与魔鬼优化——动作分离版"></a>牧师与魔鬼优化——动作分离版</h2><hr>
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/03/24/Homework/week3/Programming_practice3/" data-id="cjm7eas440008dt4orlt8o9gs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="牧师与魔鬼优化——动作分离版"><a href="#牧师与魔鬼优化——动作分离版" class="headerlink" title="牧师与魔鬼优化——动作分离版"></a>牧师与魔鬼优化——动作分离版</h2><hr>
 <h3 id="1-改进的要求"><a href="#1-改进的要求" class="headerlink" title="1. 改进的要求"></a>1. 改进的要求</h3><ul>
 <li>在上一版本的的基础上实现游戏对象的移动和游戏对象分离</li>
 </ul>
@@ -113,64 +154,107 @@
 <h3 id="4-游戏截图"><a href="#4-游戏截图" class="headerlink" title="4.游戏截图"></a>4.游戏截图</h3><p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true" alt="a"></p>
 <h3 id="5-资源链接"><a href="#5-资源链接" class="headerlink" title="5.资源链接"></a>5.资源链接</h3><p><a href="https://github.com/626zdysdq/Unity3D/tree/master/Homework3" target="_blank" rel="noopener">源代码在这里哦</a></p>
 
-    </section>
-    <footer class="post-footer">
-      <section class="author">
-    <h4>John Doe</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
-</section>
-      <section class="share">
-    <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2018/03/24/Homework/week3/Programming_practice3/"
-       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-        <span class="hidden">Twitter</span>
-    </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/24/Homework/week3/Programming_practice3/"
-       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-        <span class="hidden">Facebook</span>
-    </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/24/Homework/week3/Programming_practice3/"
-       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-        <span class="hidden">Google+</span>
-    </a>
-</section>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/03/24/Homework/week3/Programming_practice3/">
+    <time datetime="2018-03-24T07:15:22.258Z" class="entry-date">
+        2018-03-24
+    </time>
+</a>
+    
+    
     </footer>
-  </article>
-  <nav class="pagination" role="pagination">
-    
-    <a class="newer-posts" href="/2018/03/24/Homework/week3/Homework3/">
-        ← 
-    </a>
-    
-    <span class="page-number">•</span>
-    
-</nav>
-  <div id="comment" class="comments-area">
-    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+</article>
+
 
     
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/03/24/Homework/week3/Homework3/" rel="prev"><span class="meta-nav">←</span> (no title)</a></span>
+    
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/24/Homework/week1/Homework1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/24/Homework/week1/Programming_practice1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/24/index/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/24/Homework/UI/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/24/Homework/Patrol/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
 </div>
-</main>
-
-
-  
-<footer class="site-footer">
-  
-  <div class="inner">
-     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
-     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
-  </div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
+<script src="/js/jquery-2.0.3.min.js"></script>
 
 
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="/js/script.js"></script>
 
+<script src="/js/navigation.js"></script>
 
+<div id="bg"></div>
+
+  </div>
 </body>
 </html>
