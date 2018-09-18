@@ -152,41 +152,17 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Homework/week1/Programming_practice1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Homework/week1/Homework1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="编程实践——井子棋1-0"><a href="#编程实践——井子棋1-0" class="headerlink" title="编程实践——井子棋1.0"></a>编程实践——井子棋1.0</h1><ul><br>    <li> 游戏内容： 井字棋<br>    </li><li> 技术限制： 仅允许使用 IMGUI 构建 UI<br>    </li><li> 作业目的：<br>         <ul><br>             <li> 提升 debug 能力<br>             </li><li> 提升阅读 API 文档能力<br>         </li></ul><br></li></ul>
-
-<hr>
-<p>###1.初始化</p>
-<ul>
-<li>井字棋实现的基础是一个3*3的二维数组，通过点击事件，对数组中的相应位置赋值来代表示玩家的选择.首先要在游戏开始时对我们所定义的变量进行初始化</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	private int player = 1;   //记录玩家</span><br><span class="line">	private int[,] state = new int[3, 3];</span><br><span class="line">	private string reminder =  &quot;&quot;;</span><br><span class="line">	private string[] label = &#123; &quot;&quot;, &quot;O&quot;, &quot;X&quot; &#125;;  </span><br><span class="line">	private int count=0;   //确定是否被全部点击</span><br><span class="line"></span><br><span class="line">	// Use this for initialization</span><br><span class="line"></span><br><span class="line">	void reset() &#123;</span><br><span class="line">		player = 1;</span><br><span class="line">		count = 0;</span><br><span class="line">		for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">			for (int j = 0; j &lt; 3; j++) &#123;</span><br><span class="line">				state [i, j] = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">###2.界面渲染</span><br><span class="line"></span><br><span class="line">* 因为只能使用IMGUI构建UI，所以查阅了相关的资料。发现GUI会在每一次操作后自动更新页面。所以我们只需要做到可以保存好每一次点击之后，二维数组的状态，就可以实现有些界面的自动更新。因为GUI.Button自己会在点击之后改变返回值的真假，所以不需要像之前的js一样将click事件与函数返回进行绑定。而且我们只需要对每次点击后二维数组的状态进行判定，就可以得当前游戏的胜负情况。所以OnGUI部分的代码如下：</span><br><span class="line"></span><br><span class="line">``` C#</span><br><span class="line"></span><br><span class="line">	void OnGUI()&#123;</span><br><span class="line">		GUIStyle fontStyle = new GUIStyle ();</span><br><span class="line">		GUIStyle fontStyle1 = new GUIStyle ();</span><br><span class="line">		fontStyle.fontSize = 30;</span><br><span class="line">		fontStyle1.fontSize = 20;</span><br><span class="line">		GUI.Label (new Rect (300, 50, 100, 100), &quot;Welcome to Game&quot;, fontStyle);</span><br><span class="line">		if(GUI.Button(new Rect(300, 380, 100, 50),&quot;start&quot;))  &#123;  </span><br><span class="line">			reset();  </span><br><span class="line">		&#125; </span><br><span class="line"></span><br><span class="line">		//show result</span><br><span class="line">		int result = winCheck();</span><br><span class="line">		if (count == 0 &amp;&amp; result == 0) &#123;</span><br><span class="line">			reminder = &quot;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else if (result != 0 &amp;&amp; result != 3) &#123;</span><br><span class="line">			reminder = &quot;player &quot; + result + &quot; win!&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(result == 3)&#123;</span><br><span class="line">			reminder = &quot;Dogfall!&quot; ;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			reminder = &quot;Continuing!&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		GUI.Label (new Rect (350, 80, 100, 50), reminder , fontStyle);</span><br><span class="line"></span><br><span class="line">		//The part of button</span><br><span class="line">		for(int i = 0; i&lt; 3; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(int j = 0; j &lt; 3; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				if (state[i, j] == 1)  </span><br><span class="line">				&#123;  </span><br><span class="line">					GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), label[1]);  </span><br><span class="line">				&#125;  </span><br><span class="line">				if (state[i, j] == 2)  </span><br><span class="line">				&#123;  </span><br><span class="line">					GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), label[2]);  </span><br><span class="line">				&#125;  </span><br><span class="line">				if(GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), &quot;&quot;)) &#123;  </span><br><span class="line">					if (result == 0)  </span><br><span class="line">					&#123;  </span><br><span class="line">						if (player == 1) state[i, j] = 1;  </span><br><span class="line">						else state[i, j] = 2;  </span><br><span class="line">						count++;  </span><br><span class="line">					    player = 3-player; </span><br><span class="line">					&#125;  </span><br><span class="line">				&#125;  </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>###3.胜负判断</p>
-<ul>
-<li><p>因为井字棋胜负判定的情况很简单，即</p>
-<blockquote>
-<ul>
-<li>有一行出现三个数相同，该数所代表的玩家胜</li>
-<li>有一列出现三个数相同，该数所代表的玩家胜</li>
-<li>有一斜线出现三个数相同，该数所代表的玩家胜</li>
-<li>空格全部点完，仍未出现上述情况则为平局</li>
-</ul>
-</blockquote>
-<p>所以胜负判断的函数代码如下：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private int winCheck()  &#123;  </span><br><span class="line">	for(int i = 0; i &lt; 3; ++i)  &#123;  </span><br><span class="line">		if (state[i, 0] != 0 &amp;&amp; state[i,0]==state[i, 1] &amp;&amp; state[i, 1] == state[i, 2])  &#123;  </span><br><span class="line">			return state[i, 0];  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line">	for (int i = 0; i &lt; 3; ++i)  &#123;  </span><br><span class="line">		if (state[0, i] != 0 &amp;&amp; state[0, i] == state[1, i] &amp;&amp; state[1, i] == state[2, i])  &#123;  </span><br><span class="line">			return state[0, i];  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line">	if((state[1,1]!=0 &amp;&amp; state[0,0]==state[1,1] &amp;&amp; state[1,1]==state[2,2])||  </span><br><span class="line">	   (state[1,1]!=0 &amp;&amp; state[0,2]==state[1,1]&amp;&amp; state[1,1]==state[2,0]) )  &#123;  </span><br><span class="line">			return state[1, 1];  </span><br><span class="line">		&#125;  </span><br><span class="line">	if (count == 9) return 3;  </span><br><span class="line">	return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行效果如图</li>
-</ul>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/1.png?raw=true" alt="game_picture"></p>
-<hr>
-<p>####<a href="https://github.com/626zdysdq/Unity3D/tree/master/Homework1" target="_blank" rel="noopener">如果需要完整的游戏代码和演示视屏，请点击这里!</a></p>
-
+        <h1 id="Homework-and-Exercise-one"><a href="#Homework-and-Exercise-one" class="headerlink" title="Homework and Exercise one"></a>Homework and Exercise one</h1><hr>
+<p>1.解释游戏对象(GameObjects)和资源(Assets)的区别与联系。</p>
+<ul><br><li>游戏对象：出现在游戏的所有实体都可以叫做游戏对象，它像一个容器，不同的游戏对象是不同资源的一个集合。游戏对象一般有玩家、敌人、环境等几大类。我们在游戏中所见到的具体化了的游戏对象，一般都包含在一个虚拟的父类之中。<br></li><li>资源：资源可以看作是有些对象的属性和特征，包括模型文件，图像文件，音频文件和脚本文件等。有些资源作为模板，可实例化成游戏中具体的对象。<br></li></ul><br><br><br><br>
+        
+          <a class="article-more-a" href="/2018/03/24/Homework/week1/Homework1/#more">more >></a>
+        
       
 
       
@@ -198,7 +174,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/Homework/week1/Programming_practice1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/24/Homework/week1/Homework1/">展开全文 >></a>
         </p>
       
 
@@ -228,60 +204,17 @@
 
 
   
-    <article id="post-Homework/week1/Homework1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Homework/week1/Programming_practice1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Homework-and-Exercise-one"><a href="#Homework-and-Exercise-one" class="headerlink" title="Homework and Exercise one"></a>Homework and Exercise one</h1><hr>
-<p>1.解释游戏对象(GameObjects)和资源(Assets)的区别与联系。</p>
-<ul><br><li>游戏对象：出现在游戏的所有实体都可以叫做游戏对象，它像一个容器，不同的游戏对象是不同资源的一个集合。游戏对象一般有玩家、敌人、环境等几大类。我们在游戏中所见到的具体化了的游戏对象，一般都包含在一个虚拟的父类之中。<br></li><li>资源：资源可以看作是有些对象的属性和特征，包括模型文件，图像文件，音频文件和脚本文件等。有些资源作为模板，可实例化成游戏中具体的对象。<br></li></ul><br><br><br><br>2.下载几个游戏案例,分别总结资源、对象组织的结构(指资源的目录组织结构与游戏对象树的层次结构)<br><ul><br><li>资源的目录组织结构: 文件基本包括预设文件，场景文件，贴图文件，动态资源加载文件，音效文件，脚本代码文件等，并且还可以继续往下划分。<br></li><li>游戏对象树的层次结构:  类似继承关系，一个虚拟的父类包含多个实例化之后的子类对象<br></li></ul><br><br><br><br>3.编写一个代码，使用debug语句来验证MonoBehaviour基本行为或事件触发的条件<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class IMGUI : MonoBehaviour &#123;</span><br><span class="line">    void Awake() &#123;</span><br><span class="line">        Debug.Log (&quot;onAwake!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Start () &#123;</span><br><span class="line">        Debug.Log (&quot;onStart!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Update () &#123;</span><br><span class="line">        Debug.Log (&quot;onUpdate!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void FixedUpdate() &#123;</span><br><span class="line">        Debug.Log (&quot;onFixedUpdate!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void LateUpdate() &#123;</span><br><span class="line">        Debug.Log (&quot;onLateUpdate!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void OnGUI() &#123;</span><br><span class="line">        Debug.Log (&quot;onGUI!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void OnDisable() &#123;</span><br><span class="line">        Debug.Log (&quot;onDisable!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void Enable() &#123;</span><br><span class="line">        Debug.Log (&quot;Enable!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><br><br><br>4.查找脚本手册，了解GameObject，Transform，Component对象<br><br><img src="https://pmlpml.github.io/unity3d-learning/images/ch02/ch02-homework.png" alt="Table-Object"><br><br><ul><br>  <li>分别翻译官方对三个对象的描述(Description)<br><br>    <ul><br>      <li>GameObject:游戏对象是Unity中表示游戏角色，游戏道具和游戏场景的基本对象。他们自身无法完成许多功能，但是他们构成了那些给予他们实体功能的组件的容器。<br>      </li><li>Transform:转换组件决定了游戏场景中每个游戏对象的位置，旋转和缩放比例。每个游戏对象都有转换组件。<br>      </li><li>Component:组件是游戏中对象和行为的细节。它是每个游戏对象的功能部分。<br>    </li></ul>
+        <h1 id="编程实践——井子棋1-0"><a href="#编程实践——井子棋1-0" class="headerlink" title="编程实践——井子棋1.0"></a>编程实践——井子棋1.0</h1><ul><br>    <li> 游戏内容： 井字棋<br>    </li><li> 技术限制： 仅允许使用 IMGUI 构建 UI<br>    </li><li> 作业目的：<br>         <ul><br>             <li> 提升 debug 能力<br>             </li><li> 提升阅读 API 文档能力<br>         </li></ul><br></li></ul>
 
-<p>  <li>描述上图中 table对象(实体)的属性、table 的Transform的属性、 table的部件</li></p>
-<pre><code>&lt;ul&gt;
-  &lt;li&gt;table对象的属性:table的对象是GameObject，第一个选择框是activeSelf属性，第二个选择框是Transform属性，第三个选择框是Mesh Filter筛网过滤器属性，第四个选择框是Box Collider属性，第五个选择框是Mesh Renderer筛网渲染器属性，第六个选择框是Default-Material属性。
-  &lt;li&gt;Transform的属性:包括控制位置变化的Position属性、控制旋转变化的Rotation属性、控制实体大小的Scale属性
-  &lt;li&gt;table的部件:Transform、Mesh Filter、Box Collider、Mesh Renderer等
-&lt;/ul&gt;
-</code></pre><p>  <li>用UML图描述三者的关系</li></p>
-<p>  <img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/2.png?raw=true" alt="UML"></p>
-<p></p></li></ul><p></p>
-<p>5.整理相关学习资料，编写简单代码验证以下技术的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//查找子对象</span><br><span class="line">//通过对象名称查找</span><br><span class="line">public static GameObject Find(string name)</span><br><span class="line"></span><br><span class="line">//通过Tag查找单个对象</span><br><span class="line">public static GameObject FindWithTag(string tag)</span><br><span class="line"></span><br><span class="line">//通过Tag查找多个对象</span><br><span class="line">public static GameObject[] FindGameObjectsWithTag(string tag) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//添加子对象</span><br><span class="line">public static GameObect CreatePrimitive(PrimitiveTypetype)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//遍历对象树</span><br><span class="line">foreach (Transform child in transform) &#123;  </span><br><span class="line">         Debug.Log(child.position);  </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//清除所有子对象</span><br><span class="line">foreach (Transform child in transform) &#123;  </span><br><span class="line">         Destroy(child.gameObject);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<p>6.资源预设(Prefabs)与对象克隆(clone)</p>
-<ul>
-<li><p>预设（Prefabs）有什么好处？ </p>
-<blockquote>
-<ul>
-<li>预设类似于一个模板，通过预设可以创建相同属性的对象，这些对象和预设关联。对预设作出的任何更改都会应用在由它所生成的所有对象上</li>
-</ul>
-</blockquote>
-</li>
-<li><p>预设与对象克隆(clone or copy or Instantiate of Unity Object)关系？</p>
-<blockquote>
-<ul>
-<li>对象克隆，就是复制了一个原本对象的实例，这两个实例之间相互独立，之间没有影响。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>制作 table 预制，写一段代码将 table 预制资源实例化成游戏对象</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class IMGUI : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    void Start () &#123;</span><br><span class="line">        GameObject instance = (GameObject)Instantiate(MyTable, transform.position, transform.rotation); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<p>7.尝试解释组合模式(Composite Pattern / 一种设计模式)。使用BroadcastMessage()方法</p>
-<ul>
-<li><p>解释：组合模式是将对象组合成树形结构，以表示“部分整体”的层次结构，并使得用户对单个对象和组合对象的使用具有一致性。</p>
-</li>
-<li><p>父类对象</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ParentBehaviourScript : MonoBehaviour &#123;</span><br><span class="line">   // Use this for initialization</span><br><span class="line">   void Start () &#123;</span><br><span class="line">       this.BroadcastMessage(&quot;Test&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>子类对象</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ChildBehaviourScript : MonoBehaviour &#123;</span><br><span class="line">    void Test() &#123;</span><br><span class="line">        Debug.Log(&quot;Child Received&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<hr>
+        
+          <a class="article-more-a" href="/2018/03/24/Homework/week1/Programming_practice1/#more">more >></a>
+        
       
 
       
@@ -293,7 +226,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/Homework/week1/Homework1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/24/Homework/week1/Programming_practice1/">展开全文 >></a>
         </p>
       
 
@@ -350,112 +283,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/24/index/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Homework/UI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="UI——关于ScollView部件的一些简单看法"><a href="#UI——关于ScollView部件的一些简单看法" class="headerlink" title="UI——关于ScollView部件的一些简单看法"></a>UI——关于ScollView部件的一些简单看法</h1><hr>
-<p>这次作业主要是学习UI技术的使用，而我选择的是制作一个可展开的广告牌。虽然有师兄的博客作为参考，但是在具体实现的过程中，对ScollView部件的使用还是出现了很多的问题，所以这篇博客主要是想借这次作业，谈谈对于ScollView部件使用的一些简单看法。</p>
-<p>首先，在屏幕中添加ScollView，添加后我们可以看到，在左边的部件框中会出现下图中的部件：</p>
-<p><br><br><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/1.png?raw=true" alt="ScollView"></p>
-<p>在屏幕中显示为</p>
-<p><br><br><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/2.png?raw=true" alt="Appear"></p>
-<blockquote>
-<ul>
-<li>其中</li>
-<li>ViewPort-&gt;Content 用来放置内容的区域</li>
-<li>ScrollBar Horizontal 水平方向上的滚轮</li>
-<li>Scrollbar Vertical  垂直方向上的滚轮</li>
-</ul>
-</blockquote>
-<p><br></p>
-<p>接着我们首先来看Canvas，在Canvas上我主要想说的是其中Render Mode的属性，点击该属性我们可以看到</p>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/3.png?raw=true" alt="Render Mode"></p>
-<blockquote>
-<ul>
-<li>对于两种Screen Space的选项，它会使得Canvas在布满整个相机的屏幕，因为这个功能，所以我们可以发现如果选择了这两种选项，我们是没有办法改变其Rect Transform的值的</li>
-<li>如果我们希望修改Canvas的大小，我们就应该选择其World Space的选项。选择World Space后，我们就会发现Canvas的值变成了可修改的，这是我们就需要手动修改其的位置，使它可以出现在照相机中我们希望的位置</li>
-</ul>
-</blockquote>
-<p><br></p>
-<p>在Canvas之后我们来看真正的Scroll View部分，对于这一部分，我想说的是Visibility这一属性，对于一个Scroll View，我们可以通过Visibility这一属性来控制其上的两个滚轮。其中默认的选项是Auto Hide And Expand，这也是我们最常用的。它可以在我们的Content的大小超过Viewport的自动进行滚轮的扩展，当大小比较小时自动隐藏滚轮。</p>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/4.png?raw=true" alt="Scroll View"></p>
-<p><br></p>
-<p>接下来我们来看ViewPort中的Content，也就是第二张图中那一块灰色的区域，在这片区域就是我们用来显示广告牌内容的位置。就像之前说的，其大小如果大于父节点Viewport时，我们才会出现滚动的效果。在使用时我们会发现，如果Content不够大时会有部分的容不能显示，会被Scroll View部分挡住，所以我们在设置Content大小时，可以稍微比内容大小大一些。而且在制作广告牌时，要记得在Content下添加一个Vertical Layout Group组件。并在其中添加相应的按钮和文本框。</p>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/5.png?raw=true" alt="Content"></p>
-<p><br></p>
-<p>剩下的两块Scrollbar部分就是两个方向上的滚动条了。在这两个部分我们也可以去选择滚动条的颜色和样式等等。</p>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/6.png?raw=true" alt="Scrollbar"></p>
-<p>最后一部分也就是EventSystem部分，这一部分为整个ScollView部件提供事件的响应机制，如果没有这个，你会发现我们在点击时不会有任何反应（亲身体验，找了好久的问题）</p>
-<hr>
-<p>如果在制作时我们发现滚轮不能滑动，或者点击没有反应时：<br><br></p>
-<ul>
-<li>可能是因为没有添加EventSystem，导致ScollView不能对我们的点击进行响应</li>
-<li>如果有EventSystem，那可以检查ScollView所在的Layer是不是比较低，导致我们被其他的部件所不盖，而不能响应我们的点击时间</li>
-<li>除此之外，如果是指出现滚轮不能滚动的问题，你可以检查一下是否将scorllbar与scorll Rect进行了绑定。</li>
-<li>如果以上三种解决方法不能解决你的问题，那就得找大佬帮忙了</li>
-</ul>
-<hr>
-<p>接下来我们回到广告牌的制作：</p>
-<blockquote>
-<ul>
-<li>首先添加一个ScollView</li>
-<li>接着为Content添加Vertical Layout Group组件，并在其中添加我们需要显示的按钮和文本</li>
-<li>参考师兄的博客，编写实现收缩扩展的脚本</li>
-<li>将脚本挂载在button上，并在其中添加对应的Text</li>
-<li>按照自己的喜好，修改背景，颜色，字体大小等细节，就可以完成一个可扩展的广告牌制作了。</li>
-</ul>
-</blockquote>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">public class show : MonoBehaviour &#123;  </span><br><span class="line"></span><br><span class="line">	private Button myButton;  </span><br><span class="line">	public Text text;  </span><br><span class="line">	private int frame = 20;  </span><br><span class="line"></span><br><span class="line">	// Use this for initialization  </span><br><span class="line">	void Start()  </span><br><span class="line">	&#123;  </span><br><span class="line">		Button butoon = this.gameObject.GetComponent&lt;Button&gt;();  </span><br><span class="line">		butoon.onClick.AddListener(Click);  </span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	IEnumerator rotateIn()  </span><br><span class="line">	&#123;  </span><br><span class="line">		float rx = 0;  </span><br><span class="line">		float xy = 120;  </span><br><span class="line">		for (int i = 0; i &lt; frame; i++)  </span><br><span class="line">		&#123;  </span><br><span class="line">			rx -= 90f / frame;  </span><br><span class="line">			xy -= 120f / frame;  </span><br><span class="line">			text.transform.rotation = Quaternion.Euler(rx, 0, 0);  </span><br><span class="line">			text.rectTransform.sizeDelta = new Vector2(text.rectTransform.sizeDelta.x, xy);  </span><br><span class="line">			if (i == frame - 1)  </span><br><span class="line">			&#123;  </span><br><span class="line">				text.gameObject.SetActive(false);  </span><br><span class="line">			&#125;  </span><br><span class="line">			yield return null;  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	IEnumerator rotateOut()  </span><br><span class="line">	&#123;  </span><br><span class="line">		float rx = -90;  </span><br><span class="line">		float xy = 0;  </span><br><span class="line">		for (int i = 0; i &lt; frame; i++)  </span><br><span class="line">		&#123;  </span><br><span class="line">			rx += 90f / frame;  </span><br><span class="line">			xy += 120f / frame;  </span><br><span class="line">			text.transform.rotation = Quaternion.Euler(rx, 0, 0);  </span><br><span class="line">			text.rectTransform.sizeDelta = new Vector2(text.rectTransform.sizeDelta.x, xy);  </span><br><span class="line">			if (i == 0)  </span><br><span class="line">			&#123;  </span><br><span class="line">				text.gameObject.SetActive(true);  </span><br><span class="line">			&#125;  </span><br><span class="line">			yield return null;  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	void Click()  </span><br><span class="line">	&#123;  </span><br><span class="line">		if (text.gameObject.activeSelf)  </span><br><span class="line">		&#123;  </span><br><span class="line">			StartCoroutine(rotateIn());  </span><br><span class="line">		&#125;  </span><br><span class="line">		else  </span><br><span class="line">		&#123;  </span><br><span class="line">			StartCoroutine(rotateOut());  </span><br><span class="line">		&#125;  </span><br><span class="line"></span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>最终实现的效果如下</p>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/7.png?raw=true" alt="Result"></p>
-<p>源码地址：<br><a href="https://github.com/626zdysdq/Unity3D/tree/master/UI" target="_blank" rel="noopener">https://github.com/626zdysdq/Unity3D/tree/master/UI</a></p>
-<p>视频链接：<br><a href="http://v.youku.com/v_show/id_XMzY0NzY4OTI2OA.html?spm=a2h0j.11185381.listitem_page1.5~A" target="_blank" rel="noopener">http://v.youku.com/v_show/id_XMzY0NzY4OTI2OA.html?spm=a2h0j.11185381.listitem_page1.5~A</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/Homework/UI/">展开全文 >></a>
         </p>
       
 
@@ -610,6 +437,222 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/24/Homework/Patrol/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Homework/UI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UI——关于ScollView部件的一些简单看法"><a href="#UI——关于ScollView部件的一些简单看法" class="headerlink" title="UI——关于ScollView部件的一些简单看法"></a>UI——关于ScollView部件的一些简单看法</h1><hr>
+<p>这次作业主要是学习UI技术的使用，而我选择的是制作一个可展开的广告牌。虽然有师兄的博客作为参考，但是在具体实现的过程中，对ScollView部件的使用还是出现了很多的问题，所以这篇博客主要是想借这次作业，谈谈对于ScollView部件使用的一些简单看法。</p>
+<p>首先，在屏幕中添加ScollView，添加后我们可以看到，在左边的部件框中会出现下图中的部件：</p>
+<p><br><br><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/1.png?raw=true" alt="ScollView"></p>
+<p>在屏幕中显示为</p>
+<p><br><br><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/2.png?raw=true" alt="Appear"></p>
+<blockquote>
+<ul>
+<li>其中</li>
+<li>ViewPort-&gt;Content 用来放置内容的区域</li>
+<li>ScrollBar Horizontal 水平方向上的滚轮</li>
+<li>Scrollbar Vertical  垂直方向上的滚轮</li>
+</ul>
+</blockquote>
+<p><br></p>
+<p>接着我们首先来看Canvas，在Canvas上我主要想说的是其中Render Mode的属性，点击该属性我们可以看到</p>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/3.png?raw=true" alt="Render Mode"></p>
+<blockquote>
+<ul>
+<li>对于两种Screen Space的选项，它会使得Canvas在布满整个相机的屏幕，因为这个功能，所以我们可以发现如果选择了这两种选项，我们是没有办法改变其Rect Transform的值的</li>
+<li>如果我们希望修改Canvas的大小，我们就应该选择其World Space的选项。选择World Space后，我们就会发现Canvas的值变成了可修改的，这是我们就需要手动修改其的位置，使它可以出现在照相机中我们希望的位置</li>
+</ul>
+</blockquote>
+<p><br></p>
+<p>在Canvas之后我们来看真正的Scroll View部分，对于这一部分，我想说的是Visibility这一属性，对于一个Scroll View，我们可以通过Visibility这一属性来控制其上的两个滚轮。其中默认的选项是Auto Hide And Expand，这也是我们最常用的。它可以在我们的Content的大小超过Viewport的自动进行滚轮的扩展，当大小比较小时自动隐藏滚轮。</p>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/4.png?raw=true" alt="Scroll View"></p>
+<p><br></p>
+<p>接下来我们来看ViewPort中的Content，也就是第二张图中那一块灰色的区域，在这片区域就是我们用来显示广告牌内容的位置。就像之前说的，其大小如果大于父节点Viewport时，我们才会出现滚动的效果。在使用时我们会发现，如果Content不够大时会有部分的容不能显示，会被Scroll View部分挡住，所以我们在设置Content大小时，可以稍微比内容大小大一些。而且在制作广告牌时，要记得在Content下添加一个Vertical Layout Group组件。并在其中添加相应的按钮和文本框。</p>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/5.png?raw=true" alt="Content"></p>
+<p><br></p>
+<p>剩下的两块Scrollbar部分就是两个方向上的滚动条了。在这两个部分我们也可以去选择滚动条的颜色和样式等等。</p>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/6.png?raw=true" alt="Scrollbar"></p>
+<p>最后一部分也就是EventSystem部分，这一部分为整个ScollView部件提供事件的响应机制，如果没有这个，你会发现我们在点击时不会有任何反应（亲身体验，找了好久的问题）</p>
+<hr>
+<p>如果在制作时我们发现滚轮不能滑动，或者点击没有反应时：<br><br></p>
+<ul>
+<li>可能是因为没有添加EventSystem，导致ScollView不能对我们的点击进行响应</li>
+<li>如果有EventSystem，那可以检查ScollView所在的Layer是不是比较低，导致我们被其他的部件所不盖，而不能响应我们的点击时间</li>
+<li>除此之外，如果是指出现滚轮不能滚动的问题，你可以检查一下是否将scorllbar与scorll Rect进行了绑定。</li>
+<li>如果以上三种解决方法不能解决你的问题，那就得找大佬帮忙了</li>
+</ul>
+<hr>
+<p>接下来我们回到广告牌的制作：</p>
+<blockquote>
+<ul>
+<li>首先添加一个ScollView</li>
+<li>接着为Content添加Vertical Layout Group组件，并在其中添加我们需要显示的按钮和文本</li>
+<li>参考师兄的博客，编写实现收缩扩展的脚本</li>
+<li>将脚本挂载在button上，并在其中添加对应的Text</li>
+<li>按照自己的喜好，修改背景，颜色，字体大小等细节，就可以完成一个可扩展的广告牌制作了。</li>
+</ul>
+</blockquote>
+<p>代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">public class show : MonoBehaviour &#123;  </span><br><span class="line"></span><br><span class="line">	private Button myButton;  </span><br><span class="line">	public Text text;  </span><br><span class="line">	private int frame = 20;  </span><br><span class="line"></span><br><span class="line">	// Use this for initialization  </span><br><span class="line">	void Start()  </span><br><span class="line">	&#123;  </span><br><span class="line">		Button butoon = this.gameObject.GetComponent&lt;Button&gt;();  </span><br><span class="line">		butoon.onClick.AddListener(Click);  </span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	IEnumerator rotateIn()  </span><br><span class="line">	&#123;  </span><br><span class="line">		float rx = 0;  </span><br><span class="line">		float xy = 120;  </span><br><span class="line">		for (int i = 0; i &lt; frame; i++)  </span><br><span class="line">		&#123;  </span><br><span class="line">			rx -= 90f / frame;  </span><br><span class="line">			xy -= 120f / frame;  </span><br><span class="line">			text.transform.rotation = Quaternion.Euler(rx, 0, 0);  </span><br><span class="line">			text.rectTransform.sizeDelta = new Vector2(text.rectTransform.sizeDelta.x, xy);  </span><br><span class="line">			if (i == frame - 1)  </span><br><span class="line">			&#123;  </span><br><span class="line">				text.gameObject.SetActive(false);  </span><br><span class="line">			&#125;  </span><br><span class="line">			yield return null;  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	IEnumerator rotateOut()  </span><br><span class="line">	&#123;  </span><br><span class="line">		float rx = -90;  </span><br><span class="line">		float xy = 0;  </span><br><span class="line">		for (int i = 0; i &lt; frame; i++)  </span><br><span class="line">		&#123;  </span><br><span class="line">			rx += 90f / frame;  </span><br><span class="line">			xy += 120f / frame;  </span><br><span class="line">			text.transform.rotation = Quaternion.Euler(rx, 0, 0);  </span><br><span class="line">			text.rectTransform.sizeDelta = new Vector2(text.rectTransform.sizeDelta.x, xy);  </span><br><span class="line">			if (i == 0)  </span><br><span class="line">			&#123;  </span><br><span class="line">				text.gameObject.SetActive(true);  </span><br><span class="line">			&#125;  </span><br><span class="line">			yield return null;  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	void Click()  </span><br><span class="line">	&#123;  </span><br><span class="line">		if (text.gameObject.activeSelf)  </span><br><span class="line">		&#123;  </span><br><span class="line">			StartCoroutine(rotateIn());  </span><br><span class="line">		&#125;  </span><br><span class="line">		else  </span><br><span class="line">		&#123;  </span><br><span class="line">			StartCoroutine(rotateOut());  </span><br><span class="line">		&#125;  </span><br><span class="line"></span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>最终实现的效果如下</p>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/UI/7.png?raw=true" alt="Result"></p>
+<p>源码地址：<br><a href="https://github.com/626zdysdq/Unity3D/tree/master/UI" target="_blank" rel="noopener">https://github.com/626zdysdq/Unity3D/tree/master/UI</a></p>
+<p>视频链接：<br><a href="http://v.youku.com/v_show/id_XMzY0NzY4OTI2OA.html?spm=a2h0j.11185381.listitem_page1.5~A" target="_blank" rel="noopener">http://v.youku.com/v_show/id_XMzY0NzY4OTI2OA.html?spm=a2h0j.11185381.listitem_page1.5~A</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/24/Homework/UI/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Homework/week2/Homework2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Homework-and-Exercise-two"><a href="#Homework-and-Exercise-two" class="headerlink" title="Homework and Exercise two"></a>Homework and Exercise two</h1><hr>
+<h3 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h3><p>1.游戏对象运动的本质是什么？</p>
+<blockquote>
+<ul>
+<li>游戏对象在场景中坐标的变换</li>
+</ul>
+</blockquote>
+<p>2.请用三种方法以上方法，实现物体的抛物线运动。</p>
+<blockquote>
+<ul>
+<li>利用transform实现</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class test : MonoBehaviour &#123;</span><br><span class="line">	public float speed1 = 5; //水平方向的初速度</span><br><span class="line">	public float g=9.8f;</span><br><span class="line">	// Use this for initialization</span><br><span class="line"></span><br><span class="line">	public float speed = 0;</span><br><span class="line">		</span><br><span class="line">	void Start()&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Update is called once per frame</span><br><span class="line"></span><br><span class="line">	void Update()    &#123;</span><br><span class="line">		this.transform.position += Vector3.up * Time.deltaTime * (speed);  </span><br><span class="line">		this.transform.position += Vector3.right * Time.deltaTime * speed1;  </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>利用translate实现</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void Update()    &#123;</span><br><span class="line">		Vector3 change = new Vector3(Time.deltaTime * speed1, Time.deltaTime * (speed), 0);  </span><br><span class="line"></span><br><span class="line">		transform.Translate(change);  </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>利用Vector实现</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void Update()    &#123;</span><br><span class="line">		Vector3 change = new Vector3(Time.deltaTime * speed1, Time.deltaTime * (speed), 0);  </span><br><span class="line">		this.transform.position += change; </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>3.写一个程序，实现一个完整的太阳系， 其他星球围绕太阳的转速必须不一样，且不在一个法平面上。</p>
+<ul>
+<li>首先建立一个太阳系的模型，将八大行星作为太阳的子对象，然后确定好球体的大小和位置</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/5.png?raw=true" alt="first"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.transform.RotateAround(origin.position, axis , speed * Time.deltaTime);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用上面的transform.RatateAround函数，我们只需要设置origin的位置为太阳所在的位置，axis为Vector3.up，并且自己定义速度。再把它挂载在每一个行星上面，就可以实现行星绕太阳的公转。</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/3.png?raw=true" alt="second"></p>
+<ul>
+<li>但是这是我们发现所有行星的公转平面都在同一个法平面上，根据作业要求，我们需要改变行星绕太阳的轨道平面。这时就需要将Vector3.up改变为其他不同方向的轴。</li>
+</ul>
+<blockquote>
+<ul>
+<li>其中最简单的方法为：为每一个行星创建一个cs文件，然后将其中的axis设置为不同的值即可。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>但是这样太过于繁琐，会有很多重复性的工作，参考老师所给的案例我们可以设置两个随机变量y和z，之后生成一个(0,y,z)的向量作为轴变量axis的值。这样我们就可以对于所有的行星使用同一个cs文件</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public Transform origin;  </span><br><span class="line">	public float speed ;  </span><br><span class="line">	float ry, rz;  </span><br><span class="line">	// Use this for initialization  </span><br><span class="line">	void Start () &#123;  </span><br><span class="line">		ry = Random.Range(5, 50);  </span><br><span class="line">		rz = Random.Range(5, 50); </span><br><span class="line">		origin.position = new Vector3 (-7, 0, 0);</span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	// Update is called once per frame  </span><br><span class="line">	void Update () &#123;  </span><br><span class="line">		Vector3 axis = new Vector3(0, ry, rz);  </span><br><span class="line">		this.transform.RotateAround(origin.position, axis , speed * Time.deltaTime);  </span><br><span class="line">		this.transform.Rotate (Vector3.up * 50 * Time.deltaTime);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用上面的代码，我们就实现了行星在不同法平面围绕太阳公转，效果如图</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/2.png?raw=true" alt="third"></p>
+<ul>
+<li>下一步我们可以用同样的方法为为地球添加一个子对象月球，设置它绕着地球公转。最后我们利用Rotate函数为太阳添加自转效果就实现了一个简易的太阳系</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/1.png?raw=true" alt="last"></p>
+<blockquote>
+<ul>
+<li>为了实现星空的效果，我在场景中添加了一个平台，之后利用摄像机找到合适的角度，就可以很low的模拟一下太阳系在星空中的感觉啦！</li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/24/Homework/week2/Homework2/">展开全文 >></a>
         </p>
       
 
@@ -827,116 +870,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/24/Homework/week3/Homework3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Homework/week2/Homework2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Homework-and-Exercise-two"><a href="#Homework-and-Exercise-two" class="headerlink" title="Homework and Exercise two"></a>Homework and Exercise two</h1><hr>
-<h3 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h3><p>1.游戏对象运动的本质是什么？</p>
-<blockquote>
-<ul>
-<li>游戏对象在场景中坐标的变换</li>
-</ul>
-</blockquote>
-<p>2.请用三种方法以上方法，实现物体的抛物线运动。</p>
-<blockquote>
-<ul>
-<li>利用transform实现</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class test : MonoBehaviour &#123;</span><br><span class="line">	public float speed1 = 5; //水平方向的初速度</span><br><span class="line">	public float g=9.8f;</span><br><span class="line">	// Use this for initialization</span><br><span class="line"></span><br><span class="line">	public float speed = 0;</span><br><span class="line">		</span><br><span class="line">	void Start()&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Update is called once per frame</span><br><span class="line"></span><br><span class="line">	void Update()    &#123;</span><br><span class="line">		this.transform.position += Vector3.up * Time.deltaTime * (speed);  </span><br><span class="line">		this.transform.position += Vector3.right * Time.deltaTime * speed1;  </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>利用translate实现</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void Update()    &#123;</span><br><span class="line">		Vector3 change = new Vector3(Time.deltaTime * speed1, Time.deltaTime * (speed), 0);  </span><br><span class="line"></span><br><span class="line">		transform.Translate(change);  </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>利用Vector实现</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void Update()    &#123;</span><br><span class="line">		Vector3 change = new Vector3(Time.deltaTime * speed1, Time.deltaTime * (speed), 0);  </span><br><span class="line">		this.transform.position += change; </span><br><span class="line">		speed-=g*Time.deltaTime;  </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>3.写一个程序，实现一个完整的太阳系， 其他星球围绕太阳的转速必须不一样，且不在一个法平面上。</p>
-<ul>
-<li>首先建立一个太阳系的模型，将八大行星作为太阳的子对象，然后确定好球体的大小和位置</li>
-</ul>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/5.png?raw=true" alt="first"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.transform.RotateAround(origin.position, axis , speed * Time.deltaTime);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>利用上面的transform.RatateAround函数，我们只需要设置origin的位置为太阳所在的位置，axis为Vector3.up，并且自己定义速度。再把它挂载在每一个行星上面，就可以实现行星绕太阳的公转。</li>
-</ul>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/3.png?raw=true" alt="second"></p>
-<ul>
-<li>但是这是我们发现所有行星的公转平面都在同一个法平面上，根据作业要求，我们需要改变行星绕太阳的轨道平面。这时就需要将Vector3.up改变为其他不同方向的轴。</li>
-</ul>
-<blockquote>
-<ul>
-<li>其中最简单的方法为：为每一个行星创建一个cs文件，然后将其中的axis设置为不同的值即可。</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>但是这样太过于繁琐，会有很多重复性的工作，参考老师所给的案例我们可以设置两个随机变量y和z，之后生成一个(0,y,z)的向量作为轴变量axis的值。这样我们就可以对于所有的行星使用同一个cs文件</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public Transform origin;  </span><br><span class="line">	public float speed ;  </span><br><span class="line">	float ry, rz;  </span><br><span class="line">	// Use this for initialization  </span><br><span class="line">	void Start () &#123;  </span><br><span class="line">		ry = Random.Range(5, 50);  </span><br><span class="line">		rz = Random.Range(5, 50); </span><br><span class="line">		origin.position = new Vector3 (-7, 0, 0);</span><br><span class="line">	&#125;  </span><br><span class="line"></span><br><span class="line">	// Update is called once per frame  </span><br><span class="line">	void Update () &#123;  </span><br><span class="line">		Vector3 axis = new Vector3(0, ry, rz);  </span><br><span class="line">		this.transform.RotateAround(origin.position, axis , speed * Time.deltaTime);  </span><br><span class="line">		this.transform.Rotate (Vector3.up * 50 * Time.deltaTime);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>利用上面的代码，我们就实现了行星在不同法平面围绕太阳公转，效果如图</li>
-</ul>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/2.png?raw=true" alt="third"></p>
-<ul>
-<li>下一步我们可以用同样的方法为为地球添加一个子对象月球，设置它绕着地球公转。最后我们利用Rotate函数为太阳添加自转效果就实现了一个简易的太阳系</li>
-</ul>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Sun/1.png?raw=true" alt="last"></p>
-<blockquote>
-<ul>
-<li>为了实现星空的效果，我在场景中添加了一个平台，之后利用摄像机找到合适的角度，就可以很low的模拟一下太阳系在星空中的感觉啦！</li>
-</ul>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/Homework/week2/Homework2/">展开全文 >></a>
         </p>
       
 
