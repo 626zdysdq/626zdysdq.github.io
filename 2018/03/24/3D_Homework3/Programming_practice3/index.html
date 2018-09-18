@@ -8,20 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Homework and Exercise one 1.解释游戏对象(GameObjects)和资源(Assets)的区别与联系。 游戏对象：出现在游戏的所有实体都可以叫做游戏对象，它像一个容器，不同的游戏对象是不同资源的一个集合。游戏对象一般有玩家、敌人、环境等几大类。我们在游戏中所见到的具体化了的游戏对象，一般都包含在一个虚拟的父类之中。资源：资源可以看作是有些对象的属性和特征，包括模型文件，">
+  <meta name="description" content="牧师与魔鬼优化——动作分离版 1. 改进的要求 在上一版本的的基础上实现游戏对象的移动和游戏对象分离    首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。 对应传入对象，实现传入对象相应的action 找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的actio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="626号试验品">
-<meta property="og:url" content="http://yoursite.com/2018/03/24/Homework/week1/Homework1/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/24/3D_Homework3/Programming_practice3/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="Homework and Exercise one 1.解释游戏对象(GameObjects)和资源(Assets)的区别与联系。 游戏对象：出现在游戏的所有实体都可以叫做游戏对象，它像一个容器，不同的游戏对象是不同资源的一个集合。游戏对象一般有玩家、敌人、环境等几大类。我们在游戏中所见到的具体化了的游戏对象，一般都包含在一个虚拟的父类之中。资源：资源可以看作是有些对象的属性和特征，包括模型文件，">
+<meta property="og:description" content="牧师与魔鬼优化——动作分离版 1. 改进的要求 在上一版本的的基础上实现游戏对象的移动和游戏对象分离    首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。 对应传入对象，实现传入对象相应的action 找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的actio">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://pmlpml.github.io/unity3d-learning/images/ch02/ch02-homework.png">
-<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/2.png?raw=true">
-<meta property="og:updated_time" content="2018-09-18T08:27:29.908Z">
+<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true">
+<meta property="og:updated_time" content="2018-09-18T08:23:52.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="626号试验品">
-<meta name="twitter:description" content="Homework and Exercise one 1.解释游戏对象(GameObjects)和资源(Assets)的区别与联系。 游戏对象：出现在游戏的所有实体都可以叫做游戏对象，它像一个容器，不同的游戏对象是不同资源的一个集合。游戏对象一般有玩家、敌人、环境等几大类。我们在游戏中所见到的具体化了的游戏对象，一般都包含在一个虚拟的父类之中。资源：资源可以看作是有些对象的属性和特征，包括模型文件，">
-<meta name="twitter:image" content="https://pmlpml.github.io/unity3d-learning/images/ch02/ch02-homework.png">
+<meta name="twitter:description" content="牧师与魔鬼优化——动作分离版 1. 改进的要求 在上一版本的的基础上实现游戏对象的移动和游戏对象分离    首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。 对应传入对象，实现传入对象相应的action 找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的actio">
+<meta name="twitter:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -50,7 +49,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="1.jpg" class="js-avatar">
+			<img src="/1.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">626号试验品</a></h1>
@@ -108,7 +107,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="1.jpg" class="js-avatar">
+				<img src="/1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">626号试验品</h1>
@@ -157,62 +156,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Homework/week1/Homework1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-3D_Homework3/Programming_practice3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Homework-and-Exercise-one"><a href="#Homework-and-Exercise-one" class="headerlink" title="Homework and Exercise one"></a>Homework and Exercise one</h1><hr>
-<p>1.解释游戏对象(GameObjects)和资源(Assets)的区别与联系。</p>
-<ul><br><li>游戏对象：出现在游戏的所有实体都可以叫做游戏对象，它像一个容器，不同的游戏对象是不同资源的一个集合。游戏对象一般有玩家、敌人、环境等几大类。我们在游戏中所见到的具体化了的游戏对象，一般都包含在一个虚拟的父类之中。<br></li><li>资源：资源可以看作是有些对象的属性和特征，包括模型文件，图像文件，音频文件和脚本文件等。有些资源作为模板，可实例化成游戏中具体的对象。<br></li></ul>
-
-<p>2.下载几个游戏案例,分别总结资源、对象组织的结构(指资源的目录组织结构与游戏对象树的层次结构)</p>
-<ul><br><li>资源的目录组织结构: 文件基本包括预设文件，场景文件，贴图文件，动态资源加载文件，音效文件，脚本代码文件等，并且还可以继续往下划分。<br></li><li>游戏对象树的层次结构:  类似继承关系，一个虚拟的父类包含多个实例化之后的子类对象<br></li></ul><br><a id="more"></a><br><br>3.编写一个代码，使用debug语句来验证MonoBehaviour基本行为或事件触发的条件<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class IMGUI : MonoBehaviour &#123;</span><br><span class="line">    void Awake() &#123;</span><br><span class="line">        Debug.Log (&quot;onAwake!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Start () &#123;</span><br><span class="line">        Debug.Log (&quot;onStart!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Update () &#123;</span><br><span class="line">        Debug.Log (&quot;onUpdate!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void FixedUpdate() &#123;</span><br><span class="line">        Debug.Log (&quot;onFixedUpdate!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void LateUpdate() &#123;</span><br><span class="line">        Debug.Log (&quot;onLateUpdate!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void OnGUI() &#123;</span><br><span class="line">        Debug.Log (&quot;onGUI!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void OnDisable() &#123;</span><br><span class="line">        Debug.Log (&quot;onDisable!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Enable() &#123;</span><br><span class="line">        Debug.Log (&quot;Enable!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><br><br><br>4.查找脚本手册，了解GameObject，Transform，Component对象<br><br><img src="https://pmlpml.github.io/unity3d-learning/images/ch02/ch02-homework.png" alt="Table-Object"><br><br><ul><br>  <li>分别翻译官方对三个对象的描述(Description)<br><br>    <ul><br>      <li>GameObject:游戏对象是Unity中表示游戏角色，游戏道具和游戏场景的基本对象。他们自身无法完成许多功能，但是他们构成了那些给予他们实体功能的组件的容器。<br>      </li><li>Transform:转换组件决定了游戏场景中每个游戏对象的位置，旋转和缩放比例。每个游戏对象都有转换组件。<br>      </li><li>Component:组件是游戏中对象和行为的细节。它是每个游戏对象的功能部分。<br>    </li></ul>
-
-<p>  <li>描述上图中 table对象(实体)的属性、table 的Transform的属性、 table的部件</li></p>
-<pre><code>&lt;ul&gt;
-  &lt;li&gt;table对象的属性:table的对象是GameObject，第一个选择框是activeSelf属性，第二个选择框是Transform属性，第三个选择框是Mesh Filter筛网过滤器属性，第四个选择框是Box Collider属性，第五个选择框是Mesh Renderer筛网渲染器属性，第六个选择框是Default-Material属性。
-  &lt;li&gt;Transform的属性:包括控制位置变化的Position属性、控制旋转变化的Rotation属性、控制实体大小的Scale属性
-  &lt;li&gt;table的部件:Transform、Mesh Filter、Box Collider、Mesh Renderer等
-&lt;/ul&gt;
-</code></pre><p>  <li>用UML图描述三者的关系</li></p>
-<p>  <img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/2.png?raw=true" alt="UML"></p>
-<p></p></li></ul><p></p>
-<p>5.整理相关学习资料，编写简单代码验证以下技术的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//查找子对象</span><br><span class="line">//通过对象名称查找</span><br><span class="line">public static GameObject Find(string name)</span><br><span class="line"></span><br><span class="line">//通过Tag查找单个对象</span><br><span class="line">public static GameObject FindWithTag(string tag)</span><br><span class="line"></span><br><span class="line">//通过Tag查找多个对象</span><br><span class="line">public static GameObject[] FindGameObjectsWithTag(string tag)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//添加子对象</span><br><span class="line">public static GameObect CreatePrimitive(PrimitiveTypetype)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//遍历对象树</span><br><span class="line">foreach (Transform child in transform) &#123;  </span><br><span class="line">         Debug.Log(child.position);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//清除所有子对象</span><br><span class="line">foreach (Transform child in transform) &#123;  </span><br><span class="line">         Destroy(child.gameObject);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br></p>
-<p>6.资源预设(Prefabs)与对象克隆(clone)</p>
-<ul>
-<li><p>预设（Prefabs）有什么好处？</p>
+        <h2 id="牧师与魔鬼优化——动作分离版"><a href="#牧师与魔鬼优化——动作分离版" class="headerlink" title="牧师与魔鬼优化——动作分离版"></a>牧师与魔鬼优化——动作分离版</h2><hr>
+<h3 id="1-改进的要求"><a href="#1-改进的要求" class="headerlink" title="1. 改进的要求"></a>1. 改进的要求</h3><ul>
+<li>在上一版本的的基础上实现游戏对象的移动和游戏对象分离</li>
+</ul>
 <blockquote>
 <ul>
-<li>预设类似于一个模板，通过预设可以创建相同属性的对象，这些对象和预设关联。对预设作出的任何更改都会应用在由它所生成的所有对象上</li>
+<li>首先建立一个动作的管理器，通过使用场景控制器，将需要移动的对象传入动作管理器。的把每个需要移动的游戏对象的移动方法提取出来，建立一个动作管理器来管理不同的移动方法。</li>
+<li>对应传入对象，实现传入对象相应的action</li>
+<li>找到在上一个版本中对于船和人物的移动函数，将移动函数改为调用自己对应的action方法。</li>
 </ul>
 </blockquote>
-</li>
-<li><p>预设与对象克隆(clone or copy or Instantiate of Unity Object)关系？</p>
+<h3 id="2-改进的原因"><a href="#2-改进的原因" class="headerlink" title="2.改进的原因"></a>2.改进的原因</h3><blockquote>
+<ul>
+<li>当有很多不同的对象有相同的动作时，可以减少代码量，提高代码的复用性。</li>
+</ul>
+</blockquote>
+<h3 id="3-改进的部分"><a href="#3-改进的部分" class="headerlink" title="3.改进的部分"></a>3.改进的部分</h3><a id="more"></a>
 <blockquote>
 <ul>
-<li>对象克隆，就是复制了一个原本对象的实例，这两个实例之间相互独立，之间没有影响。</li>
+<li>SSAction——动作基类</li>
 </ul>
 </blockquote>
-</li>
-<li><p>制作 table 预制，写一段代码将 table 预制资源实例化成游戏对象</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class IMGUI : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">    void Start () &#123;</span><br><span class="line">        GameObject instance = (GameObject)Instantiate(MyTable, transform.position, transform.rotation);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>SSAction为所有动作的基类，我们只需要其Transform属性来实现直线运动即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class SSAction : ScriptableObject</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	public bool enable = true;</span><br><span class="line">	public bool destroy = false;</span><br><span class="line"></span><br><span class="line">	public GameObject gameObject;    //创建动作对象</span><br><span class="line">	public Transform transform;</span><br><span class="line">	public ISSActionCallback callback;   //动作完成后的反馈</span><br><span class="line"></span><br><span class="line">	public virtual void Start()</span><br><span class="line">	&#123;</span><br><span class="line">		throw new System.NotImplementedException();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public virtual void Update()</span><br><span class="line">	&#123;</span><br><span class="line">		throw new System.NotImplementedException();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<p>7.尝试解释组合模式(Composite Pattern / 一种设计模式)。使用BroadcastMessage()方法</p>
+<blockquote>
 <ul>
-<li><p>解释：组合模式是将对象组合成树形结构，以表示“部分整体”的层次结构，并使得用户对单个对象和组合对象的使用具有一致性。</p>
-</li>
-<li><p>父类对象</p>
-</li>
+<li>MoveToAction——基础动作类</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ParentBehaviourScript : MonoBehaviour &#123;</span><br><span class="line">   // Use this for initialization</span><br><span class="line">   void Start () &#123;</span><br><span class="line">       this.BroadcastMessage(&quot;Test&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>构造我们需要的直线运动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class MoveToAction : SSAction</span><br><span class="line">&#123;</span><br><span class="line">	public Vector3 target;</span><br><span class="line">	public float speed;</span><br><span class="line"></span><br><span class="line">	private MoveToAction() &#123; &#125;</span><br><span class="line">	public static MoveToAction getAction(Vector3 target, float speed)</span><br><span class="line">	&#123;</span><br><span class="line">		MoveToAction action = ScriptableObject.CreateInstance&lt;MoveToAction&gt;();</span><br><span class="line">		action.target = target;</span><br><span class="line">		action.speed = speed;</span><br><span class="line">		return action;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void Update()</span><br><span class="line">	&#123;</span><br><span class="line">		this.transform.position = Vector3.MoveTowards(this.transform.position, target, speed * Time.deltaTime);</span><br><span class="line">		if (this.transform.position == target)</span><br><span class="line">		&#123;</span><br><span class="line">			this.destroy = true;</span><br><span class="line">			this.callback.actionDone(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void Start()</span><br><span class="line">	&#123;</span><br><span class="line">		//</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<blockquote>
 <ul>
-<li>子类对象</li>
+<li>SequenceAction——组合动作类</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ChildBehaviourScript : MonoBehaviour &#123;</span><br><span class="line">    void Test() &#123;</span><br><span class="line">        Debug.Log(&quot;Child Received&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在这次的游戏中，我们只需要将上岸和上船两个动作看作是两个不同方向的直线运动的组合，按照顺序将其加入动作队列，然后执行，执行完毕后，清空队列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">public class SequenceAction : SSAction, ISSActionCallback</span><br><span class="line">&#123;</span><br><span class="line">	public List&lt;SSAction&gt; sequence;</span><br><span class="line">	public int repeat = 1;</span><br><span class="line">	public int currentActionIndex = 0;</span><br><span class="line"></span><br><span class="line">	public static SequenceAction getAction(int repeat, int currentActionIndex, List&lt;SSAction&gt; sequence)</span><br><span class="line">	&#123;</span><br><span class="line">		SequenceAction action = ScriptableObject.CreateInstance&lt;SequenceAction&gt;();</span><br><span class="line">		action.sequence = sequence;</span><br><span class="line">		action.repeat = repeat;</span><br><span class="line">		action.currentActionIndex = currentActionIndex;</span><br><span class="line">		return action;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void Update()</span><br><span class="line">	&#123;</span><br><span class="line">		if (sequence.Count == 0) return;</span><br><span class="line">		if (currentActionIndex &lt; sequence.Count)</span><br><span class="line">		&#123;</span><br><span class="line">			sequence[currentActionIndex].Update();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void actionDone(SSAction source)</span><br><span class="line">	&#123;</span><br><span class="line">		source.destroy = false;</span><br><span class="line">		this.currentActionIndex++;</span><br><span class="line">		if (this.currentActionIndex &gt;= sequence.Count)</span><br><span class="line">		&#123;</span><br><span class="line">			this.currentActionIndex = 0;</span><br><span class="line">			if (repeat &gt; 0) repeat--;</span><br><span class="line">			if (repeat == 0)</span><br><span class="line">			&#123;</span><br><span class="line">				this.destroy = true;</span><br><span class="line">				this.callback.actionDone(this);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public override void Start()</span><br><span class="line">	&#123;</span><br><span class="line">		foreach (SSAction action in sequence)</span><br><span class="line">		&#123;</span><br><span class="line">			action.gameObject = this.gameObject;</span><br><span class="line">			action.transform = this.transform;</span><br><span class="line">			action.callback = this;</span><br><span class="line">			action.Start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void OnDestroy()</span><br><span class="line">	&#123;</span><br><span class="line">		foreach (SSAction action in sequence)</span><br><span class="line">		&#123;</span><br><span class="line">			DestroyObject(action);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<blockquote>
+<ul>
+<li>ISSActionCallback——动作管理的接口</li>
+</ul>
+</blockquote>
+<p>实现动作和动作管理者之间的联系，使得动作管理类可以为动作的实现传递信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface ISSActionCallback</span><br><span class="line">&#123;</span><br><span class="line">	void actionDone(SSAction source);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<blockquote>
+<ul>
+<li>SSActionManager——动作管理的基类</li>
+</ul>
+</blockquote>
+<p>对动作进行管理，为其传递游戏对象，以实现我们所需要的动作以及动作之间的切换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class SSActionManager : MonoBehaviour, ISSActionCallback</span><br><span class="line">&#123;</span><br><span class="line">	private Dictionary&lt;int, SSAction&gt; actions = new Dictionary&lt;int, SSAction&gt;();</span><br><span class="line">	private List&lt;SSAction&gt; waitingToAdd = new List&lt;SSAction&gt;();</span><br><span class="line">	private List&lt;int&gt; watingToDelete = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">	protected void Update()</span><br><span class="line">	&#123;</span><br><span class="line">		foreach (SSAction ac in waitingToAdd)</span><br><span class="line">		&#123;</span><br><span class="line">			actions[ac.GetInstanceID()] = ac;</span><br><span class="line">		&#125;</span><br><span class="line">		waitingToAdd.Clear();</span><br><span class="line"></span><br><span class="line">		foreach (KeyValuePair&lt;int, SSAction&gt; kv in actions)</span><br><span class="line">		&#123;</span><br><span class="line">			SSAction ac = kv.Value;</span><br><span class="line">			if (ac.destroy)</span><br><span class="line">			&#123;</span><br><span class="line">				watingToDelete.Add(ac.GetInstanceID());</span><br><span class="line">			&#125;</span><br><span class="line">			else if (ac.enable)</span><br><span class="line">			&#123;</span><br><span class="line">				ac.Update();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		foreach (int key in watingToDelete)</span><br><span class="line">		&#123;</span><br><span class="line">			SSAction ac = actions[key];</span><br><span class="line">			actions.Remove(key);</span><br><span class="line">			DestroyObject(ac);</span><br><span class="line">		&#125;</span><br><span class="line">		watingToDelete.Clear();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void addAction(GameObject gameObject, SSAction action, ISSActionCallback whoToNotify)</span><br><span class="line">	&#123;</span><br><span class="line">		action.gameObject = gameObject;</span><br><span class="line">		action.transform = gameObject.transform;</span><br><span class="line">		action.callback = whoToNotify;</span><br><span class="line">		waitingToAdd.Add(action);</span><br><span class="line">		action.Start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void actionDone(SSAction source)</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<blockquote>
+<ul>
+<li>ActionManager——动作管理</li>
+</ul>
+</blockquote>
+<p>管理动作，对动作的执行进行调度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class ActionManager : SSActionManager</span><br><span class="line">&#123;</span><br><span class="line">	public void moveBoat(BoatController boat)</span><br><span class="line">	&#123;</span><br><span class="line">		MoveToAction action = MoveToAction.getAction(boat.getDestination(), boat.movingSpeed);</span><br><span class="line">		this.addAction(boat.getGameobj(), action, this);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void moveCharacter(MyCharacterController characterCtrl, Vector3 destination)</span><br><span class="line">	&#123;</span><br><span class="line">		Vector3 currentPos = characterCtrl.getPosition();</span><br><span class="line">		Vector3 middlePos = currentPos;</span><br><span class="line">		if (destination.y &gt; currentPos.y)</span><br><span class="line">		&#123;</span><br><span class="line">			middlePos.y = destination.y;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			middlePos.x = destination.x;</span><br><span class="line">		&#125;</span><br><span class="line">		SSAction action1 = MoveToAction.getAction(middlePos, characterCtrl.movingSpeed);</span><br><span class="line">		SSAction action2 = MoveToAction.getAction(destination, characterCtrl.movingSpeed);</span><br><span class="line">		SSAction seqAction = SequenceAction.getAction(1, 0, new List&lt;SSAction&gt; &#123; action1, action2 &#125;);</span><br><span class="line">		this.addAction(characterCtrl.getGameobj(), seqAction, this);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="4-游戏截图"><a href="#4-游戏截图" class="headerlink" title="4.游戏截图"></a>4.游戏截图</h3><p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework3/2.png?raw=true" alt="a"></p>
+<h3 id="5-资源链接"><a href="#5-资源链接" class="headerlink" title="5.资源链接"></a>5.资源链接</h3><p><a href="https://github.com/626zdysdq/Unity3D/tree/master/Homework3" target="_blank" rel="noopener">源代码在这里哦</a></p>
 
       
 
@@ -292,7 +307,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/24/Homework/week1/Homework1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/24/3D_Homework3/Programming_practice3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,7 +321,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/24/Homework/week1/Programming_practice1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/24/3D_Homework3/Homework3/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -315,11 +330,6 @@
       </div>
     </a>
   
-  
-    <a href="/2018/03/24/index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
