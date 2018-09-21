@@ -178,102 +178,7 @@
 <li>实验需要硬件虚拟化（AMD-V 或 Intel-VT）支持，部分旧笔记本不支持</li>
 <li>用户通过互联网，使用微软远程桌面，远程访问你在PC机上创建的虚拟机（虚拟机操作系统Centos，Ubuntu均可，能使用 NAT 访问外网）</li>
 </ol>
-<h2 id="实验材料"><a href="#实验材料" class="headerlink" title="实验材料"></a>实验材料</h2><ol>
-<li>一台不太老的Windows电脑（mac似乎问题会比较多，并没有尝试）</li>
-<li>VirtualBox虚拟机，<a href="https://www.virtualbox.org/" target="_blank" rel="noopener">下载地址</a></li>
-<li>CentoOS（或者其他Linux版本）的系统镜像，<a href="https://www.centos.org/download/" target="_blank" rel="noopener">下载地址</a></li>
-</ol>
-<h2 id="实验过程中遇到的问题"><a href="#实验过程中遇到的问题" class="headerlink" title="实验过程中遇到的问题"></a>实验过程中遇到的问题</h2><h4 id="VirtualBox安装与配置"><a href="#VirtualBox安装与配置" class="headerlink" title="VirtualBox安装与配置"></a>VirtualBox安装与配置</h4><ol>
-<li><p>确定好虚拟机安装的位置，避免占用电脑启动盘空间</p>
-<ul>
-<li>查看方式：管理 -&gt; 全局设定 -&gt; 常规页面</li>
-</ul>
-</li>
-<li><p>创建虚拟机的内部网络，来实现虚拟机之间、虚拟机与主机之间的交流</p>
-<ul>
-<li><p>查看方式：管理 -&gt; 主机网络管理器</p>
-</li>
-<li><p>一般VBox已经默认创建了一个网卡，只需要在DHCP服务器处点击启用即可（若是不启用，可能会导致安装虚拟机过程中，第二块网卡连接不上的情况）</p>
-</li>
-<li>启用成功后，打开终端，输入ipconfig命令就可以看到我们的网卡</li>
-</ul>
-</li>
-</ol>
-<h4 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h4><blockquote>
-<ul>
-<li>这里按照老师博客上的过程去做基本没有什么问题，以下问题只针对我个人配置中的一些情况，或者是一些位置提醒</li>
-</ul>
-</blockquote>
-<ol>
-<li><p>由于电脑内存比较小，创建不了2G的内存（如下图中，内存超过绿色界限就创建不了）</p>
-<ul>
-<li>对于这种情况，如果不用图形化的桌面是没有任何问题的1G的内存也不会很卡。即使需要图形化界面，也不一定要求内存要2G及以上（起码我现也没有出现什么问题），只要尽可能大就好</li>
-<li>不过个人建议最起码要有1G，否则的话是卡得根本用不了的</li>
-</ul>
-</li>
-<li><p>我安装Centos时，显存是默认为0的，如果要安装图形化界面，要重新设置显存大小</p>
-<ul>
-<li>位置：选定一个虚拟机点击设置 -&gt; 显示 或者 右键 -&gt; 设置 -&gt; 显示</li>
-</ul>
-</li>
-<li><p>配置网络</p>
-<ul>
-<li>位置：选定一个虚拟机点击设置 -&gt; 网络 或者 右键 -&gt; 设置 -&gt; 网络</li>
-</ul>
-</li>
-</ol>
-<h4 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h4><blockquote>
-<ul>
-<li>创建好虚拟机之后，我们选择要安装的镜像，启动虚拟机就可以开始安装了</li>
-</ul>
-</blockquote>
-<ol>
-<li><p>安装过程中会进入安装信息摘要的界面</p>
-<ul>
-<li>安装位置默认</li>
-<li>进入网络与主机名界面，将enp0s3和enp0s8的状态都调整为打开</li>
-<li>点击开始安装，设置root用户的密码，或者重新创建一个用户及密码</li>
-</ul>
-</li>
-<li><p>由于此时还没有网络，升级源时会报错，所以我们跳过老师博客中的那一步，先配置网卡</p>
-<ul>
-<li>输入nmtui进入网卡配置的界面</li>
-<li>选择进入Edit a connection（编辑连接）界面。</li>
-<li>选择enp0s8的操作界面，修改IPv4的地址和网关不与主机的地址相同，并将第一行的Automatic改为Manual，然后将最下面的两个选中，并确定</li>
-<li>返回之前的界面后进入Active a connection（启用连接），激活第二块网卡，并确定（启用的网卡会在前面出现一个*）</li>
-<li>利用service network restart重启网络配置，重启后利用nmcli查看网卡的状态，若看到第二块网卡以经有了新的IP地址且激活则表示成功</li>
-<li>此时就可以从主机ping到虚拟机，也可以从虚拟机ping到主机。（如果虚拟机ping不到主机，可以关闭主机的防火墙再次尝试）</li>
-</ul>
-</li>
-<li><p>升级 OS 系统内核</p>
-<ul>
-<li>按照老师博客上的过程即可，基本没有什么什么问题</li>
-</ul>
-</li>
-</ol>
-<h4 id="利用ssh访问虚拟机"><a href="#利用ssh访问虚拟机" class="headerlink" title="利用ssh访问虚拟机"></a>利用ssh访问虚拟机</h4><blockquote>
-<ul>
-<li>利用ssh访问虚拟机的时候，我是利用Xshell去访问，所以以下为利用Xshell进行远程连接的步骤</li>
-</ul>
-</blockquote>
-<ol>
-<li>下载安装Xshell，<a href="https://www.netsarang.com/news/ver6_release.html" target="_blank" rel="noopener">下载地址</a></li>
-<li>在确保自己的虚拟机开启的情况下，打开Xshell，右上角点击新建</li>
-<li>然后输入名称和自己的虚拟机IP地址，点击确定</li>
-<li>在连接过程中，会要求你输入虚拟机的用户名和密码，输入后即可连接成功</li>
-</ol>
-<h4 id="配置桌面及安装增强功能"><a href="#配置桌面及安装增强功能" class="headerlink" title="配置桌面及安装增强功能"></a>配置桌面及安装增强功能</h4><ol>
-<li>配置桌面时，如果之前没有设置显存，记得修改显存后按照老师的博客进行安装</li>
-<li>安装增强功能时遇到的一个大问题，就是会一直出现未能加载虚拟光盘的报错<ul>
-<li>解决方案请参考<a href="https://blog.csdn.net/C486C/article/details/82694535" target="_blank" rel="noopener">这篇博客</a></li>
-</ul>
-</li>
-</ol>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><ol>
-<li><a href="https://pmlpml.github.io/ServiceComputingOnCloud/ex-install-cloud" target="_blank" rel="noopener">老师的博客</a>中除了安装的指导之外还有一些参考的链接和我在上面没有提到的额外功能，大家能多学一些是一些</li>
-<li>有部分同学因为迷之原因，导致无法利用VBox来实现云服务，或者只是单纯的不想用VBox来实现，<a href="https://xwy27.github.io/Service-Computing/privateCloud/#more" target="_blank" rel="noopener">这是一个大佬用VMware实现的过程</a>，希望可以有帮助。</li>
-</ol>
-
+        
       
 
       
@@ -1262,6 +1167,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
               </li>
              
@@ -1278,15 +1195,19 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,11 +1227,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1323,22 +1244,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
             
             <div class="clearfix"></div>
