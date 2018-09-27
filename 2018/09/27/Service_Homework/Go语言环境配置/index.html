@@ -9,18 +9,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Go语言开发环境的安装 | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git  升级Git1234yum i">
+  <meta name="description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
 <meta name="keywords" content="服务计算,Go语言,VScode,Centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言开发环境的安装">
 <meta property="og:url" content="http://yoursite.com/2018/09/27/Service_Homework/Go语言环境配置/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git  升级Git1234yum i">
+<meta property="og:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-27T18:18:45.437Z">
+<meta property="og:updated_time" content="2018-09-27T18:27:29.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言开发环境的安装">
-<meta name="twitter:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git  升级Git1234yum i">
+<meta name="twitter:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -185,11 +185,12 @@
 <ul>
 <li>但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git</li>
 </ul>
+<a id="more"></a>
 <h4 id="升级Git"><a href="#升级Git" class="headerlink" title="升级Git"></a>升级Git</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http:<span class="comment">//opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm</span></span><br><span class="line">yum install git</span><br><span class="line">yum update git</span><br><span class="line">git --version  <span class="comment">//check git version</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>通过上面的方式我们就可以直接升级git，并且可以避免自己手动下载压缩包并配置环境</li>
 </ul>
-<h4 id="进行个人github的身份确认"><a href="#进行个人github的身份确认" class="headerlink" title="进行个人github的身份确认"></a>进行个人github的身份确认</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"Your Name"</span>             <span class="comment">//replace Your Name with your github account name</span></span><br><span class="line"><span class="string">"email@example.com"</span>    <span class="comment">//replace email@example.com with your github email</span></span><br></pre></td></tr></table></figure>
+<h4 id="进行个人github的身份确认"><a href="#进行个人github的身份确认" class="headerlink" title="进行个人github的身份确认"></a>进行个人github的身份确认</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"Your Name"</span>             <span class="comment">//replace "Your Name" with your github account name</span></span><br><span class="line">git config --global user.email <span class="string">"email@example.com"</span>    <span class="comment">//replace "email@example.com" with your github email</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>确认身份后，可能会在后面的提交中需要多次输入密码，如果你觉得麻烦，可以使用下面的命令，只需要在第一次输入密码，之后都可以免密码提交</li>
 </ul>
@@ -219,10 +220,10 @@
 </ul>
 <h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><blockquote>
 <ul>
-<li>在我们中级实训的时候，就配置过java的环境变量，过程与其基本相同</li>
+<li>在我们中级实训的时候，就配置过java的环境变量，过程与其基本相同.（首先创建工作空间，之后修改环境变量）</li>
 </ul>
 </blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir $HOME/gowork <span class="comment">//create folder</span></span><br><span class="line">vim /etc/profile   <span class="comment">// add env path</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir $HOME/gowork <span class="comment">//create folder</span></span><br><span class="line">mkdir $HOME/gowork/bin</span><br><span class="line">mkdir $HOME/gowork/pkg</span><br><span class="line">mkdir $HOME/gowork/src</span><br><span class="line"></span><br><span class="line">vim /etc/profile   <span class="comment">// add env path</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果不用vim的语法，<a href="https://www.cnblogs.com/tudou-loveloli/p/5269480.html" target="_blank" rel="noopener">这里会有一些简单的介绍</a></li>
 <li>接着我们在文件中插入下面两行</li>
@@ -538,18 +539,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
               </li>
              
@@ -563,6 +552,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,19 +587,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,6 +612,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
             
             <div class="clearfix"></div>
