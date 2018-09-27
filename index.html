@@ -148,19 +148,194 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Service_Homework1/Service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Service_Homework/Go语言环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/Service_Homework1/Service/">利用VirtualBox与Centos让PC提供云桌面服务</a>
+      <a class="article-title" href="/2018/09/27/Service_Homework/Go语言环境配置/">Go语言开发环境的安装</a>
     </h1>
   
 
         
-        <a href="/2018/09/19/Service_Homework1/Service/" class="archive-article-date">
+        <a href="/2018/09/27/Service_Homework/Go语言环境配置/" class="archive-article-date">
+  	<time datetime="2018-09-27T15:52:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><blockquote>
+<ul>
+<li>由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git</li>
+</ul>
+</blockquote>
+<h4 id="直接使用yum安装"><a href="#直接使用yum安装" class="headerlink" title="直接使用yum安装"></a>直接使用yum安装</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install git</span><br><span class="line">git --version    <span class="comment">//check git version</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git</li>
+</ul>
+<h4 id="升级Git"><a href="#升级Git" class="headerlink" title="升级Git"></a>升级Git</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http:<span class="comment">//opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm</span></span><br><span class="line">yum install git</span><br><span class="line">yum update git</span><br><span class="line">git --version  <span class="comment">//check git version</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过上面的方式我们就可以直接升级git，并且可以避免自己手动下载压缩包并配置环境</li>
+</ul>
+<h4 id="进行个人github的身份确认"><a href="#进行个人github的身份确认" class="headerlink" title="进行个人github的身份确认"></a>进行个人github的身份确认</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"Your Name"</span>             <span class="comment">//replace Your Name with your github account name</span></span><br><span class="line"><span class="string">"email@example.com"</span>    <span class="comment">//replace email@example.com with your github email</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>确认身份后，可能会在后面的提交中需要多次输入密码，如果你觉得麻烦，可以使用下面的命令，只需要在第一次输入密码，之后都可以免密码提交</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<h2 id="安装VSCode编辑器"><a href="#安装VSCode编辑器" class="headerlink" title="安装VSCode编辑器"></a>安装VSCode编辑器</h2><blockquote>
+<ul>
+<li>VSCode在Linux下的安装分为两种不同的类型，这里使用的是在CentOS下的安装方式，<a href="https://code.visualstudio.com/docs/setup/linux" target="_blank" rel="noopener">具体细节请点击这里</a></li>
+</ul>
+</blockquote>
+<h4 id="导入密钥"><a href="#导入密钥" class="headerlink" title="导入密钥"></a>导入密钥</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm --<span class="keyword">import</span> https:<span class="comment">//packages.microsoft.com/keys/microsoft.asc</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置repo文件"><a href="#设置repo文件" class="headerlink" title="设置repo文件"></a>设置repo文件</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" &gt; /etc/yum.repos.d/vscode.repo'  //configure the code repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这段命令比较长，如果发生报错，可以先检查一下是否有拼写错误</li>
+</ul>
+<h4 id="安装VSCode"><a href="#安装VSCode" class="headerlink" title="安装VSCode"></a>安装VSCode</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum check-update</span><br><span class="line">sudo yum install code</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装完成后，如果你使用了图形化的桌面，在命令行中输入code，就可以打开VSCode了</li>
+</ul>
+<h2 id="Go语言环境配置"><a href="#Go语言环境配置" class="headerlink" title="Go语言环境配置"></a>Go语言环境配置</h2><blockquote>
+<ul>
+<li>从这里就可以开始正式的配置Go语言的环境</li>
+</ul>
+</blockquote>
+<h4 id="安装golang"><a href="#安装golang" class="headerlink" title="安装golang"></a>安装golang</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install golang</span><br><span class="line">go version            <span class="comment">//test if install successfully</span></span><br><span class="line">rpm -ql golang |more  <span class="comment">//find where it install</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果可以查到当前go的版本，则表明我们安装成功，可以进行下一步骤</li>
+</ul>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><blockquote>
+<ul>
+<li>在我们中级实训的时候，就配置过java的环境变量，过程与其基本相同</li>
+</ul>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir $HOME/gowork <span class="comment">//create folder</span></span><br><span class="line">vim /etc/profile   <span class="comment">// add env path</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果不用vim的语法，<a href="https://www.cnblogs.com/tudou-loveloli/p/5269480.html" target="_blank" rel="noopener">这里会有一些简单的介绍</a></li>
+<li>接着我们在文件中插入下面两行</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> GOPATH=$HOME/gowork</span><br><span class="line"><span class="keyword">export</span> PATH=$PATH:$GOAPTH/bin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>记得在退出插入模式后<strong>保存并退出</strong></li>
+<li>接着输入下面的命令使我们设置的变量生效（只能在当前命令行窗口生效，若要永久生效，需要修改.bashrc文件）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用如下命令检查配置是否正确</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下图为我个人的配置情况</li>
+</ul>
+<h4 id="安装Go工具"><a href="#安装Go工具" class="headerlink" title="安装Go工具"></a>安装Go工具</h4><blockquote>
+<ul>
+<li>为例防止在中国网络环境可能无法访问Golang.org，导致在VECode使用中安装工作出现’ failed to install ‘的问题，我们需要安装一些Go的工具（下面以tools为例）。</li>
+</ul>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir $GOPATH/src/golang.org/x/</span><br><span class="line">go get -d github.com/golang/tools</span><br><span class="line">cp $GOPATH/src/github.com/golang/tools $GOPATH/src/golang.org/x/ -rf</span><br><span class="line">go install golang.org/x/tools/go/buildutil</span><br></pre></td></tr></table></figure>
+<h2 id="编译运行一个Go程序"><a href="#编译运行一个Go程序" class="headerlink" title="编译运行一个Go程序"></a>编译运行一个Go程序</h2><blockquote>
+<ul>
+<li>为了保存代码，我们需要绑定仓库，而绑定仓库有两种方式，你可以选择远程新建再克隆，或者本地创建，再连接到github。这里使用第二种方式</li>
+</ul>
+</blockquote>
+<h4 id="创建代码目录"><a href="#创建代码目录" class="headerlink" title="创建代码目录"></a>创建代码目录</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $GOPATH/src/github.com/github-user/hello-world</span><br><span class="line">cd $GOPATH/src/github.com/github-user/hello-world</span><br><span class="line"><span class="comment">// replace github-user with your github account name</span></span><br><span class="line"><span class="comment">// replace hello-world with youre repo name</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建代码文件"><a href="#创建代码文件" class="headerlink" title="创建代码文件"></a>创建代码文件</h4><ul>
+<li>利用VSCode新建文件</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code hello.go</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开后在其中添加如下代码，并保存。（如果提示无权限，保存不了，请重新进入root权限下重新新建代码文件）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function">func <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	fmt.Printf(<span class="string">"Hello, world.\n"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之后即可在终端运行该程序</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go run hello.go  <span class="comment">//run</span></span><br><span class="line"></span><br><span class="line">go install github.com/github-user/hello-world <span class="comment">//build and add it into '/bin'</span></span><br><span class="line"></span><br><span class="line">hello-world <span class="comment">//run</span></span><br></pre></td></tr></table></figure>
+<h4 id="上传至远程仓库"><a href="#上传至远程仓库" class="headerlink" title="上传至远程仓库"></a>上传至远程仓库</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git init  </span><br><span class="line">git add . </span><br><span class="line">git commit -m <span class="string">"first commit"</span> </span><br><span class="line">git remote add origin http:<span class="comment">//github.com/username/project.git  </span></span><br><span class="line"><span class="comment">//replace username with your github account name</span></span><br><span class="line"><span class="comment">//replace project with your github repo name</span></span><br><span class="line"></span><br><span class="line">git pull origin master  </span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">服务计算</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VScode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Centos</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/27/Service_Homework/Go语言环境配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Service_Homework/Service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/19/Service_Homework/Service/">利用VirtualBox与Centos让PC提供云桌面服务</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/19/Service_Homework/Service/" class="archive-article-date">
   	<time datetime="2018-09-19T08:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
 </a>
         
@@ -195,15 +370,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Centos</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">虚拟机</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云服务</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Centos</a>
         		</li>
       		
 		</ul>
@@ -213,7 +388,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/19/Service_Homework1/Service/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/19/Service_Homework/Service/">展开全文 >></a>
         </p>
       
 
@@ -898,75 +1073,6 @@
 
 
   
-    <article id="post-introduce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/24/introduce/">Contact Way</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/24/introduce/" class="archive-article-date">
-  	<time datetime="2018-03-24T09:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>QQ: 923024128</li>
-<li>email: <a href="mailto:923024128@qq.com" target="_blank" rel="noopener">923024128@qq.com</a></li>
-</ul>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/introduce/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-3D_Homework1/Homework1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1063,6 +1169,10 @@
 
 
   
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1195,22 +1305,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
               </li>
              
@@ -1244,6 +1338,30 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
               </li>
             
             <div class="clearfix"></div>
