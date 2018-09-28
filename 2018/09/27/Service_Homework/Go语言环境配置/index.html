@@ -17,10 +17,13 @@
 <meta property="og:site_name" content="626号试验品">
 <meta property="og:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T03:02:42.372Z">
+<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/Service_homework2/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-28%20%E4%B8%8A%E5%8D%8810.47.53.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/Service_homework2/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-28%20%E4%B8%8A%E5%8D%8810.54.40.png?raw=true">
+<meta property="og:updated_time" content="2018-09-28T03:11:08.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言开发环境的安装">
 <meta name="twitter:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
+<meta name="twitter:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/Service_homework2/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-28%20%E4%B8%8A%E5%8D%8810.47.53.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -241,7 +244,7 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
 <ul>
-<li>下图为我个人的配置情况</li>
+<li>下图为我个人的配置情况<br><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/Service_homework2/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-28%20%E4%B8%8A%E5%8D%8810.47.53.png?raw=true" alt="个人环境配置"><br><br></li>
 </ul>
 <h4 id="安装Go工具"><a href="#安装Go工具" class="headerlink" title="安装Go工具"></a>安装Go工具</h4><blockquote>
 <ul>
@@ -255,7 +258,7 @@
 <li>为了保存代码，我们需要绑定仓库，而绑定仓库有两种方式，你可以选择远程新建再克隆，或者本地创建，再连接到github。这里使用第二种方式</li>
 </ul>
 </blockquote>
-<h4 id="创建代码目录"><a href="#创建代码目录" class="headerlink" title="创建代码目录"></a>创建代码目录</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $GOPATH/src/github.com/github-user/hello-world</span><br><span class="line">cd $GOPATH/src/github.com/github-user/hello-world</span><br><span class="line"><span class="comment">// replace github-user with your github account name</span></span><br><span class="line"><span class="comment">// replace hello-world with youre repo name</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建代码目录"><a href="#创建代码目录" class="headerlink" title="创建代码目录"></a>创建代码目录</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $GOPATH/src/github.com/github-user/ServiceComputing</span><br><span class="line">cd $GOPATH/src/github.com/github-user/ServiceComputing</span><br><span class="line"><span class="comment">// replace github-user with your github account name</span></span><br><span class="line"><span class="comment">// replace hello-world with youre repo name</span></span><br></pre></td></tr></table></figure>
 <h4 id="创建代码文件"><a href="#创建代码文件" class="headerlink" title="创建代码文件"></a>创建代码文件</h4><ul>
 <li>利用VSCode新建文件</li>
 </ul>
@@ -267,7 +270,8 @@
 <ul>
 <li>之后即可在终端运行该程序</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go run hello.go  <span class="comment">//run</span></span><br><span class="line"></span><br><span class="line">go install github.com/github-user/hello-world <span class="comment">//build and add it into '/bin'</span></span><br><span class="line"></span><br><span class="line">hello-world <span class="comment">//run</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go run hello.go  <span class="comment">//run</span></span><br><span class="line"></span><br><span class="line">go install github.com/github-user/ServiceComputing <span class="comment">//build and add it into '/bin'</span></span><br><span class="line"></span><br><span class="line">ServiceComputing <span class="comment">//run</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/Service_homework2/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-28%20%E4%B8%8A%E5%8D%8810.54.40.png?raw=true" alt="运行效果"></p>
 <h4 id="上传至远程仓库"><a href="#上传至远程仓库" class="headerlink" title="上传至远程仓库"></a>上传至远程仓库</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git init  </span><br><span class="line">git add . </span><br><span class="line">git commit -m <span class="string">"first commit"</span> </span><br><span class="line">git remote add origin http:<span class="comment">//github.com/username/project.git  </span></span><br><span class="line"><span class="comment">//replace username with your github account name</span></span><br><span class="line"><span class="comment">//replace project with your github repo name</span></span><br><span class="line"></span><br><span class="line">git pull origin master  </span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 
       
@@ -594,6 +598,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
               </li>
              
@@ -610,23 +626,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
               </li>
             
             <div class="clearfix"></div>
