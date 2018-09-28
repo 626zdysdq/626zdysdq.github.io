@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="626号试验品">
 <meta property="og:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-27T18:27:29.314Z">
+<meta property="og:updated_time" content="2018-09-28T03:02:42.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言开发环境的安装">
 <meta name="twitter:description" content="安装Git  由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git   直接使用yum安装12sudo yum install gitgit --version    //check git version  但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git">
@@ -186,7 +186,7 @@
 <li>但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git</li>
 </ul>
 <a id="more"></a>
-<h4 id="升级Git"><a href="#升级Git" class="headerlink" title="升级Git"></a>升级Git</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http:<span class="comment">//opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm</span></span><br><span class="line">yum install git</span><br><span class="line">yum update git</span><br><span class="line">git --version  <span class="comment">//check git version</span></span><br></pre></td></tr></table></figure>
+<h4 id="升级Git"><a href="#升级Git" class="headerlink" title="升级Git"></a>升级Git</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http:<span class="comment">//opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm </span></span><br><span class="line">yum install git</span><br><span class="line">yum update git</span><br><span class="line">git --version  <span class="comment">//check git version</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>通过上面的方式我们就可以直接升级git，并且可以避免自己手动下载压缩包并配置环境</li>
 </ul>
@@ -195,6 +195,7 @@
 <li>确认身份后，可能会在后面的提交中需要多次输入密码，如果你觉得麻烦，可以使用下面的命令，只需要在第一次输入密码，之后都可以免密码提交</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<p><br></p>
 <h2 id="安装VSCode编辑器"><a href="#安装VSCode编辑器" class="headerlink" title="安装VSCode编辑器"></a>安装VSCode编辑器</h2><blockquote>
 <ul>
 <li>VSCode在Linux下的安装分为两种不同的类型，这里使用的是在CentOS下的安装方式，<a href="https://code.visualstudio.com/docs/setup/linux" target="_blank" rel="noopener">具体细节请点击这里</a></li>
@@ -209,6 +210,7 @@
 <ul>
 <li>安装完成后，如果你使用了图形化的桌面，在命令行中输入code，就可以打开VSCode了</li>
 </ul>
+<p><br></p>
 <h2 id="Go语言环境配置"><a href="#Go语言环境配置" class="headerlink" title="Go语言环境配置"></a>Go语言环境配置</h2><blockquote>
 <ul>
 <li>从这里就可以开始正式的配置Go语言的环境</li>
@@ -243,10 +245,11 @@
 </ul>
 <h4 id="安装Go工具"><a href="#安装Go工具" class="headerlink" title="安装Go工具"></a>安装Go工具</h4><blockquote>
 <ul>
-<li>为例防止在中国网络环境可能无法访问Golang.org，导致在VECode使用中安装工作出现’ failed to install ‘的问题，我们需要安装一些Go的工具（下面以tools为例）。</li>
+<li>为例防止在中国网络环境可能无法访问Golang.org，导致在VSCode使用中安装工作出现’ failed to install ‘的问题，我们需要安装一些Go的工具（下面以tools为例）。</li>
 </ul>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir $GOPATH/src/golang.org/x/</span><br><span class="line">go get -d github.com/golang/tools</span><br><span class="line">cp $GOPATH/src/github.com/golang/tools $GOPATH/src/golang.org/x/ -rf</span><br><span class="line">go install golang.org/x/tools/go/buildutil</span><br></pre></td></tr></table></figure>
+<p><br></p>
 <h2 id="编译运行一个Go程序"><a href="#编译运行一个Go程序" class="headerlink" title="编译运行一个Go程序"></a>编译运行一个Go程序</h2><blockquote>
 <ul>
 <li>为了保存代码，我们需要绑定仓库，而绑定仓库有两种方式，你可以选择远程新建再克隆，或者本地创建，再连接到github。这里使用第二种方式</li>
@@ -587,7 +590,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,6 +610,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -620,10 +627,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
             
             <div class="clearfix"></div>
