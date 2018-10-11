@@ -9,18 +9,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>利用GO语言实现简单的CLI | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg在我的理解中，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，">
+  <meta name="description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg简单来说，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，打印">
 <meta name="keywords" content="服务计算,Go语言,CLI,selpg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用GO语言实现简单的CLI">
 <meta property="og:url" content="http://yoursite.com/2018/10/11/go语言实现CLI/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg在我的理解中，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，">
+<meta property="og:description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg简单来说，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，打印">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-11T14:22:18.997Z">
+<meta property="og:updated_time" content="2018-10-11T17:32:04.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用GO语言实现简单的CLI">
-<meta name="twitter:description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg在我的理解中，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，">
+<meta name="twitter:description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg简单来说，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，打印">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -177,8 +177,88 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。</p>
-<h2 id="什么是selpg"><a href="#什么是selpg" class="headerlink" title="什么是selpg"></a>什么是selpg</h2><p>在我的理解中，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，打印输入的指定位置。至于具体的seplg命令的用法，在<a href="https://www.ibm.com/developerworks/cn/linux/shell/clutil/index.html" target="_blank" rel="noopener">老师给的链接中</a>已经讲的很清楚了，所以在这里就不做赘述了。</p>
-<p>## </p>
+<h2 id="什么是selpg"><a href="#什么是selpg" class="headerlink" title="什么是selpg"></a>什么是selpg</h2><p>简单来说，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，打印输入的指定位置。其命令的参数包括强制选项和可选选项两个部分，格式如下：</p>
+<p><code>-sstart_page -eend_page [ -f | -l lines_per_page ][ -d dest ] [ in_filename ]</code></p>
+<a id="more"></a>
+<ul>
+<li><p>强制选项——要求用户在使用命令时一定要加的参数</p>
+<ul>
+<li><code>-s+start_page</code>，start_page表示开始页面的页号，为int类型</li>
+<li><code>-e+end_page</code>，end_page表示结束页面的页号，也为int类型</li>
+</ul>
+<blockquote>
+<ul>
+<li>需要确保<code>start_page</code>和<code>end_page</code>均大于1，且<code>start_page &lt;= end_page</code></li>
+</ul>
+</blockquote>
+</li>
+<li><p>可选选项——在使用时不一定要加的参数</p>
+<ul>
+<li><code>-l+row_num</code>，row_num表示多少行分为一页</li>
+<li><code>-f</code>，代表按照分页符(ASCII 为12)分页</li>
+<li><code>-d+Destination</code>，表示选定的页直接发送至打印机</li>
+<li><code>filename</code>，表示选取的文件名</li>
+</ul>
+<blockquote>
+<ul>
+<li>当<code>-l</code>与<code>-f</code>命令都不存在时，会将页面长度设置为默认长度（默认长度为20行）</li>
+<li><code>-l</code>与<code>-f</code>命令是互斥的，不可以同时存在</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/shell/clutil/index.html" target="_blank" rel="noopener">点击这里，有更详细的介绍</a></p>
+<h2 id="实现难点"><a href="#实现难点" class="headerlink" title="实现难点"></a>实现难点</h2><ul>
+<li><p>了解<code>flag</code>和<code>Pflag</code>的区别，使用<code>Pflag</code>绑定参数，对命令行参数进行解析</p>
+<blockquote>
+<ul>
+<li>对于<code>Pflag</code>的使用可以算是这次作业最关键的部分，看懂了这一部分，就基本可以明白怎么去实现这次作业。老师在网站中也给了很详细的介绍</li>
+<li><a href="http://blog.studygolang.com/2013/02/%E6%A0%87%E5%87%86%E5%BA%93-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90flag/" target="_blank" rel="noopener">标准库——命令行参数解析FLAG</a></li>
+<li><a href="https://studygolang.com/articles/5608" target="_blank" rel="noopener">Go学习笔记：flag库的使用</a></li>
+<li><a href="https://o-my-chenjian.com/2017/09/20/Using-Flag-And-Pflag-With-Golang/" target="_blank" rel="noopener">Golang使用之Flag和Pflag</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>实现文件读取与写入的操作</p>
+<blockquote>
+<ul>
+<li>文件的读取个人比较推荐使用<code>bufio</code>库，因为其操作与C语言的文件读取类似，老师的博客中有C语言的源码，所以对我这种代码水平比较低的人来说，会简单很多。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>命令的异常处理</p>
+<blockquote>
+<ul>
+<li>命令的异常处理其实就是对与不同的输入情况，进行if条件的分类。其主要的难度在于要怎样使得用尽可能少的if语句，来实现正确的结果</li>
+</ul>
+</blockquote>
+</li>
+<li><p>如何使用 pipe 完成打印输出的任务</p>
+<blockquote>
+<ul>
+<li>其实这个，我自己也不是很会，但是大佬告诉我，使用 exec 库的 command，可以调用子进程执行终端命令。<a href="https://xwy27.github.io/Service-Computing/Selpg-WithGO/" target="_blank" rel="noopener">大佬博客在这里</a>，大家可以去看看，肯定比我写的好</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ul>
+<li>引入需要的包</li>
+<li>创建对应的结构体</li>
+<li>利用<code>pflag.Parse()</code>绑定参数并解析</li>
+<li>输入参数处理</li>
+<li>文件读取处理</li>
+<li>主函数</li>
+</ul>
+<h2 id="部分程序测试截图"><a href="#部分程序测试截图" class="headerlink" title="部分程序测试截图"></a>部分程序测试截图</h2><blockquote>
+<ul>
+<li>由于程序测种类较多，下面只有部分测试，有兴趣的话，可以来<a href="">这里</a>自己运行一下</li>
+</ul>
+</blockquote>
+<h2 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h2><ul>
+<li>这次作业对我来说的挑战，不仅包括作业本身的难度，还有对go语言语法的不够熟悉。所以花费了很多时间，在go语言的语法上。</li>
+<li>看了很多大佬的实现，和他们还是有很大的差距。不管是功能实现还是异常处理上，都还有很大的差距</li>
+<li>不过自己能做完这次作业已经很开心了，嘿嘿</li>
+</ul>
 
       
 
@@ -350,7 +430,7 @@ gitment.render('git')
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是selpg"><span class="toc-number">2.</span> <span class="toc-text">什么是selpg</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是selpg"><span class="toc-number">2.</span> <span class="toc-text">什么是selpg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现难点"><span class="toc-number">3.</span> <span class="toc-text">实现难点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">4.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部分程序测试截图"><span class="toc-number">5.</span> <span class="toc-text">部分程序测试截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#体会"><span class="toc-number">6.</span> <span class="toc-text">体会</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -470,6 +550,22 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
@@ -502,39 +598,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">预制体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">资源</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,11 +610,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,6 +631,22 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预制体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">资源</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">组合模式</a>
               </li>
             
             <div class="clearfix"></div>
