@@ -7,22 +7,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>编程实践——井子棋1.0 | 626号试验品</title>
+  <title>Archives: 2018/10 | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="游戏内容： 井字棋     技术限制： 仅允许使用 IMGUI 构建 UI     作业目的：                       提升 debug 能力              提升阅读 API 文档能力">
-<meta name="keywords" content="Unity3D,编程实践,井字棋">
-<meta property="og:type" content="article">
-<meta property="og:title" content="编程实践——井子棋1.0">
-<meta property="og:url" content="http://yoursite.com/2018/03/27/3D_Homework1/Programming_practice1/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="626号试验品">
+<meta property="og:url" content="http://yoursite.com/archives/2018/10/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="游戏内容： 井字棋     技术限制： 仅允许使用 IMGUI 构建 UI     作业目的：                       提升 debug 能力              提升阅读 API 文档能力">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/1.png?raw=true">
-<meta property="og:updated_time" content="2018-09-18T12:25:55.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编程实践——井子棋1.0">
-<meta name="twitter:description" content="游戏内容： 井字棋     技术限制： 仅允许使用 IMGUI 构建 UI     作业目的：                       提升 debug 能力              提升阅读 API 文档能力">
-<meta name="twitter:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/1.png?raw=true">
+<meta name="twitter:title" content="626号试验品">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -153,263 +146,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-3D_Homework1/Programming_practice1" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      编程实践——井子棋1.0
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/10/11/go语言实现CLI/" class="archive-article-date">
+  	<time datetime="2018-10-11T14:22:18.997Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/10/11/go语言实现CLI/">利用GO语言实现简单的CLI</a>
     </h1>
   
 
-        
-        <a href="/2018/03/27/3D_Homework1/Programming_practice1/" class="archive-article-date">
-  	<time datetime="2018-03-27T04:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-27</time>
-</a>
-        
-        
-		             <span class="archive-article-date">
-			           阅读量 <span id="busuanzi_value_page_pv"></span>
-	             	</span>
-      	
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<ul><br>    <li> 游戏内容： 井字棋<br>    </li><li> 技术限制： 仅允许使用 IMGUI 构建 UI<br>    </li><li> 作业目的：<br>         <ul><br>             <li> 提升 debug 能力<br>             </li><li> 提升阅读 API 文档能力<br>         </li></ul><br></li></ul>
-
-<hr>
-<a id="more"></a>
-<p>###1.初始化</p>
-<ul>
-<li>井字棋实现的基础是一个3*3的二维数组，通过点击事件，对数组中的相应位置赋值来代表示玩家的选择.首先要在游戏开始时对我们所定义的变量进行初始化</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private int player = 1;   //记录玩家</span><br><span class="line">private int[,] state = new int[3, 3];</span><br><span class="line">private string reminder =  &quot;&quot;;</span><br><span class="line">private string[] label = &#123; &quot;&quot;, &quot;O&quot;, &quot;X&quot; &#125;;  </span><br><span class="line">private int count=0;   //确定是否被全部点击</span><br><span class="line"></span><br><span class="line">// Use this for initialization</span><br><span class="line"></span><br><span class="line">void reset() &#123;</span><br><span class="line">	player = 1;</span><br><span class="line">	count = 0;</span><br><span class="line">	for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; 3; j++) &#123;</span><br><span class="line">			state [i, j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###2.界面渲染</p>
-<ul>
-<li>因为只能使用IMGUI构建UI，所以查阅了相关的资料。发现GUI会在每一次操作后自动更新页面。所以我们只需要做到可以保存好每一次点击之后，二维数组的状态，就可以实现有些界面的自动更新。因为GUI.Button自己会在点击之后改变返回值的真假，所以不需要像之前的js一样将click事件与函数返回进行绑定。而且我们只需要对每次点击后二维数组的状态进行判定，就可以得当前游戏的胜负情况。所以OnGUI部分的代码如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">void OnGUI()&#123;</span><br><span class="line">	GUIStyle fontStyle = new GUIStyle ();</span><br><span class="line">	GUIStyle fontStyle1 = new GUIStyle ();</span><br><span class="line">	fontStyle.fontSize = 30;</span><br><span class="line">	fontStyle1.fontSize = 20;</span><br><span class="line">	GUI.Label (new Rect (300, 50, 100, 100), &quot;Welcome to Game&quot;, fontStyle);</span><br><span class="line">	if(GUI.Button(new Rect(300, 380, 100, 50),&quot;start&quot;))  &#123;  </span><br><span class="line">		reset();  </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//show result</span><br><span class="line">	int result = winCheck();</span><br><span class="line">	if (count == 0 &amp;&amp; result == 0) &#123;</span><br><span class="line">		reminder = &quot;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (result != 0 &amp;&amp; result != 3) &#123;</span><br><span class="line">		reminder = &quot;player &quot; + result + &quot; win!&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else if(result == 3)&#123;</span><br><span class="line">		reminder = &quot;Dogfall!&quot; ;</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		reminder = &quot;Continuing!&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	GUI.Label (new Rect (350, 80, 100, 50), reminder , fontStyle);</span><br><span class="line"></span><br><span class="line">	//The part of button</span><br><span class="line">	for(int i = 0; i&lt; 3; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int j = 0; j &lt; 3; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (state[i, j] == 1)  </span><br><span class="line">			&#123;  </span><br><span class="line">				GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), label[1]);  </span><br><span class="line">			&#125;  </span><br><span class="line">			if (state[i, j] == 2)  </span><br><span class="line">			&#123;  </span><br><span class="line">				GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), label[2]);  </span><br><span class="line">			&#125;  </span><br><span class="line">			if(GUI.Button(new Rect(300+i * 80, 120+j * 80, 80, 80), &quot;&quot;)) &#123;  </span><br><span class="line">				if (result == 0)  </span><br><span class="line">				&#123;  </span><br><span class="line">					if (player == 1) state[i, j] = 1;  </span><br><span class="line">					else state[i, j] = 2;  </span><br><span class="line">					count++;  </span><br><span class="line">				    player = 3-player;</span><br><span class="line">				&#125;  </span><br><span class="line">			&#125;  </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###3.胜负判断</p>
-<ul>
-<li><p>因为井字棋胜负判定的情况很简单，即</p>
-<blockquote>
-<ul>
-<li>有一行出现三个数相同，该数所代表的玩家胜</li>
-<li>有一列出现三个数相同，该数所代表的玩家胜</li>
-<li>有一斜线出现三个数相同，该数所代表的玩家胜</li>
-<li>空格全部点完，仍未出现上述情况则为平局</li>
-</ul>
-</blockquote>
-<p>所以胜负判断的函数代码如下：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private int winCheck()  &#123;  </span><br><span class="line">	for(int i = 0; i &lt; 3; ++i)  &#123;  </span><br><span class="line">		if (state[i, 0] != 0 &amp;&amp; state[i,0]==state[i, 1] &amp;&amp; state[i, 1] == state[i, 2])  &#123;  </span><br><span class="line">			return state[i, 0];  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line">	for (int i = 0; i &lt; 3; ++i)  &#123;  </span><br><span class="line">		if (state[0, i] != 0 &amp;&amp; state[0, i] == state[1, i] &amp;&amp; state[1, i] == state[2, i])  &#123;  </span><br><span class="line">			return state[0, i];  </span><br><span class="line">		&#125;  </span><br><span class="line">	&#125;  </span><br><span class="line">	if((state[1,1]!=0 &amp;&amp; state[0,0]==state[1,1] &amp;&amp; state[1,1]==state[2,2])||  </span><br><span class="line">	   (state[1,1]!=0 &amp;&amp; state[0,2]==state[1,1]&amp;&amp; state[1,1]==state[2,0]) )  &#123;  </span><br><span class="line">			return state[1, 1];  </span><br><span class="line">		&#125;  </span><br><span class="line">	if (count == 9) return 3;  </span><br><span class="line">	return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行效果如图</li>
-</ul>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Homework1/1.png?raw=true" alt="game_picture"></p>
-<hr>
-<p>####<a href="https://github.com/626zdysdq/Unity3D/tree/master/Homework1" target="_blank" rel="noopener">如果需要完整的游戏代码和演示视屏，请点击这里!</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-
-            <span id="busuanzi_container_page_pv">
-               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-            </span>
-
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Unity3D</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">服务计算</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编程实践</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">井字棋</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CLI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">selpg</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/27/3D_Homework1/Programming_practice1/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-  
-  <!-- Gitment评论插件通用代码 -->
-<div id="git"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  owner: "626zdysdq",//github用户名
-  repo: "626zdysdq.github.io",//用户存储评论的github项目名称
-  oauth: {
-    client_id: "16780e2aba9f693ae466",//注册OAuth Application时生产的ClinetID
-    client_secret:"4be169e19af3acab60838b01441550757f144ee3",//注册OAuth Application时生成的Client Secret
-  },
-})
-gitment.render('git')
-</script>
-<!-- Gitment代码结束 -->
-
-  
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/04/03/3D_Homework2/Homework2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Homework and Exercise two
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/03/24/introduce/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Contact Way</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -435,8 +237,8 @@ gitment.render('git')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
