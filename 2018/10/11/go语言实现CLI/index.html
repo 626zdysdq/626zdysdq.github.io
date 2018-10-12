@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://github.com/626zdysdq/selpg_golang/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-12%20%E4%B8%8B%E5%8D%881.29.56.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/selpg_golang/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-12%20%E4%B8%8B%E5%8D%881.30.34.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/selpg_golang/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-12%20%E4%B8%8B%E5%8D%881.32.56.png?raw=true">
-<meta property="og:updated_time" content="2018-10-12T06:24:00.354Z">
+<meta property="og:updated_time" content="2018-10-12T06:36:08.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用GO语言实现简单的CLI">
 <meta name="twitter:description" content="前言这次的作业对于我这种菜鸡来说难度有点大，虽然老师给的参考资料已经很详细的介绍了，selpg的功能、c和python的实现方法。但是真正轮到自己做的时候，还是会有一种无从下手的感觉。由于自己很多地方理解的不到位，所以如果下面的叙述有问题，希望大家指正。 什么是selpg简单来说，selpg 就是与 ls 、mkdir 等一样的实用的命令行程序，它可以读取终端输入或文件输入，然后根据给定参数，打印">
@@ -233,6 +233,8 @@
 <blockquote>
 <ul>
 <li>文件的读取个人比较推荐使用<code>bufio</code>库，因为其操作与C语言的文件读取类似，老师的博客中有C语言的源码，所以对我这种代码水平比较低的人来说，会简单很多。</li>
+<li><a href="https://studygolang.com/articles/4367" target="_blank" rel="noopener">golang中 bufio 包的用法</a></li>
+<li><a href="https://blog.csdn.net/stpeace/article/details/81751264" target="_blank" rel="noopener">go语言在终端读取数据</a></li>
 </ul>
 </blockquote>
 </li>
@@ -596,35 +598,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,6 +615,38 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,10 +671,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
