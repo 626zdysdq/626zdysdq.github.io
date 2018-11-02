@@ -7,14 +7,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>626号试验品</title>
+  <title>基于Go的Agenda开发 | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于Go的Agenda开发 本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
+  <meta name="description" content="本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
+<meta name="keywords" content="服务计算,Go语言,CLI,Agenda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="626号试验品">
+<meta property="og:title" content="基于Go的Agenda开发">
 <meta property="og:url" content="http://yoursite.com/2018/11/01/Service_Homework/Agenda/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="基于Go的Agenda开发 本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
+<meta property="og:description" content="本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.18.32.png?raw=true">
 <meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.38.34.png?raw=true">
@@ -27,10 +28,11 @@
 <meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.57.05.png?raw=true">
 <meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.01.35.png?raw=true">
 <meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.02.17.png?raw=true">
-<meta property="og:updated_time" content="2018-11-02T07:06:33.597Z">
+<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.52.37.png?raw=true">
+<meta property="og:updated_time" content="2018-11-02T07:19:03.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="626号试验品">
-<meta name="twitter:description" content="基于Go的Agenda开发 本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
+<meta name="twitter:title" content="基于Go的Agenda开发">
+<meta name="twitter:description" content="本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
 <meta name="twitter:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.18.32.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
@@ -165,10 +167,29 @@
             <article id="post-Service_Homework/Agenda" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于Go的Agenda开发
+    </h1>
+  
+
+        
+        <a href="/2018/11/01/Service_Homework/Agenda/" class="archive-article-date">
+  	<time datetime="2018-10-31T18:33:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
+</a>
+        
+        
+		             <span class="archive-article-date">
+			           阅读量 <span id="busuanzi_value_page_pv"></span>
+	             	</span>
+      	
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基于Go的Agenda开发"><a href="#基于Go的Agenda开发" class="headerlink" title="基于Go的Agenda开发"></a>基于Go的Agenda开发</h1><hr>
-<p>本项目是一个使用Cobra实现的命令行会议管理系统，<a href="https://github.com/kotomineshiki/Agenda" target="_blank" rel="noopener">源代码请点击这里</a></p>
+        <p>本项目是一个使用Cobra实现的命令行会议管理系统，<a href="https://github.com/kotomineshiki/Agenda" target="_blank" rel="noopener">源代码请点击这里</a></p>
 <h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><ul>
 <li>利用Go语言进行编程</li>
 <li>使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码</li>
@@ -183,6 +204,12 @@
 </ol>
 <h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><p>基于面向对象的设计思想，我们程序的架构如下：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── Agenda <span class="comment">// 项目可执行文件</span></span><br><span class="line">├── LICENSE</span><br><span class="line">├── README.md</span><br><span class="line">├── cmd  <span class="comment">//存储指令处理文件</span></span><br><span class="line">│   ├── addparticipator.go</span><br><span class="line">│   ├── clearmeeting.go</span><br><span class="line">│   ├── createMeeting.go</span><br><span class="line">│   ├── deleteMeeting.go</span><br><span class="line">│   ├── deleteuser.go</span><br><span class="line">│   ├── login.go</span><br><span class="line">│   ├── logout.go</span><br><span class="line">│   ├── querymeeting.go</span><br><span class="line">│   ├── queryuser.go</span><br><span class="line">│   ├── quitmeeting.go</span><br><span class="line">│   ├── register.go</span><br><span class="line">│   ├── removeparticipator.go</span><br><span class="line">│   └── root.go</span><br><span class="line">├── data  <span class="comment">//存储日志信息</span></span><br><span class="line">│   ├── curUser.txt</span><br><span class="line">│   ├── error.log</span><br><span class="line">│   ├── info.log</span><br><span class="line">│   ├── meetinginfo</span><br><span class="line">│   └── userinfo</span><br><span class="line">├── deepcopy <span class="comment">//深复制的实现</span></span><br><span class="line">│   └── deepcopy.go</span><br><span class="line">├── entity   <span class="comment">//存储数据实体</span></span><br><span class="line">│   ├── Date.go</span><br><span class="line">│   ├── Meeting.go</span><br><span class="line">│   ├── Storage.go</span><br><span class="line">│   └── User.go</span><br><span class="line">├── loghelper</span><br><span class="line">│   └── log.go</span><br><span class="line">├── main.go</span><br><span class="line">├── service  <span class="comment">//存储相关操作的实现信息</span></span><br><span class="line">    └── agendaservice.go</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>entity</code>文件夹下存贮项目的数据实体结构</li>
+<li><code>data</code>则存储日志信息，以及报错的信息，在出错时，可以在 error.log 中查找错误的具体信息</li>
+<li><code>service</code> 文件夹下实现的是对于数据的抽象操作信息。为命令实现时，提供对于数据对象的操作接口</li>
+<li><code>cmd</code> 是实现命令的主要文件，每一个go文件即对应的一条指令。</li>
+</ul>
 <h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.18.32.png?raw=true" alt="命令显示"></p>
 <p>上图是本项目所包含的所有命令的简单介绍，可以用<code>./Agenda help</code>来查看，具体命令介绍如下：</p>
 <h3 id="register"><a href="#register" class="headerlink" title="register"></a>register</h3><blockquote>
@@ -381,6 +408,7 @@
 <li>可用参数列表</li>
 </ul>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">e, --endtime string     endtime of time interval</span></span><br><span class="line"><span class="ruby">-h, --help               help <span class="keyword">for</span> querymeeting</span></span><br><span class="line"><span class="ruby">-s, --starttime string   starttime of time interval</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.52.37.png?raw=true" alt="querymeeting"></p>
 
       
 
@@ -415,6 +443,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">服务计算</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CLI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Agenda</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -529,7 +580,7 @@ gitment.render('git')
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基于Go的Agenda开发"><span class="toc-number">1.</span> <span class="toc-text">基于Go的Agenda开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目需求"><span class="toc-number">1.1.</span> <span class="toc-text">项目需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行条件"><span class="toc-number">1.2.</span> <span class="toc-text">运行条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目架构"><span class="toc-number">1.3.</span> <span class="toc-text">项目架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关命令"><span class="toc-number">1.4.</span> <span class="toc-text">相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#register"><span class="toc-number">1.4.1.</span> <span class="toc-text">register</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#login"><span class="toc-number">1.4.2.</span> <span class="toc-text">login</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logout"><span class="toc-number">1.4.3.</span> <span class="toc-text">logout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queryuser"><span class="toc-number">1.4.4.</span> <span class="toc-text">queryuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteuser"><span class="toc-number">1.4.5.</span> <span class="toc-text">deleteuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createMeeting"><span class="toc-number">1.4.6.</span> <span class="toc-text">createMeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addparticipator"><span class="toc-number">1.4.7.</span> <span class="toc-text">addparticipator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeparticipator"><span class="toc-number">1.4.8.</span> <span class="toc-text">removeparticipator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteMeeting"><span class="toc-number">1.4.9.</span> <span class="toc-text">deleteMeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clearmeeting"><span class="toc-number">1.4.10.</span> <span class="toc-text">clearmeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#quitmeeting"><span class="toc-number">1.4.11.</span> <span class="toc-text">quitmeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querymeeting"><span class="toc-number">1.4.12.</span> <span class="toc-text">querymeeting</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目需求"><span class="toc-number">1.</span> <span class="toc-text">项目需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行条件"><span class="toc-number">2.</span> <span class="toc-text">运行条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目架构"><span class="toc-number">3.</span> <span class="toc-text">项目架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关命令"><span class="toc-number">4.</span> <span class="toc-text">相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#register"><span class="toc-number">4.1.</span> <span class="toc-text">register</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#login"><span class="toc-number">4.2.</span> <span class="toc-text">login</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logout"><span class="toc-number">4.3.</span> <span class="toc-text">logout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queryuser"><span class="toc-number">4.4.</span> <span class="toc-text">queryuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteuser"><span class="toc-number">4.5.</span> <span class="toc-text">deleteuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createMeeting"><span class="toc-number">4.6.</span> <span class="toc-text">createMeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addparticipator"><span class="toc-number">4.7.</span> <span class="toc-text">addparticipator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeparticipator"><span class="toc-number">4.8.</span> <span class="toc-text">removeparticipator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteMeeting"><span class="toc-number">4.9.</span> <span class="toc-text">deleteMeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clearmeeting"><span class="toc-number">4.10.</span> <span class="toc-text">clearmeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#quitmeeting"><span class="toc-number">4.11.</span> <span class="toc-text">quitmeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querymeeting"><span class="toc-number">4.12.</span> <span class="toc-text">querymeeting</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -649,7 +700,35 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,31 +748,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,7 +768,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,15 +780,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
+                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,6 +797,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
               </li>
             
             <div class="clearfix"></div>
