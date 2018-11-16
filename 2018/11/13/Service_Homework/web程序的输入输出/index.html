@@ -18,7 +18,7 @@
 <meta property="og:description" content="概述设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持） 任务要求 支持静态文件服务 支持简单 js 访问 提交表单，并输出一个表格 对 /unknown 给出开发中的提示，返回码 5xx">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8810.28.32.png?raw=true">
-<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.27.png">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.27.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.53.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.50.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.59.png?raw=true">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%881.29.14.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.49.40.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8B%E5%8D%887.19.49.png?raw=true">
-<meta property="og:updated_time" content="2018-11-16T11:29:29.605Z">
+<meta property="og:updated_time" content="2018-11-16T11:35:15.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO语言处理web程序的输入输出">
 <meta name="twitter:description" content="概述设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持） 任务要求 支持静态文件服务 支持简单 js 访问 提交表单，并输出一个表格 对 /unknown 给出开发中的提示，返回码 5xx">
@@ -237,7 +237,7 @@
 </blockquote>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//对静态文件，js文件的请求路由规则</span><br><span class="line">mx.PathPrefix(<span class="string">"/static"</span>).Handler(http.StripPrefix(<span class="string">"/static/"</span>, http.FileServer(http.Dir(webRoot+<span class="string">"/add/"</span>))))</span><br><span class="line"></span><br><span class="line">//对表单的请求路由规则</span><br><span class="line">mx.HandleFunc(<span class="string">"/"</span>, home).Methods(<span class="string">"<span class="keyword">GET</span>"</span>)</span><br><span class="line">mx.HandleFunc(<span class="string">"/"</span>, login).Methods(<span class="string">"<span class="keyword">POST</span>"</span>)</span><br><span class="line"></span><br><span class="line">//对错误访问的请求路由规则</span><br><span class="line">mx.HandleFunc(<span class="string">"/api/test"</span>, apiTestHandler(formatter)).Methods(<span class="string">"<span class="keyword">GET</span>"</span>)</span><br><span class="line">mx.HandleFunc(<span class="string">"/unknown"</span>, NotImplemented).Methods(<span class="string">"<span class="keyword">GET</span>"</span>)</span><br></pre></td></tr></table></figure>
 <p>其实现效果如下：</p>
-<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.27.png" alt="路由规则"></p>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.27.png?raw=true" alt="路由规则"></p>
 <h4 id="设置监听函数"><a href="#设置监听函数" class="headerlink" title="设置监听函数"></a>设置监听函数</h4><blockquote>
 <ul>
 <li><code>http.ListenAndServe</code>处设置服务器监听端口，利用这个接口，我们就可以简单的运行起一个服务器，开始监听请求信息，其实现的源代码如下：</li>
@@ -563,22 +563,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
               </li>
              
@@ -592,6 +576,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +599,46 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">web service</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
               </li>
              
@@ -627,18 +655,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
               </li>
              
@@ -647,27 +663,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">web service</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
               </li>
             
             <div class="clearfix"></div>
