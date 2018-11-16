@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%881.29.14.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.49.40.png?raw=true">
 <meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8B%E5%8D%887.19.49.png?raw=true">
-<meta property="og:updated_time" content="2018-11-16T11:25:36.009Z">
+<meta property="og:updated_time" content="2018-11-16T11:29:29.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO语言处理web程序的输入输出">
 <meta name="twitter:description" content="概述设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持） 任务要求 支持静态文件服务 支持简单 js 访问 提交表单，并输出一个表格 对 /unknown 给出开发中的提示，返回码 5xx">
@@ -219,7 +219,7 @@
 <ul>
 <li>下面是实现的一个简单的web服务器。运行下面的代码，在浏览器中输入<code>http://localhost:9090/</code>就可以在网页上显示<code>HelloWorld!</code></li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">"fmt"</span></span><br><span class="line"><span class="string">"net/http"</span></span><br><span class="line"><span class="string">"strings"</span></span><br><span class="line"><span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayhelloName</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">r.ParseForm() <span class="comment">//解析参数，默认是不会解析的</span></span><br><span class="line">fmt.Println(r.Form) <span class="comment">//这些信息是输出到服务器端的打印信息</span></span><br><span class="line">fmt.Println(<span class="string">"path"</span>, r.URL.Path)</span><br><span class="line">fmt.Println(<span class="string">"scheme"</span>, r.URL.Scheme)</span><br><span class="line">fmt.Println(r.Form[<span class="string">"url_long"</span>])</span><br><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> r.Form &#123;</span><br><span class="line">fmt.Println(<span class="string">"key:"</span>, k)</span><br><span class="line">fmt.Println(<span class="string">"val:"</span>, strings.Join(v, <span class="string">""</span>))</span><br><span class="line">&#125;</span><br><span class="line">fmt.Fprintf(w, <span class="string">"Hello Wrold!"</span>) <span class="comment">//这个写入到w的是输出到客户端的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">http.HandleFunc(<span class="string">"/"</span>, sayhelloName) <span class="comment">//设置访问的路由</span></span><br><span class="line">err := http.ListenAndServe(<span class="string">":9090"</span>, <span class="literal">nil</span>) <span class="comment">//设置监听的端口</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">log.Fatal(<span class="string">"ListenAndServe: "</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"strings"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayhelloName</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    r.ParseForm() <span class="comment">//解析参数，默认是不会解析的</span></span><br><span class="line">    fmt.Println(r.Form) <span class="comment">//这些信息是输出到服务器端的打印信息</span></span><br><span class="line">    fmt.Println(<span class="string">"path"</span>, r.URL.Path)</span><br><span class="line">    fmt.Println(<span class="string">"scheme"</span>, r.URL.Scheme)</span><br><span class="line">    fmt.Println(r.Form[<span class="string">"url_long"</span>])</span><br><span class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> r.Form &#123;</span><br><span class="line">        fmt.Println(<span class="string">"key:"</span>, k)</span><br><span class="line">        fmt.Println(<span class="string">"val:"</span>, strings.Join(v, <span class="string">""</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Fprintf(w, <span class="string">"Hello Wrold!"</span>) <span class="comment">//这个写入到w的是输出到客户端的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/"</span>, sayhelloName) <span class="comment">//设置访问的路由</span></span><br><span class="line">    err := http.ListenAndServe(<span class="string">":9090"</span>, <span class="literal">nil</span>) <span class="comment">//设置监听的端口</span></span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(<span class="string">"ListenAndServe: "</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>针对上面的简单实现，我们会发现实现一个GO语言的服务器只需要几行代码，其中最关键的是包括一下两个部分</li>
 </ul>
@@ -228,7 +228,7 @@
 <li><code>http.HandleFunc</code>注册了请求的路由规则。如在原代码中，当请求uri为”/“，路由就会转到函数sayhelloName去执行。这在后面实现不同路径访问时是很重要的。其源码实现如下：</li>
 </ul>
 </blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HandleFunc registers the handler function for the given pattern.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(mux *ServeMux)</span> <span class="title">HandleFunc</span><span class="params">(pattern <span class="keyword">string</span>, handler <span class="keyword">func</span>(ResponseWriter, *Request)</span>)</span> &#123;</span><br><span class="line">mux.Handle(pattern, HandlerFunc(handler))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HandleFunc registers the handler function for the given pattern.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(mux *ServeMux)</span> <span class="title">HandleFunc</span><span class="params">(pattern <span class="keyword">string</span>, handler <span class="keyword">func</span>(ResponseWriter, *Request)</span>)</span> &#123;</span><br><span class="line">	mux.Handle(pattern, HandlerFunc(handler))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>根据源码我们可以看到，<code>HandleFunc</code>将传入的处理响应函数与对应的path进行匹配，之后调用<code>mux.Handle</code>对传入的路径进行解析，然后向ServeMux中添加路由规则。而其完整的参数传递过程为<code>mux.ServerHTTP-&gt;mux.Handler-&gt;mux.handler-&gt;mux.match</code>。对于这部分实现有兴趣的同学，可以去阅读实现过程的源码。如果只需要使用，只要记住<code>http.HandleFunc</code>就可以的参数传递，使用方式即可。</p>
 <blockquote>
 <ul>
@@ -243,9 +243,9 @@
 <li><code>http.ListenAndServe</code>处设置服务器监听端口，利用这个接口，我们就可以简单的运行起一个服务器，开始监听请求信息，其实现的源代码如下：</li>
 </ul>
 </blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func ListenAndServe(addr string, handler Handler) <span class="builtin-name">error</span> &#123;</span><br><span class="line">server := &amp;Server&#123;Addr: addr, Handler: handler&#125;</span><br><span class="line">return server.ListenAndServe()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func ListenAndServe(addr string, handler Handler) <span class="builtin-name">error</span> &#123;</span><br><span class="line"><span class="built_in">	server </span>:= &amp;Server&#123;Addr: addr, Handler: handler&#125;</span><br><span class="line">	return server.ListenAndServe()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在源代码中我们可以看到，该函数首先实例化了<code>Server</code>，接着调用了<code>Server.ListenAndServe()</code>，其源码如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(srv *Server)</span> <span class="title">ListenAndServe</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">addr := srv.Addr</span><br><span class="line"><span class="keyword">if</span> addr == <span class="string">""</span> &#123;</span><br><span class="line">addr = <span class="string">":http"</span></span><br><span class="line">&#125;</span><br><span class="line">ln, err := net.Listen(<span class="string">"tcp"</span>, addr)    <span class="comment">//监听端口</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line"><span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> srv.Serve(tcpKeepAliveListener&#123;ln.(*net.TCPListener)&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(srv *Server)</span> <span class="title">ListenAndServe</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	addr := srv.Addr</span><br><span class="line">	<span class="keyword">if</span> addr == <span class="string">""</span> &#123;</span><br><span class="line">		addr = <span class="string">":http"</span></span><br><span class="line">	&#125;</span><br><span class="line">	ln, err := net.Listen(<span class="string">"tcp"</span>, addr)    <span class="comment">//监听端口</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> srv.Serve(tcpKeepAliveListener&#123;ln.(*net.TCPListener)&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在其中，最重要的就是<code>net.Listen(&quot;tcp&quot;,addr)</code>部分，和<code>srv.Serve()</code>部分。这两个函数分别设置了该服务器的监听端口以及处理提交向服务器的请求。特别是<code>srv.Serve()</code>，它的实现过程确保了每个请求都能保持独立，相互不会阻塞，以达到可以高效响应网络事件的目的</p>
 <h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><h4 id="访问静态文件"><a href="#访问静态文件" class="headerlink" title="访问静态文件"></a>访问静态文件</h4><ul>
 <li>访问静态的图片</li>
@@ -563,22 +563,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
@@ -592,6 +576,22 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,14 +611,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
               </li>
              
@@ -635,7 +627,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,15 +639,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,7 +655,19 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">web service</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
               </li>
             
             <div class="clearfix"></div>
