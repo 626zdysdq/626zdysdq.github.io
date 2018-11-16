@@ -7,15 +7,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/10 | 626号试验品</title>
+  <title>GO语言处理web程序的输入输出 | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="626号试验品">
-<meta property="og:url" content="http://yoursite.com/archives/2018/10/index.html">
+  <meta name="description" content="概述设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持） 任务要求 支持静态文件服务 支持简单 js 访问 提交表单，并输出一个表格 对 /unknown 给出开发中的提示，返回码 5xx">
+<meta name="keywords" content="服务计算,Go语言,web service">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GO语言处理web程序的输入输出">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/Service_Homework/web程序的输入输出/index.html">
 <meta property="og:site_name" content="626号试验品">
+<meta property="og:description" content="概述设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持） 任务要求 支持静态文件服务 支持简单 js 访问 提交表单，并输出一个表格 对 /unknown 给出开发中的提示，返回码 5xx">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.53.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.50.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.59.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.04.04.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.41.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.42.34.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%881.29.14.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.49.40.png?raw=true">
+<meta property="og:updated_time" content="2018-11-16T06:31:41.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="626号试验品">
+<meta name="twitter:title" content="GO语言处理web程序的输入输出">
+<meta name="twitter:description" content="概述设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持） 任务要求 支持静态文件服务 支持简单 js 访问 提交表单，并输出一个表格 对 /unknown 给出开发中的提示，返回码 5xx">
+<meta name="twitter:image" content="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.53.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -146,36 +160,132 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Service_Homework/web程序的输入输出" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/11/go语言实现CLI/" class="archive-article-date">
-  	<time datetime="2018-10-11T14:22:18.997Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/11/go语言实现CLI/">利用GO语言实现简单的CLI</a>
+    <h1 class="article-title" itemprop="name">
+      GO语言处理web程序的输入输出
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/11/13/Service_Homework/web程序的输入输出/" class="archive-article-date">
+  	<time datetime="2018-11-12T23:08:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+        
+		             <span class="archive-article-date">
+			           阅读量 <span id="busuanzi_value_page_pv"></span>
+	             	</span>
+      	
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持）</p>
+<h2 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h2><ol>
+<li>支持静态文件服务</li>
+<li>支持简单 js 访问</li>
+<li>提交表单，并输出一个表格</li>
+<li>对 <code>/unknown</code> 给出开发中的提示，返回码 <code>5xx</code></li>
+</ol>
+<a id="more"></a>
+<h2 id="服务器的工作原理"><a href="#服务器的工作原理" class="headerlink" title="服务器的工作原理"></a>服务器的工作原理</h2><blockquote>
+<ul>
+<li>一个Web服务器也被称为HTTP服务器，它通过HTTP协议与客户端通信。在实现一个服务器之前，我们首先要了解一下服务器的工作原理</li>
+</ul>
+</blockquote>
+<p>参考老师博客Web服务的工作模式流程图</p>
+<p><img src="" alt=""></p>
+<p>我们可以将一个web服务器的工作流程总结为下面的过程：</p>
+<ul>
+<li>客户机通过TCP/IP协议建立到服务器的TCP连接</li>
+<li>客户端向服务器发送HTTP协议请求包，请求服务器里的资源文档</li>
+<li>服务器向客户机发送HTTP协议应答包，如果请求的资源包含有动态语言的内容，那么服务器会调用动态语言的解释引擎负责处理“动态内容”，并将处理得到的数据返回给客户端</li>
+<li>客户机与服务器断开。由客户端解释文档，在客户端屏幕上渲染显示。</li>
+</ul>
+<p>关于web工作模式更详细的介绍请<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/03.1.md" target="_blank" rel="noopener">点击这里</a></p>
+<h4 id="搭建一个web服务器"><a href="#搭建一个web服务器" class="headerlink" title="搭建一个web服务器"></a>搭建一个web服务器</h4><blockquote>
+<ul>
+<li>Go语言里面提供了一个完善的net/http包，通过http包可以很方便的搭建起来一个可以运行的Web服务。同时使用这个包能很简单地对Web的路由，静态文件，模版，cookie等数据进行设置和操作。</li>
+</ul>
+</blockquote>
+<ul>
+<li>下面是实现的一个简单的web服务器</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"strings"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayhelloName</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    r.ParseForm() <span class="comment">//解析参数，默认是不会解析的</span></span><br><span class="line">    fmt.Println(r.Form) <span class="comment">//这些信息是输出到服务器端的打印信息</span></span><br><span class="line">    fmt.Println(<span class="string">"path"</span>, r.URL.Path)</span><br><span class="line">    fmt.Println(<span class="string">"scheme"</span>, r.URL.Scheme)</span><br><span class="line">    fmt.Println(r.Form[<span class="string">"url_long"</span>])</span><br><span class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> r.Form &#123;</span><br><span class="line">        fmt.Println(<span class="string">"key:"</span>, k)</span><br><span class="line">        fmt.Println(<span class="string">"val:"</span>, strings.Join(v, <span class="string">""</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Fprintf(w, <span class="string">"Hello Wrold!"</span>) <span class="comment">//这个写入到w的是输出到客户端的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/"</span>, sayhelloName) <span class="comment">//设置访问的路由</span></span><br><span class="line">    err := http.ListenAndServe(<span class="string">":9090"</span>, <span class="literal">nil</span>) <span class="comment">//设置监听的端口</span></span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(<span class="string">"ListenAndServe: "</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>针对上面的简单实现，我们需要了解的两个地方<ul>
+<li><code>http.HandleFunc</code>注册了请求的路由规则。如在原代码中，当请求uri为”/“，路由就会转到函数sayhelloName去执行。这在后面实现不同路径访问时是很重要的。</li>
+<li><code>http.ListenAndServe</code>处设置服务器监听端口，利用这个接口，我们就可以简单的运行起一个服务器</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><h4 id="访问静态文件"><a href="#访问静态文件" class="headerlink" title="访问静态文件"></a>访问静态文件</h4><ul>
+<li>访问静态的图片</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.53.png?raw=true" alt="金木"></p>
+<ul>
+<li>访问静态图标</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.50.png?raw=true" alt="圆"></p>
+<ul>
+<li>访问静态网页(html+css+js)</li>
+</ul>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.59.png?raw=true" alt="html1"></p>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.04.04.png?raw=true" alt="html2"></p>
+<h4 id="访问js文件"><a href="#访问js文件" class="headerlink" title="访问js文件"></a>访问js文件</h4><p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.03.41.png?raw=true" alt="js"></p>
+<h4 id="提交表单，并输出表格"><a href="#提交表单，并输出表格" class="headerlink" title="提交表单，并输出表格"></a>提交表单，并输出表格</h4><blockquote>
+<ul>
+<li>提交表单</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.42.34.png?raw=true" alt="up"></p>
+<blockquote>
+<ul>
+<li>输出表格</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%881.29.14.png?raw=true" alt="show"></p>
+<h4 id="对未知请求的错误处理"><a href="#对未知请求的错误处理" class="headerlink" title="对未知请求的错误处理"></a>对未知请求的错误处理</h4><p><img src="https://github.com/626zdysdq/golang-io/blob/master/picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-16%20%E4%B8%8A%E5%8D%8812.49.40.png?raw=true" alt="wrong"></p>
+<p><a href="https://github.com/626zdysdq/golang-io" target="_blank" rel="noopener">源代码地址</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+
+            <span id="busuanzi_container_page_pv">
+               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+            </span>
+
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,29 +299,146 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CLI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">selpg</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">web service</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/13/Service_Homework/web程序的输入输出/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
   
-  
-    </div></section>
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "626zdysdq",//github用户名
+  repo: "626zdysdq.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "16780e2aba9f693ae466",//注册OAuth Application时生产的ClinetID
+    client_secret:"4be169e19af3acab60838b01441550757f144ee3",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
   
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/01/Service_Homework/Agenda/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于Go的Agenda开发</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#任务要求"><span class="toc-number">2.</span> <span class="toc-text">任务要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器的工作原理"><span class="toc-number">3.</span> <span class="toc-text">服务器的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#搭建一个web服务器"><span class="toc-number">3.0.1.</span> <span class="toc-text">搭建一个web服务器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现效果"><span class="toc-number">4.</span> <span class="toc-text">实现效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#访问静态文件"><span class="toc-number">4.0.1.</span> <span class="toc-text">访问静态文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问js文件"><span class="toc-number">4.0.2.</span> <span class="toc-text">访问js文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提交表单，并输出表格"><span class="toc-number">4.0.3.</span> <span class="toc-text">提交表单，并输出表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对未知请求的错误处理"><span class="toc-number">4.0.4.</span> <span class="toc-text">对未知请求的错误处理</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -237,8 +464,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
