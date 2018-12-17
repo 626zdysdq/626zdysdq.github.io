@@ -9,18 +9,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>复刻Swapi项目小结 | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本次项目我们被大佬带飞了，项目主题是大佬定的，架构是大佬搭建的，我主要负责写后端的部分逻辑并测试。 有几点感想：  再次见识了新的后端架构：graphql-resolver-service-model 。 了解了一些 GraphQL ，它可以在浏览器上使用，通过定义模式，可以对某些函数查看它返回的数据，并且可以只指定查看部分域，进行后端测试很方便。 了解到了 BoltDB ，后端的数据存储使用了它">
+  <meta name="description" content="分工 由于我个人的代码能力比较差，所以本次项目可以算是被同组的大佬带飞  本次项目朱俊凯负责前端的开发，朱逸渠负责后端的开发  我所做的工作主要是在项目初期模仿源网站构建了 swapi 前端的项目架构、进行数据的抓取以及格式转换。在组员填充好框架之后，进行程序测试以及代码逻辑层的修改简化。">
 <meta name="keywords" content="服务计算,Swapi,个人报稿">
 <meta property="og:type" content="article">
 <meta property="og:title" content="复刻Swapi项目小结">
 <meta property="og:url" content="http://yoursite.com/2018/12/16/Swapi/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="本次项目我们被大佬带飞了，项目主题是大佬定的，架构是大佬搭建的，我主要负责写后端的部分逻辑并测试。 有几点感想：  再次见识了新的后端架构：graphql-resolver-service-model 。 了解了一些 GraphQL ，它可以在浏览器上使用，通过定义模式，可以对某些函数查看它返回的数据，并且可以只指定查看部分域，进行后端测试很方便。 了解到了 BoltDB ，后端的数据存储使用了它">
+<meta property="og:description" content="分工 由于我个人的代码能力比较差，所以本次项目可以算是被同组的大佬带飞  本次项目朱俊凯负责前端的开发，朱逸渠负责后端的开发  我所做的工作主要是在项目初期模仿源网站构建了 swapi 前端的项目架构、进行数据的抓取以及格式转换。在组员填充好框架之后，进行程序测试以及代码逻辑层的修改简化。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-16T13:49:01.881Z">
+<meta property="og:updated_time" content="2018-12-17T06:33:23.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="复刻Swapi项目小结">
-<meta name="twitter:description" content="本次项目我们被大佬带飞了，项目主题是大佬定的，架构是大佬搭建的，我主要负责写后端的部分逻辑并测试。 有几点感想：  再次见识了新的后端架构：graphql-resolver-service-model 。 了解了一些 GraphQL ，它可以在浏览器上使用，通过定义模式，可以对某些函数查看它返回的数据，并且可以只指定查看部分域，进行后端测试很方便。 了解到了 BoltDB ，后端的数据存储使用了它">
+<meta name="twitter:description" content="分工 由于我个人的代码能力比较差，所以本次项目可以算是被同组的大佬带飞  本次项目朱俊凯负责前端的开发，朱逸渠负责后端的开发  我所做的工作主要是在项目初期模仿源网站构建了 swapi 前端的项目架构、进行数据的抓取以及格式转换。在组员填充好框架之后，进行程序测试以及代码逻辑层的修改简化。">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -176,13 +176,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本次项目我们被大佬带飞了，项目主题是大佬定的，架构是大佬搭建的，我主要负责写后端的部分逻辑并测试。</p>
-<p>有几点感想：</p>
-<ul>
-<li>再次见识了新的后端架构：graphql-resolver-service-model 。</li>
-<li>了解了一些 GraphQL ，它可以在浏览器上使用，通过定义模式，可以对某些函数查看它返回的数据，并且可以只指定查看部分域，进行后端测试很方便。</li>
-<li>了解到了 BoltDB ，后端的数据存储使用了它。它是基于纯Go语言开发的数据库，可以直接使用API存取数据而没有查询语句。数据是以键值对的形式存储的，而一群相似的键值对存储在 Bucket 之中，类似于关系数据库的 Table。Bucket 似乎是可以嵌套的。</li>
-<li>GraphQL显示的数据类型、传递给前端的数据类型，与实际存储的数据，是可以不同的。<br>这次的项目主题是博客收割机，通过本次项目我也稍微了解到一些订阅源的概念。</li>
+        <h2 id="分工"><a href="#分工" class="headerlink" title="分工"></a>分工</h2><ul>
+<li><p>由于我个人的代码能力比较差，所以本次项目可以算是被同组的大佬带飞</p>
+</li>
+<li><p>本次项目朱俊凯负责前端的开发，朱逸渠负责后端的开发</p>
+</li>
+<li><p>我所做的工作主要是在项目初期模仿源网站构建了 swapi 前端的项目架构、进行数据的抓取以及格式转换。在组员填充好框架之后，进行程序测试以及代码逻辑层的修改简化。</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="实现过程中遇到的困难"><a href="#实现过程中遇到的困难" class="headerlink" title="实现过程中遇到的困难"></a>实现过程中遇到的困难</h2><ul>
+<li>在和组员一起爬取数据的时候，主要遇到了两个问题。一个是源网站对于数据又一些反爬虫的设置，很难一次性爬取大量的数据。另一个是爬取下来的数据数据转化成我们需要的数据格式，储存进数据库中</li>
+</ul>
+<h2 id="实验心得"><a href="#实验心得" class="headerlink" title="实验心得"></a>实验心得</h2><ul>
+<li><p>通过这次作业，我第一次了解到了 BoltDB 这个超级轻量级的数据库。作为纯Go语言开发的数据库，它的使用和我们之前学习和使用的数据库有很多不太一样的地方。例如，它可以直接使用API存取数据而没有查询语句、数据是以键值对的形式存储的、一群相似的键值对存储在 Bucket 之中，类似于关系数据库的 Table，而且还有给我们带来很大困扰的——不支持sql的query功能</p>
+</li>
+<li><p>很多的技术都有自己的特点和面向的情况，这次作业让我接触到了之前没用用过的Vue，GraphQL， axios等新技术，虽然有的因为不熟悉没用用到，但还是扩展了我们未来的学习和开放方向，以及一些途径。</p>
+</li>
+<li><p>在一个大的项目工程中，我们其实很难发现自己代码中的一些冗余的逻辑步骤或者是一些错误。所以在组队项目中，合理的分工后相互的检查代码逻辑和测试是很重要的一部分。</p>
+</li>
 </ul>
 
       
@@ -360,7 +372,7 @@ gitment.render('git')
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分工"><span class="toc-number">1.</span> <span class="toc-text">分工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现过程中遇到的困难"><span class="toc-number">2.</span> <span class="toc-text">实现过程中遇到的困难</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验心得"><span class="toc-number">3.</span> <span class="toc-text">实验心得</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -508,6 +520,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
               </li>
              
@@ -520,10 +536,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
               </li>
              
@@ -533,6 +545,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,23 +576,15 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,10 +601,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
               </li>
              
               <li class="article-tag-list-item">
