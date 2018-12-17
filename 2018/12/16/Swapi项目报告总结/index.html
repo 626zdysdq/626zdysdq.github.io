@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.36.36.png?raw=true">
 <meta property="og:image" content="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.49.59.png?raw=true">
 <meta property="og:image" content="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.07.08.png?raw=true">
-<meta property="og:updated_time" content="2018-12-17T03:28:21.560Z">
+<meta property="og:updated_time" content="2018-12-17T07:12:52.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单 web 服务与客户端开发实战">
 <meta name="twitter:description" content="项目要求 复制 https://swapi.co/ 网站 获取该网站所有资源与数据 考虑部分资源的授权访问，以满足本作业的要求 使用 boltDB 界面不能少于 3 个界面 服务 API 不能少于 6 个 基于 Vue 架构的开发">
@@ -200,8 +200,24 @@
 <li>我们的项目主要包括4各部分，WebTest、vue-test、testDB、swdata</li>
 </ul>
 </blockquote>
-<h4 id="WebTest——后端文件，用来搭建服务器"><a href="#WebTest——后端文件，用来搭建服务器" class="headerlink" title="WebTest——后端文件，用来搭建服务器"></a>WebTest——后端文件，用来搭建服务器</h4><p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.15.03.png?raw=true" alt="WebTest"></p>
-<h4 id="vue-test——前端框架"><a href="#vue-test——前端框架" class="headerlink" title="vue-test——前端框架"></a>vue-test——前端框架</h4><p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.07.45.png?raw=true" alt="vue-test"></p>
+<h4 id="WebTest——后端文件，用来搭建服务器"><a href="#WebTest——后端文件，用来搭建服务器" class="headerlink" title="WebTest——后端文件，用来搭建服务器"></a>WebTest——后端文件，用来搭建服务器</h4><blockquote>
+<ul>
+<li>后端文件的基础就是之前作业中实现的go语言web服务器</li>
+<li>后端文件的主要任务为实现一个可以从数据库提取信息的接口，以及通过之前用过的gorella包中的mux来分割url请求（类似一个路由功能），并返回一个request</li>
+<li>后段文件的详细介绍，<a href="https://blog.csdn.net/kotomineshiki/article/details/85041559" target="_blank" rel="noopener">请点击这里</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.15.03.png?raw=true" alt="WebTest"></p>
+<p><br></p>
+<h4 id="vue-test——前端框架"><a href="#vue-test——前端框架" class="headerlink" title="vue-test——前端框架"></a>vue-test——前端框架</h4><blockquote>
+<ul>
+<li>前段采用vue的框架，其主要的优点在与简单，高效以及可复用。</li>
+<li>Vue的关键思想在于使用小型、独立和可复用的组件来构建一棵大型的组件树，最后成为一个应用；其中每个vue文件都可用于生成对应的组件，每个组件都是可复用的vue实例</li>
+<li>在这次作业的要求中，我们要求实现三个界面，而其实每个界面的UI在大部分都是完全一样的，例如顶端的logo，边栏等。在这种情况下，vue架构的小组件可复用的功能就可以得到很好的减少冗余重复的代码(虽然我们的代码并没有怎么用到)</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.07.45.png?raw=true" alt="vue-test"></p>
 <h4 id="testDB——用来生成数据库（将抓取的文件存入数据库）"><a href="#testDB——用来生成数据库（将抓取的文件存入数据库）" class="headerlink" title="testDB——用来生成数据库（将抓取的文件存入数据库）"></a>testDB——用来生成数据库（将抓取的文件存入数据库）</h4><p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.08.02.png?raw=true" alt="testDB"></p>
 <h4 id="swdata——保存抓取数据的代码以及抓取的数据"><a href="#swdata——保存抓取数据的代码以及抓取的数据" class="headerlink" title="swdata——保存抓取数据的代码以及抓取的数据"></a>swdata——保存抓取数据的代码以及抓取的数据</h4><p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.08.13.png?raw=true" alt="swdata"></p>
 <h2 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h2><h4 id="后端运行"><a href="#后端运行" class="headerlink" title="后端运行"></a>后端运行</h4><ul>
@@ -539,6 +555,14 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Swapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
@@ -559,15 +583,15 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swapi</a>
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,27 +607,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,6 +635,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
               </li>
              
@@ -643,15 +659,15 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">web service</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">web service</a>
               </li>
             
             <div class="clearfix"></div>
