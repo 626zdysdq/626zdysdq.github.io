@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.36.36.png?raw=true">
 <meta property="og:image" content="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8810.49.59.png?raw=true">
 <meta property="og:image" content="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.07.08.png?raw=true">
-<meta property="og:updated_time" content="2018-12-17T07:12:52.491Z">
+<meta property="og:updated_time" content="2018-12-17T07:49:37.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单 web 服务与客户端开发实战">
 <meta name="twitter:description" content="项目要求 复制 https://swapi.co/ 网站 获取该网站所有资源与数据 考虑部分资源的授权访问，以满足本作业的要求 使用 boltDB 界面不能少于 3 个界面 服务 API 不能少于 6 个 基于 Vue 架构的开发">
@@ -218,8 +218,20 @@
 </ul>
 </blockquote>
 <p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.07.45.png?raw=true" alt="vue-test"></p>
-<h4 id="testDB——用来生成数据库（将抓取的文件存入数据库）"><a href="#testDB——用来生成数据库（将抓取的文件存入数据库）" class="headerlink" title="testDB——用来生成数据库（将抓取的文件存入数据库）"></a>testDB——用来生成数据库（将抓取的文件存入数据库）</h4><p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.08.02.png?raw=true" alt="testDB"></p>
-<h4 id="swdata——保存抓取数据的代码以及抓取的数据"><a href="#swdata——保存抓取数据的代码以及抓取的数据" class="headerlink" title="swdata——保存抓取数据的代码以及抓取的数据"></a>swdata——保存抓取数据的代码以及抓取的数据</h4><p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.08.13.png?raw=true" alt="swdata"></p>
+<h4 id="testDB——用来生成数据库（将抓取的文件存入数据库）"><a href="#testDB——用来生成数据库（将抓取的文件存入数据库）" class="headerlink" title="testDB——用来生成数据库（将抓取的文件存入数据库）"></a>testDB——用来生成数据库（将抓取的文件存入数据库）</h4><blockquote>
+<ul>
+<li>利用GO语言钦点的超级轻量级数据库BoltDB</li>
+<li>其中的三个文件夹分别保存我们从官网上拿到的对应的三类api数据</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.08.02.png?raw=true" alt="testDB"></p>
+<h4 id="swdata——保存抓取数据的代码以及抓取的数据"><a href="#swdata——保存抓取数据的代码以及抓取的数据" class="headerlink" title="swdata——保存抓取数据的代码以及抓取的数据"></a>swdata——保存抓取数据的代码以及抓取的数据</h4><blockquote>
+<ul>
+<li>从网站上抓取下来的数据，为txt文件</li>
+<li>还需要在后面将抓取的数据转化为json格式</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/GroupZZZ/ServiceComputing/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-12-17%20%E4%B8%8A%E5%8D%8811.08.13.png?raw=true" alt="swdata"></p>
 <h2 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h2><h4 id="后端运行"><a href="#后端运行" class="headerlink" title="后端运行"></a>后端运行</h4><ul>
 <li><p>将项目保存在本地后，在命令行进入<code>WebTest</code>文件夹下</p>
 </li>
@@ -563,6 +575,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
@@ -583,18 +599,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
               </li>
              
@@ -607,7 +611,31 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,26 +655,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
               </li>
              
@@ -659,15 +667,19 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">web service</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">web service</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
             
             <div class="clearfix"></div>
