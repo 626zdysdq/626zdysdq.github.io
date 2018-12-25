@@ -7,33 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>基于Go的Agenda开发 | 626号试验品</title>
+  <title>Swapi容器化 | 626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
-<meta name="keywords" content="服务计算,Go语言,CLI,Agenda">
+  <meta name="description" content="作业要求这次作业是在我们上一次作业的基础上，将上一次用的BoltDB 为 Mysql 数据库，并利用 docker 进行容器化。在这次作业中，我们的项目主要有3个容器构成：   1.储存前端 Nodejs 的容器  2.储存后段 Go 的容器  3.储存数据库 Mysql 的容器 —— docker 为我们提供了直接容器化的 Mysql 服务，我们可以选择在安装好 docker 后利用 docke">
+<meta name="keywords" content="服务计算,Swapi,Go语言,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Go的Agenda开发">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/Service_Homework/Agenda/index.html">
+<meta property="og:title" content="Swapi容器化">
+<meta property="og:url" content="http://yoursite.com/2018/09/29/Swapi容器化/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
+<meta property="og:description" content="作业要求这次作业是在我们上一次作业的基础上，将上一次用的BoltDB 为 Mysql 数据库，并利用 docker 进行容器化。在这次作业中，我们的项目主要有3个容器构成：   1.储存前端 Nodejs 的容器  2.储存后段 Go 的容器  3.储存数据库 Mysql 的容器 —— docker 为我们提供了直接容器化的 Mysql 服务，我们可以选择在安装好 docker 后利用 docke">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.18.32.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.38.34.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.49.41.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.50.24.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.51.32.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.03.17.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8811.11.54.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8811.13.05.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.57.05.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.01.35.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.02.17.png?raw=true">
-<meta property="og:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.52.37.png?raw=true">
-<meta property="og:updated_time" content="2018-11-02T07:21:46.273Z">
+<meta property="og:updated_time" content="2018-12-25T18:22:21.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于Go的Agenda开发">
-<meta name="twitter:description" content="本项目是一个使用Cobra实现的命令行会议管理系统，源代码请点击这里 项目需求 利用Go语言进行编程 使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码 项目部署在 Github 上，合适多人协作，特别是代码归并 支持日志（原则上不使用debug调试程序）">
-<meta name="twitter:image" content="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.18.32.png?raw=true">
+<meta name="twitter:title" content="Swapi容器化">
+<meta name="twitter:description" content="作业要求这次作业是在我们上一次作业的基础上，将上一次用的BoltDB 为 Mysql 数据库，并利用 docker 进行容器化。在这次作业中，我们的项目主要有3个容器构成：   1.储存前端 Nodejs 的容器  2.储存后段 Go 的容器  3.储存数据库 Mysql 的容器 —— docker 为我们提供了直接容器化的 Mysql 服务，我们可以选择在安装好 docker 后利用 docke">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -164,20 +151,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Service_Homework/Agenda" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Swapi容器化" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      基于Go的Agenda开发
+      Swapi容器化
     </h1>
   
 
         
-        <a href="/2018/11/01/Service_Homework/Agenda/" class="archive-article-date">
-  	<time datetime="2018-10-31T18:33:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
+        <a href="/2018/09/29/Swapi容器化/" class="archive-article-date">
+  	<time datetime="2018-09-29T11:08:41.985Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
 </a>
         
         
@@ -189,229 +176,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本项目是一个使用Cobra实现的命令行会议管理系统，<a href="https://github.com/kotomineshiki/Agenda" target="_blank" rel="noopener">源代码请点击这里</a></p>
-<h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><ul>
-<li>利用Go语言进行编程</li>
-<li>使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码</li>
-<li>项目部署在 Github 上，合适多人协作，特别是代码归并</li>
-<li>支持日志（原则上不使用debug调试程序）</li>
+        <h2 id="作业要求"><a href="#作业要求" class="headerlink" title="作业要求"></a>作业要求</h2><p>这次作业是在我们上一次作业的基础上，将上一次用的<code>BoltDB</code> 为 <code>Mysql</code> 数据库，并利用 <code>docker</code> 进行容器化。在这次作业中，我们的项目主要有3个容器构成：</p>
+<blockquote>
+<ul>
+<li><p>1.储存前端 <code>Nodejs</code> 的容器</p>
+</li>
+<li><p>2.储存后段 <code>Go</code> 的容器</p>
+</li>
+<li><p>3.储存数据库 <code>Mysql</code> 的容器 —— <code>docker</code> 为我们提供了直接容器化的 <code>Mysql</code> 服务，我们可以选择在安装好 <code>docker</code> 后利用 <code>docker pull mysql</code> 得到<code>Mysql</code>的镜像。除此之外，也可以通过<code>Dockerfile</code>来构建<code>Mysql</code> 服务，<a href="http://www.runoob.com/docker/docker-install-mysql.html" target="_blank" rel="noopener">具体介绍在这里</a></p>
+</li>
 </ul>
+</blockquote>
 <a id="more"></a>
-<h2 id="运行条件"><a href="#运行条件" class="headerlink" title="运行条件"></a>运行条件</h2><ol>
-<li>将项目文件，放入本地Go工作环境的src目录下</li>
-<li>在命令行中进入该文件中，运行<code>go build</code>命令</li>
-<li>之后就可以在命令行中利用<code>./Agenda [command_name] ......</code>来进行项目运行</li>
-</ol>
-<h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><p>基于面向对象的设计思想，我们程序的架构如下：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── Agenda <span class="comment">// 项目可执行文件</span></span><br><span class="line">├── LICENSE</span><br><span class="line">├── README.md</span><br><span class="line">├── cmd  <span class="comment">//存储指令处理文件</span></span><br><span class="line">│   ├── addparticipator.go</span><br><span class="line">│   ├── clearmeeting.go</span><br><span class="line">│   ├── createMeeting.go</span><br><span class="line">│   ├── deleteMeeting.go</span><br><span class="line">│   ├── deleteuser.go</span><br><span class="line">│   ├── login.go</span><br><span class="line">│   ├── logout.go</span><br><span class="line">│   ├── querymeeting.go</span><br><span class="line">│   ├── queryuser.go</span><br><span class="line">│   ├── quitmeeting.go</span><br><span class="line">│   ├── register.go</span><br><span class="line">│   ├── removeparticipator.go</span><br><span class="line">│   └── root.go</span><br><span class="line">├── data  <span class="comment">//存储日志信息</span></span><br><span class="line">│   ├── curUser.txt</span><br><span class="line">│   ├── error.log</span><br><span class="line">│   ├── info.log</span><br><span class="line">│   ├── meetinginfo</span><br><span class="line">│   └── userinfo</span><br><span class="line">├── deepcopy <span class="comment">//深复制的实现</span></span><br><span class="line">│   └── deepcopy.go</span><br><span class="line">├── entity   <span class="comment">//存储数据实体</span></span><br><span class="line">│   ├── Date.go</span><br><span class="line">│   ├── Meeting.go</span><br><span class="line">│   ├── Storage.go</span><br><span class="line">│   └── User.go</span><br><span class="line">├── loghelper</span><br><span class="line">│   └── log.go</span><br><span class="line">├── main.go</span><br><span class="line">├── service  <span class="comment">//存储相关操作的实现信息</span></span><br><span class="line">    └── agendaservice.go</span><br></pre></td></tr></table></figure>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装<code>docker</code></h3><p>由于我是macOS的系统，所以我就以macOS的系统为例。<a href="http://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">其他系统可以参考这里</a></p>
 <ul>
-<li><code>entity</code>文件夹下存贮项目的数据实体结构</li>
-<li><code>data</code>则存储日志信息，以及报错的信息，在出错时，可以在 error.log 中查找错误的具体信息</li>
-<li><code>service</code> 文件夹下实现的是对于数据的抽象操作信息。为命令实现时，提供对于数据对象的操作接口</li>
-<li><code>cmd</code> 是实现命令的主要文件，每一个go文件即对应的一条指令。</li>
+<li>我们的首选是直接去官网下载安装应用程序，然后安装运行即可</li>
 </ul>
-<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.18.32.png?raw=true" alt="命令显示"></p>
-<p>上图是本项目所包含的所有命令的简单介绍，可以用<code>./Agenda help</code>来查看，具体命令介绍如下：</p>
-<h3 id="register"><a href="#register" class="headerlink" title="register"></a>register</h3><blockquote>
+<p><img src="" alt=""></p>
 <ul>
-<li>注册新用户，要求用户提供一个唯一的用户名、密码、邮箱和电话。且对于个参数的输入格式都做了合法性检查。</li>
+<li>当然除了最方便的直接下载之外我们也可以采取装逼的方式，在命令行使用 <code>Homebrew</code>进行安装。只需要运行<code>brew cask install docker</code>即可直接进行安装。</li>
+</ul>
+<h3 id="对前段进行容器化"><a href="#对前段进行容器化" class="headerlink" title="对前段进行容器化"></a>对前段进行容器化</h3><h5 id="配置-nginx-conf"><a href="#配置-nginx-conf" class="headerlink" title="配置 nginx.conf"></a>配置 nginx.conf</h5><blockquote>
+<ul>
+<li>针对<code>nginx.conf</code>的配置，在很多网站上都有很详细的讲解，我也没有必要再重复的制造轮子，很详细的介绍，<a href="https://www.cnblogs.com/liang-wei/p/5849771.html" target="_blank" rel="noopener">可以点击这里</a></li>
 </ul>
 </blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>   /usr/share/nginx/html;</span><br><span class="line">            <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ <span class="variable">@router</span>;</span><br><span class="line">            <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="创建Dockerfile"><a href="#创建Dockerfile" class="headerlink" title="创建Dockerfile"></a>创建Dockerfile</h5><blockquote>
 <ul>
-<li>使用格式：</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda register -u username -<span class="selector-tag">p</span> password -e email -t phone</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">e, --email string       新用户邮箱</span></span><br><span class="line"><span class="ruby">-h, --help               help <span class="keyword">for</span> register</span></span><br><span class="line"><span class="ruby">-p, --password string    新用户密码</span></span><br><span class="line"><span class="ruby">-t, --telephone string   新用户电话号码</span></span><br><span class="line"><span class="ruby">-u, --username string    新用户名</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.38.34.png?raw=true" alt="register"></p>
-<h3 id="login"><a href="#login" class="headerlink" title="login"></a>login</h3><blockquote>
-<ul>
-<li>用户登录,用户输入用户名和密码登陆。且只有在没有登陆的状态下，用户名注册过且密码正确则登陆成功。</li>
+<li>本次项目中所使用的<code>Dockerfile</code>结构如下。<code>Dockerfile</code>是一个包含用于组合映像的命令的文本文档。和我们之前在实训中所使用的<code>Makefile</code>文件类似，都是将我们需要运行的一系列命令都存储在一个文件中，这样我们就直接使用一条命令，来完成多文件编译运行的工作。同样的，对于<code>Dockerfile</code>的详细介绍，<a href="https://blog.csdn.net/u011781521/article/details/80464065" target="_blank" rel="noopener">请点击这里</a></li>
 </ul>
 </blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置nginx版本</span></span><br><span class="line"><span class="keyword">FROM</span> hub.c.<span class="number">163</span>.com/library/nginx</span><br><span class="line"><span class="comment">#设置主目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="bash">COPY package*.json ./</span></span><br><span class="line"><span class="bash"><span class="comment">#进行安装</span></span></span><br><span class="line"><span class="bash">RUN npm install</span></span><br><span class="line"><span class="bash"><span class="comment">#把所有的项目文件都进行拷贝</span></span></span><br><span class="line"><span class="bash">COPY . .</span></span><br><span class="line"><span class="bash"><span class="comment"># 进行build</span></span></span><br><span class="line"><span class="bash">RUN npm run build</span></span><br><span class="line"><span class="bash"><span class="comment">#暴露端口 8888</span></span></span><br><span class="line"><span class="bash">EXPOSE 8888</span></span><br></pre></td></tr></table></figure>
+<h3 id="对后端进行容器化"><a href="#对后端进行容器化" class="headerlink" title="对后端进行容器化"></a>对后端进行容器化</h3><blockquote>
 <ul>
-<li>使用格式：</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda login -u username -<span class="selector-tag">p</span> password</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">h, --help              help <span class="keyword">for</span> login</span></span><br><span class="line"><span class="ruby">-p, --password string   用于登录的用户名</span></span><br><span class="line"><span class="ruby">-u, --username string   注册过的用户名</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.49.41.png?raw=true" alt="login"></p>
-<h3 id="logout"><a href="#logout" class="headerlink" title="logout"></a>logout</h3><blockquote>
-<ul>
-<li>用户登出,要求用户处于登入状态才能正确运行该命令</li>
+<li>本次项目的后端是利用<code>Go</code>语言实现的，对后端进行容器化的过程与上面类似，只需要配置好<code>Dockerfile</code>文件，之后运行即可</li>
 </ul>
 </blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># FROM 是集成自哪个镜像，我们是go程序官方提供了一个golang这样的镜像，我们可以直接使用</span></span><br><span class="line"><span class="keyword">FROM</span> golang:latest</span><br><span class="line"><span class="comment"># MAINTAINER 是维护这名字</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> test</span><br><span class="line"><span class="comment"># WORKDIR 工作目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /go/src</span></span><br><span class="line"><span class="bash"><span class="comment">#复制命令，把本地的所有文件复制到工作目录下</span></span></span><br><span class="line"><span class="bash">COPY . .</span></span><br><span class="line"><span class="bash"><span class="comment"># 开发的端口</span></span></span><br><span class="line"><span class="bash">EXPOSE 8080 </span></span><br><span class="line"><span class="bash">RUN go build -o main </span></span><br><span class="line"><span class="bash"><span class="comment"># 执行一个带参数的命令</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"/bin/bash"</span>, <span class="string">"/go/src/script/build.sh"</span>]</span></span><br></pre></td></tr></table></figure>
+<p><img src="" alt=""></p>
+<h3 id="对数据库进行容器化"><a href="#对数据库进行容器化" class="headerlink" title="对数据库进行容器化"></a>对数据库进行容器化</h3><blockquote>
 <ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda <span class="built_in">logout</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="built_in">help</span>   <span class="built_in">help</span> <span class="keyword">for</span> <span class="built_in">logout</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.50.24.png?raw=true" alt="logout"></p>
-<h3 id="queryuser"><a href="#queryuser" class="headerlink" title="queryuser"></a>queryuser</h3><blockquote>
-<ul>
-<li>查询当前注册过的用户除密码以外的信息，要求当前处于登陆状态</li>
+<li>在刚开始，我们提到<code>docker</code>为我们提供了直接容器化的<code>Mysql</code>服务，所以我们可以直接获得<code>Mysql</code>的镜像服务，在对数据库进行容器化时我们只需要以下几个步骤</li>
 </ul>
 </blockquote>
+<h5 id="后端服务与数据库服务进行对接"><a href="#后端服务与数据库服务进行对接" class="headerlink" title="后端服务与数据库服务进行对接"></a>后端服务与数据库服务进行对接</h5><blockquote>
 <ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./Agenda</span> queryuser</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="built_in">help</span>          <span class="built_in">help</span> <span class="keyword">for</span> queryuser</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8810.51.32.png?raw=true" alt="queryuser"></p>
-<h3 id="deleteuser"><a href="#deleteuser" class="headerlink" title="deleteuser"></a>deleteuser</h3><blockquote>
-<ul>
-<li>删除用户，删除当前处于登陆状态的用户信息，该用户发起的所有回忆会被删除，该用户为参与者的会议会删除该参与者</li>
+<li>在Go文件中导入对应的数据包 </li>
 </ul>
 </blockquote>
+<p><img src="" alt=""></p>
+<h5 id="编写-sql-文件，建库建表写数据"><a href="#编写-sql-文件，建库建表写数据" class="headerlink" title="编写 sql 文件，建库建表写数据"></a>编写 sql 文件，建库建表写数据</h5><blockquote>
 <ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./Agenda</span> deleteuser</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="built_in">help</span>   <span class="built_in">help</span> <span class="keyword">for</span> deleteuser</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.03.17.png?raw=true" alt="deleteuser"></p>
-<h3 id="createMeeting"><a href="#createMeeting" class="headerlink" title="createMeeting"></a>createMeeting</h3><blockquote>
-<ul>
-<li>创建会议，已登录的用户创建一个新的会议。要求提供会议名称、会议的参与者、会议开始/结束时间。若会议名称重复，时间不合法，没有有效参与者则创建失败。</li>
+<li>编写对应的数据库操作代码</li>
 </ul>
 </blockquote>
+<h5 id="编写-Dockerfile-文件"><a href="#编写-Dockerfile-文件" class="headerlink" title="编写 Dockerfile 文件"></a>编写 Dockerfile 文件</h5><blockquote>
 <ul>
-<li>使用格式 </li>
-</ul>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda createMeeting -t <span class="string">[Title]</span> -p <span class="string">[\"name1, name2\"]</span> -s <span class="string">[yyyy-mm-dd/hh:mm]</span> -e <span class="string">[yyyy-mm-dd/hh:mm]</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">e, --EndTime string         meeting<span class="string">'s endTime</span></span></span><br><span class="line"><span class="ruby">-p, --Participator strings   meeting<span class="string">'s participator</span></span></span><br><span class="line"><span class="ruby">-s, --StartTime string       meeting<span class="string">'s startTime</span></span></span><br><span class="line"><span class="ruby">-t, --Title string           meeting title</span></span><br><span class="line"><span class="ruby">-h, --help                   help <span class="keyword">for</span> createMeeting</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8811.11.54.png?raw=true" alt="createmeeting"></p>
-<h3 id="addparticipator"><a href="#addparticipator" class="headerlink" title="addparticipator"></a>addparticipator</h3><blockquote>
-<ul>
-<li>增加参与者，已登录的用户可以增加自己发起会议的参与者。要求提供会议名称和添加的参与者</li>
+<li>与上面的过程类似</li>
 </ul>
 </blockquote>
+<h3 id="使用docker-compose部署应用"><a href="#使用docker-compose部署应用" class="headerlink" title="使用docker-compose部署应用"></a>使用<code>docker-compose</code>部署应用</h3><h5 id="编写-docker-compose-yml-文件"><a href="#编写-docker-compose-yml-文件" class="headerlink" title="编写 docker-compose.yml 文件"></a>编写 <code>docker-compose.yml</code> 文件</h5><blockquote>
 <ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="symbol">Agenda</span> addparticipator -t [meetingtitle] -p [<span class="string">"name1, name2"</span>])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="keyword">help</span>                   <span class="keyword">help</span> <span class="keyword">for</span> addparticipator</span><br><span class="line">-<span class="keyword">p</span>, --participator strings   participator(s) you want <span class="keyword">to</span> <span class="built_in">add</span>, <span class="built_in">input</span> like <span class="string">"name1, name2"</span></span><br><span class="line">-t, --title <span class="built_in">string</span>           the title of meeting</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8A%E5%8D%8811.13.05.png?raw=true" alt="addparticipator"></p>
-<h3 id="removeparticipator"><a href="#removeparticipator" class="headerlink" title="removeparticipator"></a>removeparticipator</h3><blockquote>
-<ul>
-<li>移除参与者，已登录的用户可以移除自己发起会议的参与者。要求提供会议名称和添加的参与者。</li>
+<li><code>docker compose</code> 作为一个整合发布应用的利器，我们可以在官方文档中找到详细的，针对<code>docker-compose</code>的教程和配置案例，<a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">官方文档请这里</a>,当然如果你觉得官方文档看不下去，<a href="https://blog.csdn.net/qq_36148847/article/details/79427878" target="_blank" rel="noopener">也可以点击这里</a>，不过个人还是更加推荐官方的介绍，虽然英语确实比较难懂。</li>
 </ul>
 </blockquote>
-<ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda removeparticipator -t <span class="string">[title]</span> -p <span class="string">[\"name1, name2\"]</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-h, <span class="comment">--help                   help for removeparticipator</span></span><br><span class="line">-p, <span class="comment">--participator strings   the participator(s) of the meeting, input like "name1, name2"</span></span><br><span class="line">-t, <span class="comment">--title string           the title of the meeting</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.57.05.png?raw=true" alt="removeparticipator"></p>
-<h3 id="deleteMeeting"><a href="#deleteMeeting" class="headerlink" title="deleteMeeting"></a>deleteMeeting</h3><blockquote>
-<ul>
-<li>删除会议，已登录的用户可以删除自己作为发起者的某次会议，要求提供会议名称</li>
-</ul>
-</blockquote>
-<ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda deleteMeeting -t <span class="string">[title]</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-t, --<span class="built_in">Title</span> string   meeting <span class="built_in">title</span></span><br><span class="line">-h, --<span class="built_in">help</span>           <span class="built_in">help</span> <span class="keyword">for</span> deleteMeeting</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.01.35.png?raw=true" alt="deleteMeeting"></p>
-<h3 id="clearmeeting"><a href="#clearmeeting" class="headerlink" title="clearmeeting"></a>clearmeeting</h3><blockquote>
-<ul>
-<li>已登录的用户可以删除所有自己作为发起者的会议。</li>
-</ul>
-</blockquote>
-<ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./Agenda</span> clearmeeting</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>可用参数列表</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="built_in">help</span>   <span class="built_in">help</span> <span class="keyword">for</span> clearmeeting</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用截图</p>
-</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%882.02.17.png?raw=true" alt="clearmeeting"></p>
-<h3 id="quitmeeting"><a href="#quitmeeting" class="headerlink" title="quitmeeting"></a>quitmeeting</h3><blockquote>
-<ul>
-<li>已登陆用户可以推出自己作为参与者的会议</li>
-</ul>
-</blockquote>
-<ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Agenda quitmeeting -t <span class="string">[title]</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-h, --<span class="built_in">help</span>           <span class="built_in">help</span> <span class="keyword">for</span> quitmeeting</span><br><span class="line">-t, --<span class="built_in">title</span> string   the <span class="built_in">title</span> of the meeting</span><br></pre></td></tr></table></figure>
-<h3 id="querymeeting"><a href="#querymeeting" class="headerlink" title="querymeeting"></a>querymeeting</h3><blockquote>
-<ul>
-<li>查询会议，已登陆用户可以查询一段时间内自己作为参与者和发起者的所有会议信息</li>
-</ul>
-</blockquote>
-<ul>
-<li>使用格式</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/Agenda querymeeting -s [yyyy-mm-dd/</span><span class="string">hh:</span>mm] -e [yyyy-mm-dd/<span class="string">hh:</span>mm]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用参数列表</li>
-</ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">e, --endtime string     endtime of time interval</span></span><br><span class="line"><span class="ruby">-h, --help               help <span class="keyword">for</span> querymeeting</span></span><br><span class="line"><span class="ruby">-s, --starttime string   starttime of time interval</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用截图</li>
-</ul>
-<p><img src="https://github.com/kotomineshiki/Agenda/blob/master/Picture/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-11-02%20%E4%B8%8B%E5%8D%881.52.37.png?raw=true" alt="querymeeting"></p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="symbol">services:</span></span><br><span class="line"><span class="symbol">  web:</span></span><br><span class="line"><span class="symbol">    image:</span> test/swapi</span><br><span class="line"><span class="symbol">    deploy:</span></span><br><span class="line"><span class="symbol">      replicas:</span> <span class="number">5</span></span><br><span class="line"><span class="symbol">      resources:</span></span><br><span class="line"><span class="symbol">        limits:</span> </span><br><span class="line"><span class="symbol">          cpus:</span> <span class="string">"0.1"</span></span><br><span class="line"><span class="symbol">          memory:</span> <span class="number">50</span>M</span><br><span class="line"><span class="symbol">      restart_policy:</span></span><br><span class="line"><span class="symbol">        condition:</span> on-failure</span><br><span class="line"><span class="symbol">    ports:</span></span><br><span class="line">      - <span class="string">"8111:4200"</span></span><br><span class="line"><span class="symbol">    networks:</span> </span><br><span class="line">      - gowebnet</span><br><span class="line"><span class="symbol">networks:</span> </span><br><span class="line"><span class="symbol">  gowebnet:</span></span><br></pre></td></tr></table></figure>
+<h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><p>最后我们只需要运行<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f docker-compose<span class="selector-class">.yml</span> up -d swapi</span><br></pre></td></tr></table></figure></p>
+<p>就完成啦本次作业的实现</p>
+<p><a href="https://github.com/GroupZZZ/ServiceComputing" target="_blank" rel="noopener">项目源代码</a></p>
 
       
 
@@ -455,15 +288,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swapi</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CLI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Agenda</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -519,7 +352,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/01/Service_Homework/Agenda/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/29/Swapi容器化/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -554,18 +387,18 @@ gitment.render('git')
   
 <nav id="article-nav">
   
-    <a href="/2018/11/13/Service_Homework/web程序的输入输出/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/29/电政作业通知/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          GO语言处理web程序的输入输出
+          作业通知
         
       </div>
     </a>
   
   
-    <a href="/2018/10/11/go语言实现CLI/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">利用GO语言实现简单的CLI</div>
+    <a href="/2018/09/27/Service_Homework/Go语言环境配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go语言开发环境的安装</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -592,7 +425,7 @@ gitment.render('git')
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目需求"><span class="toc-number">1.</span> <span class="toc-text">项目需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行条件"><span class="toc-number">2.</span> <span class="toc-text">运行条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目架构"><span class="toc-number">3.</span> <span class="toc-text">项目架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关命令"><span class="toc-number">4.</span> <span class="toc-text">相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#register"><span class="toc-number">4.1.</span> <span class="toc-text">register</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#login"><span class="toc-number">4.2.</span> <span class="toc-text">login</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logout"><span class="toc-number">4.3.</span> <span class="toc-text">logout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queryuser"><span class="toc-number">4.4.</span> <span class="toc-text">queryuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteuser"><span class="toc-number">4.5.</span> <span class="toc-text">deleteuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createMeeting"><span class="toc-number">4.6.</span> <span class="toc-text">createMeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addparticipator"><span class="toc-number">4.7.</span> <span class="toc-text">addparticipator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeparticipator"><span class="toc-number">4.8.</span> <span class="toc-text">removeparticipator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteMeeting"><span class="toc-number">4.9.</span> <span class="toc-text">deleteMeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clearmeeting"><span class="toc-number">4.10.</span> <span class="toc-text">clearmeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#quitmeeting"><span class="toc-number">4.11.</span> <span class="toc-text">quitmeeting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querymeeting"><span class="toc-number">4.12.</span> <span class="toc-text">querymeeting</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业要求"><span class="toc-number">1.</span> <span class="toc-text">作业要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现步骤"><span class="toc-number">2.</span> <span class="toc-text">实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装docker"><span class="toc-number">2.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对前段进行容器化"><span class="toc-number">2.2.</span> <span class="toc-text">对前段进行容器化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#配置-nginx-conf"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">配置 nginx.conf</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建Dockerfile"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">创建Dockerfile</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对后端进行容器化"><span class="toc-number">2.3.</span> <span class="toc-text">对后端进行容器化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数据库进行容器化"><span class="toc-number">2.4.</span> <span class="toc-text">对数据库进行容器化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#后端服务与数据库服务进行对接"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">后端服务与数据库服务进行对接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编写-sql-文件，建库建表写数据"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">编写 sql 文件，建库建表写数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编写-Dockerfile-文件"><span class="toc-number">2.4.0.3.</span> <span class="toc-text">编写 Dockerfile 文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用docker-compose部署应用"><span class="toc-number">2.5.</span> <span class="toc-text">使用docker-compose部署应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#编写-docker-compose-yml-文件"><span class="toc-number">2.5.0.1.</span> <span class="toc-text">编写 docker-compose.yml 文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动"><span class="toc-number">2.5.0.2.</span> <span class="toc-text">启动</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
