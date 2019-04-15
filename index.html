@@ -148,6 +148,209 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-system_analysis/作业三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/system_analysis/作业三/">Homework3</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/system_analysis/作业三/" class="archive-article-date">
+  	<time datetime="2019-04-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h2><ul>
+<li>简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点<ul>
+<li>从项目特点、风险特征、人力资源利用角度思考</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>瀑布模型：</p>
+<ul>
+<li><p>优点：</p>
+<ul>
+<li>瀑布模型可以将一个大型问题转化为一系列简单的线性问题，然后逐个解决。这降低软件开发的复杂程度，提高软件开发过程的透明性，也提高软件开发过程的可管理性。</li>
+<li>瀑布模型推迟了软件实现，强调在软件实现前必须进行分析和设计工作。以项目的阶段评审和文档控制为手段有效地对整个开发过程进行指导，保证了阶段之间的正确衔接，能够及时发现并纠正开发过程中存在的缺陷，使产品达到预期的质量要求，降低了开发风险。</li>
+<li>每个阶段都有明确的产出物和验证准则，只有当前一阶段完成后，才会去进行后续阶段，因此可以进行有效的人力资源的调度和分配</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>由于开发过程是线性的，对前面阶段的依赖性强，所以如果前面的需求分析等工作没有做好，可能会导致后期实现工作难度过大，甚至无法开展</li>
+<li>风险控制能力较弱，如果前面的步骤出现错误，后面的所有步骤都需要重新来过，代价过高</li>
+<li>缺乏灵活性，尤其无法解决需求不明确或不准确的问题</li>
+<li>瀑布模型中的软件活动是文档驱动的，当阶段之间规定过多的文档时，会极大地增加系统的工作量,浪费大量的人力资源</li>
+<li>管理人员如果仅仅以文档的完成情况来评估项目完成进度，往<br>往会产生错误的结论。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>增量模型：</p>
+<ul>
+<li><p>优点：</p>
+<ul>
+<li>在开发过程中客户可以不断看到开发的软件，可以增强客户对系统的信心，以及逐步明确客户的需求;</li>
+<li>由于每一个增量模块相对独立，所以某一个模块的错误不会影响到整个系统，可以降低系统失败风险，提高系统可靠性，稳定性和可维护性;</li>
+<li>适应性强，可以更好的对应需求的变化，可以在一定程度上防止由于需求变化，倒是项目开发失败的情况。</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>要求项目必须是可以模块化的，且建立初始模型时，作为增量基础的基本业务服务的确定有一定难度</li>
+<li>增量粒度难以选择，实际开发过程中很可能会演变成边做边改的过程，不利于整体把控。</li>
+<li>由于进度和配置的复杂性，可能会增大管理成本，超出组织的能力，浪费很多的人力资源</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>螺旋模型：</p>
+<ul>
+<li>优点：<ul>
+<li>在面对需求功能复杂，可能无法从项目开始就得到明确的规格，开发周期长，用户需求在中途经常发生变化时，有很强的适应性</li>
+<li>螺旋模型结合了瀑布模型和快速原型方法，具有这两种方法的优越性能，除此之外，由于其加入了风险分析，有利于进行风险的控制</li>
+<li>每个阶段都保证了客户的参与，防止产品偏离客户需求，同时让客户了解进度，及时进行沟通。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>螺旋模型由于需要不断的迭代，因此需要消耗更多的成本和人力资源，如果风险分析错误，则可能会遭受到巨大的损失</li>
+<li>螺旋模型强调风险分析，但说服外部客户接受和相信分析结果并做出相关反应并不容易，因此螺旋模型往往比较适合内部的大规模软件开发。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>简述统一过程三大特点，与面向对象的方法有什么关系？</p>
+<blockquote>
+<ul>
+<li>特点：<pre><code>* 用户为中心
+* 架构为重心
+* 风险驱动和用例子驱动相结合的迭代增量模型
+</code></pre></li>
+<li>与面向对象方法的关系：<pre><code>* RUP是一种基于`UML`的开发过程，它将软件开发过程要素和软件工件要素整合在统一的软件工程框架中，是一个面向对象的程序开发方法论。
+</code></pre></li>
+</ul>
+</blockquote>
+</li>
+<li><p>简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？</p>
+<blockquote>
+<ul>
+<li>初始阶段：<ul>
+<li>准则：为系统建立业务案例并确定项目的边界。</li>
+<li>里程碑：生命周期目标里程碑，包括一些重要的文档，如:项目构想、原始用例模型、原始业务风险评估、一个或者多个原型、原始业务案例等。</li>
+</ul>
+</li>
+<li>精化阶段<ul>
+<li>准则：分析问题领域，建立健全的体系结构基础，编制项目计划，完成项目中高风险需求部分的开发</li>
+<li>里程碑：生命周期体系结构里程碑，包括风险分析文档、软件体系结构基线、项目计划、可执行的进化原型、初始版本的用户手册等</li>
+</ul>
+</li>
+<li>构建阶段<ul>
+<li>准则：完成所有剩余的技术构件和稳定业务需求功能的开发，并集成为产品，详细测试所有功能</li>
+<li>里程碑：初始运行能力里程碑，包括可以运行的软件产品、用户手册等，它决定了产品是否可以在测试环境中进行部署。</li>
+</ul>
+</li>
+<li>交付阶段/产品化阶段<ul>
+<li>准则：确保软件对最终用户是可用的</li>
+<li>里程碑：产品发布里程碑，确定最终目标是否实现，是否应该开始产品下一个版本的另一个开发周期。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？     </p>
+<blockquote>
+<ul>
+<li>原因：<ul>
+<li>因为软件企业都有自己规范化的管理方法，并一般都采用统一过程模型来指导软件开发的过程。统一过程可以利用软件产品范围的弹性，合理规划范围，使得软件生产按固定节奏运行，固定迭代周期、固定开发周期、固定升级周期。这样软件企业就可以非常好地预判项目的工期、范围、质量和预算，并按时发布产品</li>
+</ul>
+</li>
+<li>好处：<ul>
+<li>每一个迭代过程都与用户保持联系，使得客户可以参与软件开发的全过程，可以更加明确软件的需求，降低开发风险</li>
+<li>因为每一迭代周期时固定的，因此软件开发过程的预算、时间是可控的，这样可以提高客户、团队对软件产品的信心，且可以节省很多的人力资源和开发成本</li>
+<li>每一次迭代内部都是一个瀑布模型，产品开发的可管理性会很高，易于进行人力资源的分配，充分提高团队的效率</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="实践题"><a href="#实践题" class="headerlink" title="实践题"></a>实践题</h2><ul>
+<li><p>下载腾讯微信企业版PC端，安装腾讯敏捷产品研发平台（TAPD），了解使用 TAPD 的最佳实践（可以写博客获得加分）</p>
+<ul>
+<li>比较完善 backlog 支持（树结构）</li>
+<li>迭代（sprint）安排</li>
+<li>较好的缺陷管理</li>
+<li>Kanban</li>
+<li>统计</li>
+</ul>
+</li>
+<li><p>大作业准备</p>
+<ul>
+<li>按大作业要求组建团队、思考项目题目与内容</li>
+<li>将团队暂时分为技术研究、业务调研两个部分<ul>
+<li>技术团队初步确定技术方法，力争做一些技术原型，如 基于 MVC 框架的的用户登陆实现</li>
+<li>业务调研团队调查竞争性产品，分析它们的基础、共性业务以及竞争优势</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/system_analysis/作业三/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-system_analysis/作业二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -899,104 +1102,9 @@
 
 
   
-    <article id="post-Service_Homework/Go语言环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/27/Service_Homework/Go语言环境配置/">Go语言开发环境的安装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/27/Service_Homework/Go语言环境配置/" class="archive-article-date">
-  	<time datetime="2018-09-27T15:52:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><blockquote>
-<ul>
-<li>由于我在按照老师的教程安装VSCode的过程中，一直出现’git miss’ 的问题，所以我首先安装了git</li>
-</ul>
-</blockquote>
-<h4 id="直接使用yum安装"><a href="#直接使用yum安装" class="headerlink" title="直接使用yum安装"></a>直接使用yum安装</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install git</span><br><span class="line">git --version    <span class="comment">//check git version</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>但是通过这种方式安装的git，可能会被VSCode警告版本太低，所以我们可以使用下面的升级安装的git</li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">服务计算</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VScode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Centos</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/27/Service_Homework/Go语言环境配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1099,6 +1207,22 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
               </li>
              
@@ -1119,11 +1243,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1131,19 +1255,19 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
+                <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+                <a href="javascript:void(0)" class="js-tag color5">动作分离</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+                <a href="javascript:void(0)" class="js-tag color2">订阅发布模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+                <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1167,19 +1291,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动作分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">订阅发布模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,11 +1311,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1211,11 +1323,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
               </li>
             
             <div class="clearfix"></div>
