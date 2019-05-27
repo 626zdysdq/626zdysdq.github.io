@@ -16,10 +16,14 @@
 <meta property="og:site_name" content="626号试验品">
 <meta property="og:description" content="简答题 用例的概念    是一组系统如何反应用户请求的场景，是对系统或子系统的某个连贯的功能单元的定义和描述 它确定了谁可以用系统做什么 其重点在于文本描述，而非画图">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-24T09:34:07.886Z">
+<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG525.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG521.png?raw=true">
+<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG522.png?raw=true">
+<meta property="og:updated_time" content="2019-05-27T16:59:32.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Homework4">
 <meta name="twitter:description" content="简答题 用例的概念    是一组系统如何反应用户请求的场景，是对系统或子系统的某个连贯的功能单元的定义和描述 它确定了谁可以用系统做什么 其重点在于文本描述，而非画图">
+<meta name="twitter:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG525.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -224,13 +228,15 @@
 <ul>
 <li>用例图的基本符号与元素？</li>
 </ul>
+<p><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG525.png?raw=true" alt="用例图符号"></p>
 <blockquote>
 <ul>
-<li>参与者</li>
-<li>用例</li>
-<li>表示整个系统</li>
-<li>链接参与者和用例，表示交互</li>
-<li>表示用例之间的包含关系/扩展关系/泛化关系</li>
+<li>参与者——小人</li>
+<li>用例——椭圆</li>
+<li>表示整个系统——大方框</li>
+<li>链接参与者和用例，表示交互——不带箭头的实线</li>
+<li>表示用例之间的包含关系/扩展关系/泛化关系——带箭头的线</li>
+<li>外部系统和服务——长条形的方框</li>
 </ul>
 </blockquote>
 <ul>
@@ -242,29 +248,29 @@
 <li>确定参与者</li>
 </ul>
 </blockquote>
-<pre><code>* 谁主要是用该系统
-* 谁需要该系统支持来完成工作
-* 谁负责管理该系统等
+<pre><code>&gt;* 谁主要是用该系统
+&gt;* 谁需要该系统支持来完成工作
+&gt;* 谁负责管理该系统等
 </code></pre><blockquote>
 <ul>
 <li>确定用例</li>
 </ul>
 </blockquote>
-<pre><code>* 系统需要向用户提供哪些功能
-* 是否存在对系统有影响的外部事件
-* 是否有存储和检索信息等
+<pre><code>&gt;* 系统需要向用户提供哪些功能
+&gt;* 是否存在对系统有影响的外部事件
+&gt;* 是否有存储和检索信息等
 </code></pre><blockquote>
 <ul>
 <li>确定用例之间的关系</li>
 </ul>
 </blockquote>
-<pre><code>* 包含关系，扩展关系，泛化关系等
+<pre><code>&gt;* 包含关系，扩展关系，泛化关系等
 </code></pre><blockquote>
 <ul>
 <li>确定关联的外部支持系统</li>
 </ul>
 </blockquote>
-<pre><code>* 放在系统边界外的右边
+<pre><code>&gt;* 放在系统边界外的右边
 </code></pre><blockquote>
 </blockquote>
 <ul>
@@ -275,27 +281,30 @@
 <li>对利益相关人</li>
 </ul>
 </blockquote>
-<pre><code>* 可以清晰的看到系统为用户提供的功能，保证系统开发可以按照预想的需求进行开发
-* 可以根据需要对软件的功能进行修改和调整，降低软件风险
+<pre><code>&gt;* 可以清晰的看到系统为用户提供的功能，保证系统开发可以按照预想的需求进行开发
+&gt;* 可以根据需要对软件的功能进行修改和调整，降低软件风险
 </code></pre><blockquote>
 <ul>
 <li>对开发者</li>
 </ul>
 </blockquote>
-<pre><code>* 用例明确了用户的需求，可以使得软件架构的设计思路更加清晰
-* 可以根据工作量确定合理的人员安排
-* 降低了于用户之间的开发成本
+<pre><code>&gt;* 用例明确了用户的需求，可以使得软件架构的设计思路更加清晰
+&gt;* 可以根据工作量确定合理的人员安排
+&gt;* 降低了于用户之间的开发成本
 </code></pre><blockquote>
 </blockquote>
 <h2 id="建模练习题（用例模型）"><a href="#建模练习题（用例模型）" class="headerlink" title="建模练习题（用例模型）"></a>建模练习题（用例模型）</h2><ul>
-<li><p>选择2-3个你熟悉的类似业务的在线服务系统（或移动 APP），如定旅馆（携程、去哪儿等）、定电影票、背单词APP等，分别绘制它们用例图。并满足以下要求：</p>
-<ul>
+<li>选择2-3个你熟悉的类似业务的在线服务系统（或移动 APP），如定旅馆（携程、去哪儿等）、定电影票、背单词APP等，分别绘制它们用例图。并满足以下要求：<ul>
 <li>请使用用户的视角，描述用户目标或系统提供的服务</li>
 <li>粒度达到子用例级别，并用 include 和 exclude 关联它们</li>
 <li>请用色彩标注出你认为创新（区别于竞争对手的）用例或子用例</li>
 <li>尽可能识别外部系统和服务</li>
 </ul>
 </li>
+</ul>
+<p><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG521.png?raw=true" alt="携程"></p>
+<p><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/WechatIMG522.png?raw=true" alt="猫眼"></p>
+<ul>
 <li><p>然后，回答下列问题：</p>
 <ul>
 <li><p>为什么相似系统的用例图是相似的？</p>
@@ -610,6 +619,58 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Swapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">web service</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
@@ -630,58 +691,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swapi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">web service</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
               </li>
              
@@ -691,6 +700,22 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预制体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">资源</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">组合模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,22 +736,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">预制体</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">资源</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合模式</a>
               </li>
             
             <div class="clearfix"></div>
