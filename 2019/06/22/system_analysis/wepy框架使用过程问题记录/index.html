@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="626号试验品">
 <meta property="og:description" content="Wepy概述wepy是微信小程序的一个原生的框架，与Vue.js类似。其文件架构包括：  pages: 保存使用到的页面，如项目中的主页面，任务发布页面等 components: 存放一下结构比较复杂的，或者每个页面都存在的公共组件，如底部的导航栏 app.wpy: 入口文件 sotre: redux(如果你创建项目时使用了redux的话）  wepy.config.js: webpack配置文件">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/source/SA/wepy.png?raw=true">
-<meta property="og:updated_time" content="2019-06-23T13:43:37.292Z">
+<meta property="og:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/wepy.png?raw=true">
+<meta property="og:updated_time" content="2019-06-23T13:47:41.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wepy框架使用过程问题记录">
 <meta name="twitter:description" content="Wepy概述wepy是微信小程序的一个原生的框架，与Vue.js类似。其文件架构包括：  pages: 保存使用到的页面，如项目中的主页面，任务发布页面等 components: 存放一下结构比较复杂的，或者每个页面都存在的公共组件，如底部的导航栏 app.wpy: 入口文件 sotre: redux(如果你创建项目时使用了redux的话）  wepy.config.js: webpack配置文件">
-<meta name="twitter:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/source/SA/wepy.png?raw=true">
+<meta name="twitter:image" content="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/wepy.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -193,7 +193,7 @@
 </ul>
 <a id="more"></a>
 <p>由于我主要负责项目的UI设计和一些前段样式的修改，所以主要针对pages和component中的文件进行分析。wepy的页面以及组件的文件格式都为<code>.wpy</code>格式，其文件内部的框架如下：</p>
-<p><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/source/SA/wepy.png?raw=true" alt="wepy"></p>
+<p><img src="https://github.com/626zdysdq/626zdysdq.github.io/blob/master/SA/wepy.png?raw=true" alt="wepy框架"></p>
 <ul>
 <li>template——是文件的页面模块，即wxml部分，但要求template标签内只能存在一个<view>的框架，所以在进行页面的开发是，需要用一组<view>的标签将整个页面的不同部分包起来</view></view></li>
 <li>script——是页面数据以及实现响应的过程模块，需要注意的是微信小程序开发工具对于这一块的格式要求是非常严格的，特别是分号，逗号之类的使用。</li>
@@ -500,22 +500,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
               </li>
              
@@ -524,19 +508,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,27 +516,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swapi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">web service</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unity3D</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,11 +536,55 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CLI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Agenda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Swapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人报稿</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">web service</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">selpg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,6 +597,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
               </li>
              
               <li class="article-tag-list-item">
