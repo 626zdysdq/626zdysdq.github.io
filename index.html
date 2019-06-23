@@ -155,7 +155,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/22/system_analysis/wepy框架使用过程问题记录/">wepy框架过程问题记录</a>
+      <a class="article-title" href="/2019/06/22/system_analysis/wepy框架使用过程问题记录/">wepy框架使用过程问题记录</a>
     </h1>
   
 
@@ -183,47 +183,7 @@
 <li><p>index.template.html: web页面的入口文件</p>
 </li>
 </ul>
-<p>由于我主要负责项目的UI设计和一些前段样式的修改，所以主要针对pages和component中的文件进行分析。wepy的页面以及组件的文件格式都为<code>.wpy</code>格式，其文件内部的框架如下：</p>
-<p><img src="" alt=""></p>
-<ul>
-<li>template——是文件的页面模块，即wxml部分，但要求template标签内只能存在一个<view>的框架，所以在进行页面的开发是，需要用一组<view>的标签将整个页面的不同部分包起来</view></view></li>
-<li>script——是页面数据以及实现响应的过程模块，需要注意的是微信小程序开发工具对于这一块的格式要求是非常严格的，特别是分号，逗号之类的使用。</li>
-<li>style——即页面样式，大部分情况下我们都直接使用微信默认的样式，可以直接引入微信小程序默认的样式文件，如果需要修改，则只需要在文件里面重新定义属性的值即可</li>
-</ul>
-<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><ul>
-<li>在数据驱动的页面中data修改与显示的问题<ul>
-<li>对于在页面中用到的任何数据，都应该事先在data中定义并且赋值，否则没有赋值的数据元素是没有办法在后期修改的。</li>
-<li><code>this.data.ele</code>会改变页面里该数据副本的值，但由于页面不刷新显示，所以并不能改变页面的数据</li>
-<li><code>this.setData()</code>再修改数据后确实会更新页面，这在修改数据为一个数组是并不会出先问题，但是当我们需要更新的是一个单纯的value值时，由于会出现先刷新出所给的值，再刷回原来值的情况。</li>
-<li><code>this.ele</code>是直接改变页面的值，也可以刷新页面。虽然不建议这样做，但当你遇到上面两种方式都无法解决问题的时候，可以使用这种方式直接进行赋值</li>
-</ul>
-</li>
-<li>开发中this的指代问题<ul>
-<li>在同步的问题中，this表示当前的调用者对象，通常来说是不会出现错误的</li>
-<li>但是在异步问题中通常不建议直接使用this，因为在异步过程中this很容易产生歧义</li>
-</ul>
-</li>
-<li><code>navigateTo()</code>和<code>redirectTo()</code>的区别<ul>
-<li><code>navigateTo()</code>保留当前页面，跳转到应用内的某个页面</li>
-<li><code>redirectTo()</code>关闭当前页面，跳转到应用内的某个页面</li>
-</ul>
-</li>
-<li>在页面中无法多次引入同一个组件<ul>
-<li>组件使用的是静态编译组件，即组件是在编译阶段编译进页面的，每个组件都是唯一的一个实例。 多个组件共享同一个数据。并且静态编译组件</li>
-<li>由于组件类似于模版，所以在页面中如果不指定不同的id，多次引入同一个组件时就会报错，所以如果一个组件要用多次的话，就需要分别定义。</li>
-</ul>
-</li>
-<li>在每次输入结束需要清空input时<ul>
-<li>在有些情况下，<code>this.inputValue = &#39;&#39;</code>是无效的，必须要用setdata才可以</li>
-</ul>
-</li>
-<li>组件样式调整又是没有办法显示<ul>
-<li>可能是因为调整了该组件没有的属性</li>
-<li>也可能是一个组件中引入另一个组件作为字组件，因为父组件没有<code>&lt;style&gt;</code>标签，导致子组件不编译<code>&lt;style&gt;</code>标签的内容</li>
-</ul>
-</li>
-</ul>
-
+        
       
 
       
@@ -1104,22 +1064,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动作分离</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">订阅发布模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">服务计算</a>
               </li>
              
@@ -1136,7 +1080,11 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1144,11 +1092,7 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云服务</a>
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1172,7 +1116,39 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动作分离</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">订阅发布模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">地形</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,22 +1165,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">组合模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">地形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
             
             <div class="clearfix"></div>
