@@ -7,25 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>巡逻兵总结 | 626号试验品</title>
+  <title>626号试验品</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结游戏要求  创建一个地图和若干巡逻兵(使用动画)； 每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算； 巡逻兵碰撞到障碍物，则会自动选下一个点为目标； 巡逻兵在设定范围内感知到玩家，会自动追击玩家； 失去玩家目标后，继续巡逻； 计分：玩家每次甩掉一个巡逻兵计一分，与">
-<meta name="keywords" content="Unity3D,编程实践,动作分离,订阅发布模式,工厂模式">
+  <meta name="description" content="自我总结由于我并不擅长打代码，所以在本次的项目开发中，我作为项目经理和UI设计师，主要负责完成以下工作  完善文档，规划每一轮迭代的任务 进行主要界面的UI设计 对我们前端工程师实现的页面进行一些细微的样式调整 部分页面功能的实现 测试并提出部分功能的优化需求（虽然大部分被驳回）  完善文档 根据产品经理提出的要求，对我们的项目进行了竞争优势的分析，并完善了项目愿景。 在会议后进行会议记录，以进行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="巡逻兵总结">
-<meta property="og:url" content="http://yoursite.com/2018/06/19/3D_Game/Patrol/index.html">
+<meta property="og:title" content="626号试验品">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/system_analysis/16340314-多鱼-Final-Report/index.html">
 <meta property="og:site_name" content="626号试验品">
-<meta property="og:description" content="由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结游戏要求  创建一个地图和若干巡逻兵(使用动画)； 每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算； 巡逻兵碰撞到障碍物，则会自动选下一个点为目标； 巡逻兵在设定范围内感知到玩家，会自动追击玩家； 失去玩家目标后，继续巡逻； 计分：玩家每次甩掉一个巡逻兵计一分，与">
+<meta property="og:description" content="自我总结由于我并不擅长打代码，所以在本次的项目开发中，我作为项目经理和UI设计师，主要负责完成以下工作  完善文档，规划每一轮迭代的任务 进行主要界面的UI设计 对我们前端工程师实现的页面进行一些细微的样式调整 部分页面功能的实现 测试并提出部分功能的优化需求（虽然大部分被驳回）  完善文档 根据产品经理提出的要求，对我们的项目进行了竞争优势的分析，并完善了项目愿景。 在会议后进行会议记录，以进行">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8A%E5%8D%8811.29.24.png?raw=true">
-<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8B%E5%8D%887.07.43.png?raw=true">
-<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8B%E5%8D%887.07.21.png?raw=true">
-<meta property="og:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8B%E5%8D%887.10.17.png?raw=true">
-<meta property="og:updated_time" content="2018-09-18T11:34:30.385Z">
+<meta property="og:updated_time" content="2019-06-23T16:57:19.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="巡逻兵总结">
-<meta name="twitter:description" content="由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结游戏要求  创建一个地图和若干巡逻兵(使用动画)； 每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算； 巡逻兵碰撞到障碍物，则会自动选下一个点为目标； 巡逻兵在设定范围内感知到玩家，会自动追击玩家； 失去玩家目标后，继续巡逻； 计分：玩家每次甩掉一个巡逻兵计一分，与">
-<meta name="twitter:image" content="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8A%E5%8D%8811.29.24.png?raw=true">
+<meta name="twitter:title" content="626号试验品">
+<meta name="twitter:description" content="自我总结由于我并不擅长打代码，所以在本次的项目开发中，我作为项目经理和UI设计师，主要负责完成以下工作  完善文档，规划每一轮迭代的任务 进行主要界面的UI设计 对我们前端工程师实现的页面进行一些细微的样式调整 部分页面功能的实现 测试并提出部分功能的优化需求（虽然大部分被驳回）  完善文档 根据产品经理提出的要求，对我们的项目进行了竞争优势的分析，并完善了项目愿景。 在会议后进行会议记录，以进行">
   
     <link rel="alternative" href="/atom.xml" title="626号试验品" type="application/atom+xml">
   
@@ -156,139 +150,125 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-3D_Game/Patrol" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-system_analysis/16340314-多鱼-Final-Report" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      巡逻兵总结
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/3D_Game/Patrol/" class="archive-article-date">
-  	<time datetime="2018-06-19T15:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-        
-		             <span class="archive-article-date">
-			           阅读量 <span id="busuanzi_value_page_pv"></span>
-	             	</span>
-      	
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h3 id="由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结"><a href="#由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结" class="headerlink" title="由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结"></a>由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结</h3><h3 id="游戏要求"><a href="#游戏要求" class="headerlink" title="游戏要求"></a>游戏要求</h3><blockquote>
+        <h2 id="自我总结"><a href="#自我总结" class="headerlink" title="自我总结"></a>自我总结</h2><p>由于我并不擅长打代码，所以在本次的项目开发中，我作为项目经理和UI设计师，主要负责完成以下工作</p>
 <ul>
-<li>创建一个地图和若干巡逻兵(使用动画)；</li>
-<li>每个巡逻兵走一个3~5个边的凸多边型，位置数据是相对地址。即每次确定下一个目标位置，用自己当前位置为原点计算；</li>
-<li>巡逻兵碰撞到障碍物，则会自动选下一个点为目标；</li>
-<li>巡逻兵在设定范围内感知到玩家，会自动追击玩家；</li>
-<li>失去玩家目标后，继续巡逻；</li>
-<li>计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；</li>
+<li>完善文档，规划每一轮迭代的任务</li>
+<li>进行主要界面的UI设计</li>
+<li>对我们前端工程师实现的页面进行一些细微的样式调整</li>
+<li>部分页面功能的实现</li>
+<li>测试并提出部分功能的优化需求（虽然大部分被驳回）</li>
 </ul>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h3 id="游戏设计"><a href="#游戏设计" class="headerlink" title="游戏设计"></a>游戏设计</h3><ul>
-<li>动作管理类————上次博客时，我们是通过在每个游戏对象中添加一个Move函数，即自己控制自己的移动过程。添加动作管理类后，我们则是将游戏对象的行为单独分离了出去，剥夺了游戏对象自己调用动作的能力。通过场景控制器将游戏对象传递给动作管理器，让动作管理器去移动游戏对象。当动作很多或是需要做同样动作的游戏对象很多的时候，使用动作管理器可以让动作很容易管理，也提高了代码复用性。</li>
+<h4 id="完善文档"><a href="#完善文档" class="headerlink" title="完善文档"></a>完善文档</h4><ul>
+<li>根据产品经理提出的要求，对我们的项目进行了竞争优势的分析，并完善了项目愿景。</li>
+<li>在会议后进行会议记录，以进行迭代过程中的任务规划</li>
 </ul>
-<blockquote>
-<ul>
-<li>SSAction————所有动作的基类，受Unity引擎场景管理。格式固定，一般来说不需要改动</li>
-<li>SSActionManager————动作管理器的基类，为动作基类传递游戏对象，让游戏对象完成动作或进行动作切换。该类会继承ISSActionCallback接口，以得到动作是否完成的信息</li>
-<li>PatrolFollowAction、GoPatrolAction————继承动作的基类，实现追捕玩家和巡逻的动作</li>
-<li>PatrolActionManager————继承动作管理器的基类，实现对巡逻兵动作的创建和销毁</li>
+<h4 id="UI设计"><a href="#UI设计" class="headerlink" title="UI设计"></a>UI设计</h4><ul>
+<li>针对小组讨论的结果，在几次修改之后，最终确认了我们小组主要界面的UI设计。但由于缺乏美术功底，只能用比较简陋的方式进行表达</li>
+<li>寻找或简单绘制了，项目可能会用到的图片，图标以及一些组件的样式</li>
 </ul>
-</blockquote>
-<p><br></p>
-<ul>
-<li>工厂模式————工厂模式实现了对象创建与表示的分离。利用一个List仓库来储存我们利用预制所创建的游戏对象，并在游戏运行时控制其初始位置，颜色等基本属性</li>
+<h4 id="样式调整"><a href="#样式调整" class="headerlink" title="样式调整"></a>样式调整</h4><ul>
+<li>主要针对字体颜色，背景等细节进行了优化和风格的统一，是小程序整体UI更加和谐完善</li>
 </ul>
-<blockquote>
-<ul>
-<li>PatrolData————保存巡逻兵所需的属性数据，在工厂进行赋值。</li>
-<li>PropFactory————控制每一个巡逻兵的出现位置和其他一些基本的属性，并在不需要用到巡逻兵时将其销毁。</li>
+<h4 id="部分页面功能的实现"><a href="#部分页面功能的实现" class="headerlink" title="部分页面功能的实现"></a>部分页面功能的实现</h4><ul>
+<li>实现了初始规划的问卷发布页面，问卷回答页面</li>
+<li>并实现了一些常用的组件，如滑动删除，导航栏等</li>
 </ul>
-</blockquote>
-<p><br></p>
-<ul>
-<li>订阅与发布模式————即观察者模式，通过定义一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。</li>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><ul>
+<li>每一轮迭代后，都会对现有的功能进行测试，看是否能正常运行，在与用户的交互过程中是否明确方便。</li>
+<li>对在测试过程中遇到的一些交互上的不良体验提出修改建议，并尽可能说服任务繁重的前端工程师优化</li>
 </ul>
-<blockquote>
-<ul>
-<li>GameEventManager————专门发布事件的类，订阅者可以订阅该类的事件，当其他类发生改变的时候，会使用GameEventManager的方法发布消息，触发相应事件。</li>
-<li>AreaCollide————将不同区域定义不同的标示，这样巡逻兵可以了解到了解到玩家是否处于自己所巡逻的区域内。</li>
-<li>PatrolCollide————实现在玩家到达巡逻兵周围一定区域内是，巡逻兵去追捕玩家的事件</li>
-<li>PlayerCollide————实现当玩家与该巡逻区域的巡逻兵碰撞后死亡的事件</li>
+<h2 id="PSP2-1-表格"><a href="#PSP2-1-表格" class="headerlink" title="PSP2.1 表格"></a>PSP2.1 表格</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th style="text-align:center"><strong>Personal Software Process Stages</strong></th>
+<th style="text-align:center"><strong>Time (%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Planning</td>
+<td style="text-align:center">计划</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">UI Design</td>
+<td style="text-align:center">页面设计</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">Coding Standard</td>
+<td style="text-align:center">代码规范</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">Task Analysis</td>
+<td style="text-align:center">任务复杂性分析</td>
+<td style="text-align:center">10</td>
+</tr>
+<tr>
+<td style="text-align:center">Checking</td>
+<td style="text-align:center">设计复审</td>
+<td style="text-align:center">25</td>
+</tr>
+<tr>
+<td style="text-align:center">Coding</td>
+<td style="text-align:center">页面实现</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">Document</td>
+<td style="text-align:center">文档完善</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td style="text-align:center">Testing</td>
+<td style="text-align:center">测试</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">Report</td>
+<td style="text-align:center">报告</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">Meeting record</td>
+<td style="text-align:center">会议记录</td>
+<td style="text-align:center">15</td>
+</tr>
+</tbody>
+</table>
+<h2 id="最得意-或有价值-或有苦劳的工作清单"><a href="#最得意-或有价值-或有苦劳的工作清单" class="headerlink" title="最得意/或有价值/或有苦劳的工作清单"></a>最得意/或有价值/或有苦劳的工作清单</h2><ul>
+<li>最得意<ul>
+<li>最后实现的软件UI风格整体还是很统一的，达到了当初预想的简单美观的要求</li>
+<li>在测试中发现的，并在后面修改了的交互问题，还是在很大程度上提高了用户体验的</li>
 </ul>
-</blockquote>
-<p><br></p>
-<ul>
-<li>最后实现玩家动作的控制以及记分员的类</li>
+</li>
+<li>最有价值<ul>
+<li>第一次做项目经理，对于任务的复杂性的预估还比较合理的，最后想要实现的功能也基本都完成了。</li>
 </ul>
-<blockquote>
-<ul>
-<li>UserGUI————显示玩家的界面，并向场景控制器传递消息玩家的UI信息</li>
-<li>FirstSceneController————通过接受动作管理类，工厂类，发布事件的类、以及记分员类所发出的信息，对场景信息进行创建、修改和移动。</li>
+</li>
+<li>最苦劳<ul>
+<li>说到最苦劳反而是为数不多的代码实现部分，不知道为什么，就是感觉自己想到很好，但真的着手实现起来就很难，还是基础太差，需要提高。</li>
 </ul>
-</blockquote>
-<p><br></p>
-<hr>
-<h3 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h3><p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8A%E5%8D%8811.29.24.png?raw=true" alt="UML"></p>
-<hr>
-<h3 id="部分关键的代码"><a href="#部分关键的代码" class="headerlink" title="部分关键的代码"></a>部分关键的代码</h3><blockquote>
-<ul>
-<li>巡逻兵追捕玩家的动作————巡逻兵朝着玩家的位置移动，当玩家离开了巡逻兵触发器的范围或是玩家已经不在该区域内则停止追捕的动作</li>
+</li>
 </ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public class PatrolFollowAction : SSAction</span><br><span class="line">&#123;</span><br><span class="line">    private float speed = 2f;            //跟随玩家的速度</span><br><span class="line">    private GameObject player;           //玩家</span><br><span class="line">    private PatrolData data;             //侦查兵数据</span><br><span class="line"></span><br><span class="line">    private PatrolFollowAction() &#123; &#125;</span><br><span class="line">    public static PatrolFollowAction GetSSAction(GameObject player)</span><br><span class="line">    &#123;</span><br><span class="line">        PatrolFollowAction action = CreateInstance&lt;PatrolFollowAction&gt;();</span><br><span class="line">        action.player = player;</span><br><span class="line">        return action;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public override void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (transform.localEulerAngles.x != 0 || transform.localEulerAngles.z != 0)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);</span><br><span class="line">        &#125;</span><br><span class="line">        if (transform.position.y != 0)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = new Vector3(transform.position.x, 0, transform.position.z);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Follow();</span><br><span class="line">		//Debug.Log (&quot;A&quot;);</span><br><span class="line">        //如果侦察兵没有跟随对象，或者需要跟随的玩家不在侦查兵的区域内</span><br><span class="line">        if (!data.follow_player || data.wall_sign != data.sign)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            this.destroy = true;</span><br><span class="line">            this.callback.SSActionEvent(this,1,this.gameobject);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public override void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        data = this.gameobject.GetComponent&lt;PatrolData&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    void Follow()</span><br><span class="line">    &#123;</span><br><span class="line">        transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);</span><br><span class="line">        this.transform.LookAt(player.transform.position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<blockquote>
-<ul>
-<li>巡逻兵巡逻的动作————随机选择方向，当起始点与当前点距离大于某一个值，或者不能继续前行的时候改变方向.并随时检测在自己巡逻的区域内是否有追捕的对象，若果有则停止巡逻的动作。</li>
+<h2 id="个人git总结"><a href="#个人git总结" class="headerlink" title="个人git总结"></a>个人git总结</h2><h2 id="个人博客清单"><a href="#个人博客清单" class="headerlink" title="个人博客清单"></a>个人博客清单</h2><ul>
+<li><p><a href="[https://626zdysdq.github.io/2019/06/22/system_analysis/wepy%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/](https://626zdysdq.github.io/2019/06/22/system_analysis/wepy框架使用过程问题记录/">wepy框架使用过程问题记录</a>)</p>
+</li>
+<li><p>还在补充中</p>
+</li>
 </ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">void Gopatrol()</span><br><span class="line">    &#123;</span><br><span class="line">        if (move_sign)</span><br><span class="line">        &#123;</span><br><span class="line">            //不需要转向则设定一个目的地，按照矩形移动</span><br><span class="line">            switch (dirction)</span><br><span class="line">            &#123;</span><br><span class="line">                case Dirction.EAST:</span><br><span class="line">                    pos_x -= move_length;</span><br><span class="line">                    break;</span><br><span class="line">                case Dirction.NORTH:</span><br><span class="line">                    pos_z += move_length;</span><br><span class="line">                    break;</span><br><span class="line">                case Dirction.WEST:</span><br><span class="line">                    pos_x += move_length;</span><br><span class="line">                    break;</span><br><span class="line">                case Dirction.SOUTH:</span><br><span class="line">                    pos_z -= move_length;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            move_sign = false;</span><br><span class="line">        &#125;</span><br><span class="line">        this.transform.LookAt(new Vector3(pos_x, 0, pos_z));</span><br><span class="line">        float distance = Vector3.Distance(transform.position, new Vector3(pos_x, 0, pos_z));</span><br><span class="line">        //当前位置与目的地距离浮点数的比较</span><br><span class="line">        if (distance &gt; 0.9)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(pos_x, 0, pos_z), move_speed * Time.deltaTime);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            dirction = dirction + 1;</span><br><span class="line">            if(dirction &gt; Dirction.SOUTH)</span><br><span class="line">            &#123;</span><br><span class="line">                dirction = Dirction.EAST;</span><br><span class="line">            &#125;</span><br><span class="line">            move_sign = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<blockquote>
-<ul>
-<li>创建巡逻兵的工厂</li>
+<h2 id="特别致谢"><a href="#特别致谢" class="headerlink" title="特别致谢"></a>特别致谢</h2><ul>
+<li>感谢小灰灰承担了大部分前端页面的实现部分，在我提出了很多UI修改要求后还很克制的没有打死我</li>
+<li>感谢三锋大佬帮忙解决了很多bug，并且一起改进了很多前端的样式</li>
+<li>以及三位后端大佬们对我们前端各种要求有求必应的支持</li>
 </ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class PropFactory : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private GameObject patrol = null;                              //巡逻兵</span><br><span class="line">    private List&lt;GameObject&gt; used = new List&lt;GameObject&gt;();        //正在被使用的巡逻兵</span><br><span class="line">    private Vector3[] vec = new Vector3[9];                        //保存每个巡逻兵的初始位置</span><br><span class="line">    public FirstSceneController sceneControler;                    //场景控制器</span><br><span class="line"></span><br><span class="line">    public List&lt;GameObject&gt; GetPatrols()</span><br><span class="line">    &#123;</span><br><span class="line">        int[] pos_x = &#123; -6, 4, 13 &#125;;</span><br><span class="line">        int[] pos_z = &#123; -4, 6, -13 &#125;;</span><br><span class="line">        int index = 0;</span><br><span class="line">        //生成不同的巡逻兵初始位置</span><br><span class="line">        for(int i=0;i &lt; 3;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0;j &lt; 3;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                vec[index] = new Vector3(pos_x[i], 0, pos_z[j]);</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0; i &lt; 9; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            patrol = Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Prefabs/Patrol&quot;));</span><br><span class="line">            patrol.transform.position = vec[i];</span><br><span class="line">            patrol.GetComponent&lt;PatrolData&gt;().sign = i + 1;</span><br><span class="line">            patrol.GetComponent&lt;PatrolData&gt;().start_position = vec[i];</span><br><span class="line">            used.Add(patrol);</span><br><span class="line">        &#125;   </span><br><span class="line">        return used;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void StopPatrol()</span><br><span class="line">    &#123;</span><br><span class="line">        //改变巡逻兵的动画</span><br><span class="line">        for (int i = 0; i &lt; used.Count; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            used[i].gameObject.GetComponent&lt;Animator&gt;().SetBool(&quot;run&quot;, false);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<blockquote>
-<ul>
-<li>检测玩家是否撞到巡逻兵————通过返回Collide的属性之来确认</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class PlayerCollide : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    void OnCollisionEnter(Collision other)</span><br><span class="line">    &#123;</span><br><span class="line">        //当玩家与侦察兵相撞</span><br><span class="line">        if (other.gameObject.tag == &quot;Player&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            other.gameObject.GetComponent&lt;Animator&gt;().SetTrigger(&quot;death&quot;);</span><br><span class="line">            this.GetComponent&lt;Animator&gt;().SetTrigger(&quot;shoot&quot;);</span><br><span class="line">            Singleton&lt;GameEventManager&gt;.Instance.PlayerGameover();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8B%E5%8D%887.07.43.png?raw=true" alt="PlayerCo"></p>
-<p><br></p>
-<blockquote>
-<ul>
-<li>检测玩家是否应该被追赶————通过挂载在子物体上的Collide的属性值来确定，自己是否应该向玩家方向移动</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class PatrolCollide : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void OnTriggerEnter(Collider collider)</span><br><span class="line">    &#123;</span><br><span class="line">        if (collider.gameObject.tag == &quot;Player&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            //玩家进入侦察兵追捕范围</span><br><span class="line">            this.gameObject.transform.parent.GetComponent&lt;PatrolData&gt;().follow_player = true;</span><br><span class="line">            this.gameObject.transform.parent.GetComponent&lt;PatrolData&gt;().player = collider.gameObject;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void OnTriggerExit(Collider collider)</span><br><span class="line">    &#123;</span><br><span class="line">        if (collider.gameObject.tag == &quot;Player&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            this.gameObject.transform.parent.GetComponent&lt;PatrolData&gt;().follow_player = false;</span><br><span class="line">            this.gameObject.transform.parent.GetComponent&lt;PatrolData&gt;().player = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8B%E5%8D%887.07.21.png?raw=true" alt="PatrolCo"></p>
-<p><br></p>
-<blockquote>
-<ul>
-<li>检测玩家是否在自己的区域内</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class AreaCollide : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public int sign = 0;</span><br><span class="line">    FirstSceneController sceneController;</span><br><span class="line">    private void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        sceneController = SSDirector.GetInstance().CurrentScenceController as FirstSceneController;</span><br><span class="line">    &#125;</span><br><span class="line">    void OnTriggerEnter(Collider collider)</span><br><span class="line">    &#123;</span><br><span class="line">        //标记玩家进入自己的区域</span><br><span class="line">        if (collider.gameObject.tag == &quot;Player&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            sceneController.wall_sign = sign;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/626zdysdq/Unity3D/blob/master/Patrols/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-12%20%E4%B8%8B%E5%8D%887.10.17.png?raw=true" alt="AEAR"></p>
-<hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这次游戏算是涉及了之前所有学到过的模式和知识点，做起来感觉比较困难，不过对照老师所给的优秀博客的介绍思路和关键代码还是可以慢慢理解，然后实现。<br><br></p>
-<p>源代码的github地址：<br><a href="https://github.com/626zdysdq/Unity3D/tree/master/Patrols" target="_blank" rel="noopener">https://github.com/626zdysdq/Unity3D/tree/master/Patrols</a></p>
-<p>视频链接（如果播放不了，可以试试将清晰度改为超清）：<br><a href="http://v.youku.com/v_show/id_XMzYwMTY1Nzk5Ng==.html?spm=a2h3j.8428770.3416059.1" target="_blank" rel="noopener">http://v.youku.com/v_show/id_XMzYwMTY1Nzk5Ng==.html?spm=a2h3j.8428770.3416059.1</a></p>
 
       
 
@@ -323,33 +303,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Unity3D</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编程实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动作分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">订阅发布模式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工厂模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -400,7 +353,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/19/3D_Game/Patrol/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/21/system_analysis/16340314-多鱼-Final-Report/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -435,18 +388,18 @@ gitment.render('git')
   
 <nav id="article-nav">
   
-    <a href="/2018/09/19/Service_Homework/Service/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/22/system_analysis/wepy框架使用过程问题记录/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          利用VirtualBox与Centos让PC提供云桌面服务
+          wepy框架使用过程问题记录
         
       </div>
     </a>
   
   
-    <a href="/2018/05/29/3D_Game/UI/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">UI——关于ScollView部件的一些简单看法</div>
+    <a href="/2019/06/15/system_analysis/作业六/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Homework5</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -473,7 +426,7 @@ gitment.render('git')
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结"><span class="toc-number">1.</span> <span class="toc-text">由于之前好几次作业都没有写过博客了，所以这次对之前所学的做一个整体的总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏要求"><span class="toc-number">2.</span> <span class="toc-text">游戏要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏设计"><span class="toc-number">3.</span> <span class="toc-text">游戏设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UML图"><span class="toc-number">4.</span> <span class="toc-text">UML图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部分关键的代码"><span class="toc-number">5.</span> <span class="toc-text">部分关键的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自我总结"><span class="toc-number">1.</span> <span class="toc-text">自我总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#完善文档"><span class="toc-number">1.0.1.</span> <span class="toc-text">完善文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UI设计"><span class="toc-number">1.0.2.</span> <span class="toc-text">UI设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#样式调整"><span class="toc-number">1.0.3.</span> <span class="toc-text">样式调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部分页面功能的实现"><span class="toc-number">1.0.4.</span> <span class="toc-text">部分页面功能的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-number">1.0.5.</span> <span class="toc-text">测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PSP2-1-表格"><span class="toc-number">2.</span> <span class="toc-text">PSP2.1 表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最得意-或有价值-或有苦劳的工作清单"><span class="toc-number">3.</span> <span class="toc-text">最得意/或有价值/或有苦劳的工作清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人git总结"><span class="toc-number">4.</span> <span class="toc-text">个人git总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人博客清单"><span class="toc-number">5.</span> <span class="toc-text">个人博客清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特别致谢"><span class="toc-number">6.</span> <span class="toc-text">特别致谢</span></a></li></ol>
                     </div>
                 </span>
             </div>
