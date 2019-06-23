@@ -148,6 +148,220 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-system_analysis/wepy框架使用过程问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/22/system_analysis/wepy框架使用过程问题记录/">wepy框架过程问题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/22/system_analysis/wepy框架使用过程问题记录/" class="archive-article-date">
+  	<time datetime="2019-06-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-22</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Wepy概述"><a href="#Wepy概述" class="headerlink" title="Wepy概述"></a>Wepy概述</h4><p>wepy是微信小程序的一个原生的框架，与Vue.js类似。其文件架构包括：</p>
+<ul>
+<li>pages: 保存使用到的页面，如项目中的主页面，任务发布页面等</li>
+<li>components: 存放一下结构比较复杂的，或者每个页面都存在的公共组件，如底部的导航栏</li>
+<li>app.wpy: 入口文件</li>
+<li><p>sotre: redux(如果你创建项目时使用了redux的话）</p>
+</li>
+<li><p>wepy.config.js: webpack配置文件</p>
+</li>
+<li><p>project.config.json: 小程序项目配置文件</p>
+</li>
+<li><p>index.template.html: web页面的入口文件</p>
+</li>
+</ul>
+<p>由于我主要负责项目的UI设计和一些前段样式的修改，所以主要针对pages和component中的文件进行分析。wepy的页面以及组件的文件格式都为<code>.wpy</code>格式，其文件内部的框架如下：</p>
+<p><img src="" alt=""></p>
+<ul>
+<li>template——是文件的页面模块，即wxml部分，但要求template标签内只能存在一个<view>的框架，所以在进行页面的开发是，需要用一组<view>的标签将整个页面的不同部分包起来</view></view></li>
+<li>script——是页面数据以及实现响应的过程模块，需要注意的是微信小程序开发工具对于这一块的格式要求是非常严格的，特别是分号，逗号之类的使用。</li>
+<li>style——即页面样式，大部分情况下我们都直接使用微信默认的样式，可以直接引入微信小程序默认的样式文件，如果需要修改，则只需要在文件里面重新定义属性的值即可</li>
+</ul>
+<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><ul>
+<li>在数据驱动的页面中data修改与显示的问题<ul>
+<li>对于在页面中用到的任何数据，都应该事先在data中定义并且赋值，否则没有赋值的数据元素是没有办法在后期修改的。</li>
+<li><code>this.data.ele</code>会改变页面里该数据副本的值，但由于页面不刷新显示，所以并不能改变页面的数据</li>
+<li><code>this.setData()</code>再修改数据后确实会更新页面，这在修改数据为一个数组是并不会出先问题，但是当我们需要更新的是一个单纯的value值时，由于会出现先刷新出所给的值，再刷回原来值的情况。</li>
+<li><code>this.ele</code>是直接改变页面的值，也可以刷新页面。虽然不建议这样做，但当你遇到上面两种方式都无法解决问题的时候，可以使用这种方式直接进行赋值</li>
+</ul>
+</li>
+<li>开发中this的指代问题<ul>
+<li>在同步的问题中，this表示当前的调用者对象，通常来说是不会出现错误的</li>
+<li>但是在异步问题中通常不建议直接使用this，因为在异步过程中this很容易产生歧义</li>
+</ul>
+</li>
+<li><code>navigateTo()</code>和<code>redirectTo()</code>的区别<ul>
+<li><code>navigateTo()</code>保留当前页面，跳转到应用内的某个页面</li>
+<li><code>redirectTo()</code>关闭当前页面，跳转到应用内的某个页面</li>
+</ul>
+</li>
+<li>在页面中无法多次引入同一个组件<ul>
+<li>组件使用的是静态编译组件，即组件是在编译阶段编译进页面的，每个组件都是唯一的一个实例。 多个组件共享同一个数据。并且静态编译组件</li>
+<li>由于组件类似于模版，所以在页面中如果不指定不同的id，多次引入同一个组件时就会报错，所以如果一个组件要用多次的话，就需要分别定义。</li>
+</ul>
+</li>
+<li>在每次输入结束需要清空input时<ul>
+<li>在有些情况下，<code>this.inputValue = &#39;&#39;</code>是无效的，必须要用setdata才可以</li>
+</ul>
+</li>
+<li>组件样式调整又是没有办法显示<ul>
+<li>可能是因为调整了该组件没有的属性</li>
+<li>也可能是一个组件中引入另一个组件作为字组件，因为父组件没有<code>&lt;style&gt;</code>标签，导致子组件不编译<code>&lt;style&gt;</code>标签的内容</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/22/system_analysis/wepy框架使用过程问题记录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-system_analysis/作业六" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/15/system_analysis/作业六/">Homework5</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/15/system_analysis/作业六/" class="archive-article-date">
+  	<time datetime="2019-06-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用-UMLet-建模"><a href="#使用-UMLet-建模" class="headerlink" title="使用 UMLet 建模"></a>使用 UMLet 建模</h2><h4 id="使用类图，分别对-Asg-RH-文档中-Make-Reservation-用例以及-Payment-用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键"><a href="#使用类图，分别对-Asg-RH-文档中-Make-Reservation-用例以及-Payment-用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键" class="headerlink" title="使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键"></a>使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键</h4><ul>
+<li>注意事项：</li>
+</ul>
+<blockquote>
+<ul>
+<li>对象必须是名词、特别是技术名词、报表、描述类的处理；</li>
+<li>关联必须有多重性、部分有名称与导航方向</li>
+<li>属性要注意计算字段</li>
+</ul>
+</blockquote>
+<ul>
+<li>数据建模，为了简化描述仅需要给出表清单，例如：</li>
+</ul>
+<blockquote>
+<ul>
+<li>Hotel（ID/Key，Name，LoctionID/Fkey，Address…..）</li>
+</ul>
+</blockquote>
+<h4 id="使用-UML-State-Model，对每个订单对象生命周期建模"><a href="#使用-UML-State-Model，对每个订单对象生命周期建模" class="headerlink" title="使用 UML State Model，对每个订单对象生命周期建模"></a>使用 UML State Model，对每个订单对象生命周期建模</h4><ul>
+<li>建模对象： </li>
+</ul>
+<blockquote>
+<ul>
+<li>参考 Asg_RH 文档， 对 Reservation/Order 对象建模。</li>
+</ul>
+</blockquote>
+<ul>
+<li>建模要求： </li>
+</ul>
+<blockquote>
+<ul>
+<li>参考练习不能提供足够信息帮助你对订单对象建模，请参考现在 定旅馆 的旅游网站，尽可能分析围绕订单发生的各种情况，直到订单通过销售事件（柜台销售）结束订单。</li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/15/system_analysis/作业六/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-system_analysis/作业五" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -769,188 +983,6 @@
 
 
   
-    <article id="post-Service_Homework/web程序的输入输出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/13/Service_Homework/web程序的输入输出/">GO语言处理web程序的输入输出</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/13/Service_Homework/web程序的输入输出/" class="archive-article-date">
-  	<time datetime="2018-11-12T23:08:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>设计一个 web 小应用，展示静态文件服务、js 请求支持、模板输出、表单处理、Filter 中间件设计等方面的能力。（不需要数据库支持）</p>
-<h2 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h2><ol>
-<li>支持静态文件服务</li>
-<li>支持简单 js 访问</li>
-<li>提交表单，并输出一个表格</li>
-<li>对 <code>/unknown</code> 给出开发中的提示，返回码 <code>5xx</code></li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">服务计算</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">web service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/13/Service_Homework/web程序的输入输出/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Service_Homework/Agenda" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/01/Service_Homework/Agenda/">基于Go的Agenda开发</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/01/Service_Homework/Agenda/" class="archive-article-date">
-  	<time datetime="2018-10-31T18:33:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本项目是一个使用Cobra实现的命令行会议管理系统，<a href="https://github.com/kotomineshiki/Agenda" target="_blank" rel="noopener">源代码请点击这里</a></p>
-<h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><ul>
-<li>利用Go语言进行编程</li>
-<li>使用面向对象的思想设计程序，使得程序具有良好的结构命令，并能方便修改、扩展新的命令不会影响其他命令的代码</li>
-<li>项目部署在 Github 上，合适多人协作，特别是代码归并</li>
-<li>支持日志（原则上不使用debug调试程序）</li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">服务计算</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CLI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Agenda</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/01/Service_Homework/Agenda/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1060,6 +1092,18 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编程实践</a>
               </li>
              
@@ -1073,18 +1117,6 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工厂模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">广告牌</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ScollView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,6 +1172,10 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏对象</a>
               </li>
              
@@ -1156,23 +1192,19 @@ $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MVC结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">天空盒</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">井字棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">运动的实现</a>
               </li>
             
             <div class="clearfix"></div>
